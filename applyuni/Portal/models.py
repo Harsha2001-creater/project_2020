@@ -4,3 +4,4 @@ from django.db import models
 
 class User(models.Model):
     firstname=models.CharField(max_length=250)
+    phone = models.IntegerField(null= false)
