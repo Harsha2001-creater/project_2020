@@ -30,149 +30,158 @@
     <!--====== Style css ======-->
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 
-    <style>
-        body {
+    <style> 
+        body {}
 
-}
+        .card-deck {
+            margin: 0 -15px;
+            justify-content: space-between;
+        }
 
-.card-deck {
-  margin: 0 -15px;
-  justify-content: space-between;
-}
+        .card-deck .card {
+            margin: 0 0 1rem;
+        }
 
-.card-deck .card {
-  margin: 0 0 1rem;
-}
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            .card-deck .card {
+                -ms-flex: 0 0 48.7%;
+                flex: 0 0 48.7%;
+            }
+        }
 
-@media (min-width: 576px) and (max-width: 767.98px) {
-  .card-deck .card {
-    -ms-flex: 0 0 48.7%;
-    flex: 0 0 48.7%;
-  }
-}
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .card-deck .card {
+                -ms-flex: 0 0 32%;
+                flex: 0 0 32%;
+            }
+        }
 
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .card-deck .card {
-    -ms-flex: 0 0 32%;
-    flex: 0 0 32%;
-  }
-}
+        @media (min-width: 992px) {
+            .card-deck .card {
+                -ms-flex: 0 0 24%;
+                flex: 0 0 24%;
+            }
+        }
 
-@media (min-width: 992px)
-{
-  .card-deck .card {
-    -ms-flex: 0 0 24%;
-    flex: 0 0 24%;
-  }
-}
-.how-it-works-item{
-    padding: 30px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-.how-it-works-item.line-right:before{
-    content: '';
-    position: absolute;
-    height: 2px;
-    width: 100%;
-    left: 50%;
-    top: 55px;
-    background-color:lightblue;
-    z-index: -1;
+        .how-it-works-item {
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
 
-
-}
-.how-it-works-item .step{
-    display: inline-block;
-    height: 60px;
-    width: 60px;
-    background-color: lightblue;
-    font-synthesis: 30px;
-    text-align: center;
-    line-height: 60px;
-    border-radius: 50%;
-    margin:0 0 15px;
-}
-.how-it-works-item h3{
-    margin: 20px 0 ;
-    font-size: 22px;
-    color: black;
-    text-transform: capitalize;
-    font-weight:500;
-}
-.how-it-works-item h3 p{
-    font-weight: 16px;
-    font-weight: 300;
-    margin: 0;
-    color: black;
-}
-.contact-info h3{
-    font-size: 22px;
-    color: black;
-    font-weight: 500;
-    margin: 0 0 40px;
-}
-.contact-info-item{
-    position: relative;
-    padding-left: 55px;
-    margin-bottom: 30px;
-
-}
-.contact-info-item h4{
-    font-weight: 400;
-    font-size: 18px;
-    margin: 0 0 10px;
-    color: black;
-
-}
-.contact-info-item i{
-    position: absolute;
-    height: 40px;
-    width: 40px;
-    left: 0;
-    right: 0;
-    border-radius: 50%;
-    font-size: 16px;
-    color: blue;
-    border: 1px solid blue;
-    text-align: center;
-    line-height: 38px;
-
-}
-.contact-info-item p{
-    font-size: 16px;
-    font-weight: 300;
-    margin: 0;
-    line-height: 26px;
-    color: black;
-}
-.contact-form .form-group{
-    margin-bottom: 25px;
-
-}
-.contact-form .form-control{
-    height: 52px;
-    border: 1px solid transparent;
-    box-shadow:#f7f7f7;
-    border-radius:30px;
-    padding: 0 24px;
-    color: #000000;
-    background-color: black 000;
-    transition: all 0.5s ease; 
-}
-.contact-form .form-control:focus{
-    border-color: blue;
-}
-.contact-form .form-group input{
-    border: 1px solid black;
-}
+        .how-it-works-item.line-right:before {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            left: 50%;
+            top: 55px;
+            background-color: lightblue;
+            z-index: -1;
 
 
+        }
 
+        .how-it-works-item .step {
+            display: inline-block;
+            height: 60px;
+            width: 60px;
+            background-color: lightblue;
+            font-synthesis: 30px;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 50%;
+            margin: 0 0 15px;
+        }
+
+        .how-it-works-item h3 {
+            margin: 20px 0;
+            font-size: 22px;
+            color: black;
+            text-transform: capitalize;
+            font-weight: 500;
+        }
+
+        .how-it-works-item h3 p {
+            font-weight: 16px;
+            font-weight: 300;
+            margin: 0;
+            color: black;
+        }
+
+        .contact-info h3 {
+            font-size: 22px;
+            color: black;
+            font-weight: 500;
+            margin: 0 0 40px;
+        }
+
+        .contact-info-item {
+            position: relative;
+            padding-left: 55px;
+            margin-bottom: 30px;
+
+        }
+
+        .contact-info-item h4 {
+            font-weight: 400;
+            font-size: 18px;
+            margin: 0 0 10px;
+            color: black;
+
+        }
+
+        .contact-info-item i {
+            position: absolute;
+            height: 40px;
+            width: 40px;
+            left: 0;
+            right: 0;
+            border-radius: 50%;
+            font-size: 16px;
+            color: blue;
+            border: 1px solid blue;
+            text-align: center;
+            line-height: 38px;
+
+        }
+
+        .contact-info-item p {
+            font-size: 16px;
+            font-weight: 300;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 25px;
+
+        }
+
+        .contact-form .form-control {
+            height: 52px;
+            border: 1px solid transparent;
+            box-shadow: #f7f7f7;
+            border-radius: 30px;
+            padding: 0 24px;
+            color: #000000;
+            background-color: black 000;
+            transition: all 0.5s ease;
+        }
+
+        .contact-form .form-control:focus {
+            border-color: blue;
+        }
+
+        .contact-form .form-group input {
+            border: 1px solid black;
+        }
     </style>
 
 
@@ -192,7 +201,8 @@
                                 <img src="assets/images/logo.svg" alt="Logo">
                             </a>
 
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOne" aria-controls="navbarOne" aria-expanded="false" aria-label="Toggle navigation">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOne"
+                                aria-controls="navbarOne" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="toggler-icon"></span>
                                 <span class="toggler-icon"></span>
                                 <span class="toggler-icon"></span>
@@ -222,10 +232,12 @@
                             </div>
 
                             <div class="navbar-social d-none d-sm-flex align-items-center">
-                                
+
                                 <ul>
-                                    <li><a href="#"><button type="button" class="btn btn-primary">SIGN UP</button></a></li>
-                                    <li><a href="#"><button type="button" class="btn btn-primary">LOGIN</button></a></li>                                 
+                                    <li><a href="#"><button type="button" class="btn btn-primary">SIGN UP</button></a>
+                                    </li>
+                                    <li><a href="#"><button type="button" class="btn btn-primary">LOGIN</button></a>
+                                    </li>
                                 </ul>
                             </div>
                         </nav> <!-- navbar -->
@@ -234,15 +246,17 @@
             </div> <!-- container -->
         </div> <!-- navgition -->
 
-        <div id="home" class="header-hero bg_cover" style="background-image: url(assets/images/header-bg.jpg)">
+        <div id="home" class="header-hero bg_cover" style="background-image: url(assets/images/header-bg-1.jpg)">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-8 col-lg-10">
                         <div class="header-content text-center">
                             <h3 class="header-title">Welcome to APPLY UNI@Online</h3>
-                            <p class="text">Welcome to U apply, Choose and apply from 200 universities worldwide right from where you are. we will guide you through long the way!</p>
+                            <p class="text">Welcome to U apply, Choose and apply from 200 universities worldwide right
+                                from where you are. we will guide you through long the way!</p>
                             <ul class="header-btn">
-                                <li><a class="main-btn btn-two video-popup" href="#">WATCH THE VIDEO <i class="lni-play"></i></a></li>
+                                <li><a class="main-btn btn-two video-popup" href="#">WATCH THE VIDEO <i
+                                            class="lni-play"></i></a></li>
                             </ul>
                         </div> <!-- header content -->
                     </div>
@@ -264,7 +278,8 @@
                 <div class="col-lg-6">
                     <div class="section-title pb-10">
                         <h4 class="title">Crafted For</h4>
-                        <p class="text">Stop Wasting time choosing Unecessary universities that doesn’t get results. join ours Happiness Gaurenteed!</p>
+                        <p class="text">Stop Wasting time choosing Unecessary universities that doesn’t get results.
+                            join ours Happiness Gaurenteed!</p>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
@@ -278,8 +293,8 @@
                                 </div>
                                 <div class="services-content media-body">
                                     <h4 class="services-title">Course Selection & Guidance</h4>
-                                    <p class="text">Guidance and Counselling for 
-                                        you to choose the right  
+                                    <p class="text">Guidance and Counselling for
+                                        you to choose the right
                                         programme to start your career</p>
                                 </div>
                             </div> <!-- services content -->
@@ -291,7 +306,8 @@
                                 </div>
                                 <div class="services-content media-body">
                                     <h4 class="services-title">university admissions</h4>
-                                    <p class="text">Securing guranteed admissions from top universities across the world, as per your choice.</p>
+                                    <p class="text">Securing guranteed admissions from top universities across the
+                                        world, as per your choice.</p>
                                 </div>
                             </div> <!-- services content -->
                         </div>
@@ -302,19 +318,20 @@
                                 </div>
                                 <div class="services-content media-body">
                                     <h4 class="services-title">Documentation & Visa Assitance</h4>
-                                    <p class="text">Help you prepare the right documents needed for University admissions and visa application which ensures 100% success rate.</p>
+                                    <p class="text">Help you prepare the right documents needed for University
+                                        admissions and visa application which ensures 100% success rate.</p>
                                 </div>
                             </div> <!-- services content -->
                         </div>
                         <div class="col-md-6">
                             <div class="services-content mt-40 d-sm-flex">
                                 <div class="services-icon">
-                                    <i class="fa fa-support" aria-hidden="true"></i> 
+                                    <i class="fa fa-support" aria-hidden="true"></i>
                                 </div>
                                 <div class="services-content media-body">
                                     <h4 class="services-title">Support during your Study & Stay</h4>
-                                    <p class="text">Emergency assistance and local 
-                                        support till you succesfullly complete       
+                                    <p class="text">Emergency assistance and local
+                                        support till you succesfullly complete
                                         your studies.</p>
                                 </div>
                             </div> <!-- services content -->
@@ -332,39 +349,50 @@
 
     <!--====== Universities PART START ======-->
     <section class="universities" id="universities" style="padding-bottom:2rem;">
-        <h1 style="text-align:center;padding:5rem;font-family: 'Raleway';">Top <span style="color:blue;">Universities</span></h1>
+        <h1 style="text-align:center;padding:5rem;font-family: 'Raleway';">Top <span
+                style="color:blue;">Universities</span></h1>
         <div class="container">
             <div class="card-deck">
-              <div class="card">
-                <img class="card-img-top" src="https://www.collegeconsensus.com/wp-content/uploads/2016/12/o-HARVARD-UNIVERSITY-BUILDING-facebook.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Harvard University</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="card">
+                    <img class="card-img-top"
+                        src="https://www.collegeconsensus.com/wp-content/uploads/2016/12/o-HARVARD-UNIVERSITY-BUILDING-facebook.jpg"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Harvard University</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
                 </div>
-              </div>
-              <div class="card">
-                <img class="card-img-top" src="https://nypost.com/wp-content/uploads/sites/2/2020/03/stanford.jpg?quality=80&strip=all" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Stanford university</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                <div class="card">
+                    <img class="card-img-top"
+                        src="https://nypost.com/wp-content/uploads/sites/2/2020/03/stanford.jpg?quality=80&strip=all"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Stanford university</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content.</p>
+                    </div>
                 </div>
-              </div>
-              <div class="card">
-                <img class="card-img-top" src="https://images.shiksha.com/mediadata/images/1589360331phphW1Nso.jpeg" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">University of oxford</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural.</p>
+                <div class="card">
+                    <img class="card-img-top" src="https://images.shiksha.com/mediadata/images/1589360331phphW1Nso.jpeg"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">University of oxford</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural.</p>
+                    </div>
                 </div>
-              </div>
-              <div class="card">
-                <img class="card-img-top" src="https://www.berkeleyside.com/wp-content/uploads/2020/04/1920px-UCBerkeleyCampus-e1594245699299.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">University of California</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="card">
+                    <img class="card-img-top"
+                        src="https://www.berkeleyside.com/wp-content/uploads/2020/04/1920px-UCBerkeleyCampus-e1594245699299.jpg"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">University of California</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
     </section>
 
     <!--====== universities PART ENDS ======-->
@@ -374,7 +402,8 @@
             <div class="row  justify-content-center">
                 <div class="col-lg-8">
                     <div class="section-title">
-                        <h1 style="text-align: center;padding: 20px;font-family: 'Raleway';">How it <span style="color: blue;">Works</span></h1>
+                        <h1 style="text-align: center;padding: 20px;font-family: 'Raleway';">How it <span
+                                style="color: blue;">Works</span></h1>
                     </div>
                 </div>
             </div>
@@ -384,32 +413,32 @@
                         <div class="step">1</div>
                         <h3>Step1</h3>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum magnam ..</p>
-                    </div> 
+                    </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="how-it-works-item line-right">
                         <div class="step">2</div>
                         <h3>Step2</h3>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum magnam ..</p>
-                    </div> 
+                    </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="how-it-works-item line-right">
                         <div class="step">3</div>
                         <h3>Step3</h3>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum magnam ..</p>
-                    </div> 
+                    </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="how-it-works-item ">
                         <div class="step">4</div>
                         <h3>Step4</h3>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum magnam ..</p>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
-        
+
 
     </section>
 
@@ -421,7 +450,8 @@
             <div class="row  justify-content-center">
                 <div class="col-lg-8">
                     <div class="section-title">
-                        <h1 style="text-align: center;padding: 20px;font-family: 'Raleway';">Top  <span style="color: blue;">Features</span></h1>
+                        <h1 style="text-align: center;padding: 20px;font-family: 'Raleway';">Top <span
+                                style="color: blue;">Features</span></h1>
                     </div>
                 </div>
             </div>
@@ -431,40 +461,40 @@
                         <div class="step">1</div>
                         <h3>Why</h3>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum magnam ..</p>
-                    </div> 
+                    </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="how-it-works-item line-left">
                         <div class="step">2</div>
                         <h3>Why</h3>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum magnam ..</p>
-                    </div> 
+                    </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="how-it-works-item line-left">
                         <div class="step">3</div>
                         <h3>Why</h3>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum magnam ..</p>
-                    </div> 
+                    </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="how-it-works-item ">
                         <div class="step">4</div>
                         <h3>Why</h3>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum magnam ..</p>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
-        
+
 
     </section>
     <!-- end features-->
-    
-     <!--====== CALL TO ACTION PART START ======-->
+
+    <!--====== CALL TO ACTION PART START ======-->
 
     <!--====== CALL TO ACTION PART ENDS ======-->
-    
+
     <!--====== CONTACT PART START ======-->
 
     <section id="contact" class="contact section-padding" style="padding-bottom: 2rem;">
@@ -472,7 +502,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="section-title">
-                        <h1 style="text-align: center; padding: 5rem;font-family: 'Raleway';">Get in <span style="color: blue;">Touch</span></h1>
+                        <h1 style="text-align: center; padding: 5rem;font-family: 'Raleway';">Get in <span
+                                style="color: blue;">Touch</span></h1>
                     </div>
                 </div>
             </div>
@@ -515,14 +546,14 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <input type="text" placeholder="Phone"  class="form-control">
+                                        <input type="text" placeholder="Phone" class="form-control">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <input type="date"   class="form-control">
+                                        <input type="date" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -540,7 +571,7 @@
 
         </div>
 
-        
+
         <!--
         <div class="container">
             <div class="row justify-content-center">
@@ -613,7 +644,7 @@
                                     <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
                                 </ul>
                             </div> <!-- footer logo -->
-                            
+
                         </div> <!-- footer logo support -->
                     </div>
                 </div> <!-- row -->
@@ -664,7 +695,7 @@
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- footer widget -->
-        
+
         <div class="footer-copyright">
             <div class="container">
                 <div class="row">

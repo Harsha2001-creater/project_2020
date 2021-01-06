@@ -419,15 +419,11 @@ p {
     rgba(254, 255, 244, 0.3) 68%,
     rgba(255, 255, 255, 0.12)
   );
-  background: linear-gradient(
-    rgba(232, 237, 255, 0.9),
-    rgba(239, 254, 255, 0.9) 50%,
-    rgba(254, 255, 244, 0.3) 68%,
-    rgba(255, 255, 255, 0.12)
-  );
+  background: linear-gradient(45deg, #f5f4f4, transparent);
+}
 }
 .header-hero .header-content {
-  padding-top: 195px;
+  padding-top: 200px;
   position: relative;
   z-index: 9;
 }
