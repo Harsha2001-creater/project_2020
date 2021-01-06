@@ -419,7 +419,7 @@ p {
     rgba(254, 255, 244, 0.3) 68%,
     rgba(255, 255, 255, 0.12)
   );
-  background: linear-gradient(45deg, #f5f4f4, transparent);
+  background: linear-gradient(to bottom ,#cfdac8,transparent);
 }
 }
 .header-hero .header-content {
@@ -457,7 +457,8 @@ p {
 .header-hero .header-content .text {
   font-size: 20px;
   line-height: 32px;
-  color: #6c6c6c;
+  color: #121212;
+  color: #;
   margin-top: 16px;
 }
 @media (max-width: 767px) {
