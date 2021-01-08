@@ -13,6 +13,24 @@
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    <style>
+      .has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+    </style>
 </head>
 
 <body>
@@ -58,7 +76,29 @@
         </div>
     </nav>
     <div class="container">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <div class="row mt-3 mb-3">
+        <div class="col">
+          <h2>Applications</h2>
+
+        </div>
+        <div class="col">
+          <div class="form-group has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+        </div>
+        <div class="col">
+          <select class="custom-select">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+      </div>
+     
+      
+        <ul class="nav nav-tabs fill-content nav-fill" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab"
                     aria-controls="home" aria-selected="true">All</a>
@@ -93,7 +133,7 @@
                     <tbody>
                       <tr>
                         <th scope="row">1</th>
-                        <td>Mark</td>
+                        <td><a href="studentinfo.html">Mark</a></td>
                         <td>Otto</td>
                         <td>@mdo</td>
                         <td>Mark</td>
