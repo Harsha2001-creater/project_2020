@@ -10,16 +10,16 @@ class universitylogin(View):
         return render(request,'login/universitylogin.html')
 
     def post(self,request):
-        email=request.POST.get('email')
-        password=request.POST.get('password')
+        email=request.POST.get('Universitymail')
+        password=request.POST.get('Password')
         university=University.get_university_by_email(email)
         error_message= None
 
         if university:
-            flag= (password==student.password)
+            flag= (password==university.Password)
             if flag:
                 request.session['university']=university.id
-                request.session['name']=university.name
+                request.session['name']=university.Universityname
                 '''
                 if universitylogin.return_url():
                     return HttpResponseRedirect(return_url)

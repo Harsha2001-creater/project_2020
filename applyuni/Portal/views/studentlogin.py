@@ -11,18 +11,16 @@ class studentlogin(View):
         return render(request,'login/studentlogin.html')
 
     def post(self,request):
-        email=request.POST.get('email')
-        password=request.POST.get('password')
-        student=Student.get_student_by_email(email)
+        Email=request.POST.get('Email')
+        Password=request.POST.get('Password')
+        student=Student.get_student_by_email(Email)
         error_message= None
-        print(email,password)
-
+        print(student)
         if student :
-
-            flag= (password==student.password)
+            flag= (Password==student.Password)
             if flag:
                 request.session['student']=student.id
-                request.session['firstname']=student.Firstname
+                request.session['Firstname']=student.Firstname
 
                 '''
                 if studentlogin.return_url():
@@ -35,7 +33,6 @@ class studentlogin(View):
                 error_message='Password is invalid!!!'
         else:
             error_message='Email is invalid!!!'
-            print('invalid')
         return render(request,'login/studentlogin.html',{'error':error_message})
 def logout(request):
 

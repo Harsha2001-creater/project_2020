@@ -36,9 +36,16 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Portal'
+    'Portal',
+    'social_django',
+
+ 'allauth',   # <--
+ 'allauth.account',   # <--
+ 'allauth.socialaccount',   # <--
+ 'allauth.socialaccount.providers.google'
 ]
 
 MIDDLEWARE = [
@@ -49,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'applyuni.urls'
@@ -64,14 +72,33 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  # <-- Here
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
-
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
+ 'allauth.account.auth_backends.AuthenticationBackend',
+)
 WSGI_APPLICATION = 'applyuni.wsgi.application'
 
 
+SITE_ID=1
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -123,8 +150,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
 os.path.join(BASE_DIR,'static')
 ]
-MEDIA_URL = '/images/'
-MEDIA_ROOT = BASE_DIR
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'home'
+SOCIAL_AUTH_FACEBOOK_KEY = '783783092487279'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '99dc5e0c67a778627fc6f8655786e469'
 #smtp
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'

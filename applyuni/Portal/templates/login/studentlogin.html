@@ -1,4 +1,5 @@
 {%load static %}
+{% load socialaccount %}
 <!doctype html>
 <html>
 
@@ -36,18 +37,18 @@
                             <h3 class="text-center text-info-nad head ">Student Login</h3>
                             <div class="form-group">
                                 <label class="text-info-nad">Email:</label>
-                                <input type="text" name="email" id="email" class="form-control" required>
+                                <input type="text" name="Email" id="email" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label class="text-info-nad">Password:</label>
-                                <input type="text" name="password" id="password" class="form-control" required>
+                                <input type="text" name="Password" id="password" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <input type="submit" name="submit" class="btn btn-info btn-md btn-nade" value="Login">
                             </div>
                             <div class="social">
-                                <a href="#" style=""><button type="button" class="btn btn-info"style="margin-bottom:5px;">facebook<i style="margin-left: 5px;" class="fa fa-facebook"></i></button></a>
-                                <a href="#"><button type="button" class="btn btn-danger">google<i style="margin-left: 5px;" class="fa fa-google"></i></button> </a>
+                                <a href="{% url 'social:begin' 'facebook' %}" style=""><button type="button" class="btn btn-info"style="margin-bottom:5px;">facebook<i style="margin-left: 5px;" class="fa fa-facebook"></i></button></a>
+                                <a href="{% provider_login_url 'google' %}"><button type="button" class="btn btn-danger">Google<i style="margin-left: 5px;" class="fa fa-google"></i></button> </a>
                             </div>
 
                             <a href="{% url 'password_reset'%}">forgot password ?</a>
