@@ -15,5 +15,15 @@ class universitysignup(View):
         Confirmpassword=postData.get('Confirmpassword')
         universitysignup=University(Universityname=Universityname,Univcontactnumber=Univcontactnumber,
         Universitymail=Universitymail,Password=Password,Confirmpassword=Confirmpassword)
-        universitysignup.register()
+        unimailcheck=University.IsExists(Universitymail)
+        error_message=None
+        if(unimailcheck):
+            error="Hei!!! University already Exist !!"
+            return render(request,'signup_forms/university_signup.html',{'error':error_message})
+        if(Password!=Confirmpassword):
+            error="Hei!!! Password doesnt Match !!"
+            return render(request,'signup_forms/university_signup.html',{'error':error_message})
+
+        else:
+            universitysignup.register()
         return redirect('home')

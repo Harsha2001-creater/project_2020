@@ -6,9 +6,8 @@ from .views.universitylogin import universitylogin
 from .views.mediator import home
 from .views.mediator import signup_mediator
 from .views.mediator import login_mediator
-from .views.mediator import studentsignup
-from .views.mediator import universitysignup
 from .views.studentsignup import studentsignup
+from .views.universitysignup import universitysignup
 from .views.facebook import HomeView
 from django.views.generic import TemplateView
 from .views.stdquery import stdquery
@@ -37,7 +36,7 @@ path('password-reset-confirm/<uidb64>/<token>', auth_views.PasswordResetConfirmV
 path('password-reset-complete', auth_views.PasswordResetCompleteView.as_view(template_name="login/password_reset_complete.html"),name='password_reset_complete'),
 
 path('studentsignup',studentsignup.as_view(),name='studentsignup'),
-path('universitysignup',universitysignup,name='universitysignup'),
+path('universitysignup',universitysignup.as_view(),name='universitysignup'),
 path('signup-mediator',signup_mediator,name='signup-mediator'),
 path('login-mediator',login_mediator,name='login-mediator'),
 path('stdquery',stdquery.as_view(),name='stdquery'),

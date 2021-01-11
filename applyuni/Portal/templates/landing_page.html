@@ -344,7 +344,7 @@
       <div
         id="home"
         class="header-hero bg_cover"
-        style="background-image: url({%static'images/header-bg-1.jpg'%})"
+        style="background-image: url({% static 'images/header-bg-1.jpg' %})"
       >
         <div class="container">
           <div class="row justify-content-center">
@@ -765,7 +765,9 @@
           </div>
           <div class="col-lg-8 col-md-7">
             <div class="contact-form">
-              <form>
+              <form action="/stdquery" method=POST>
+                {% csrf_token %}
+
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="form-group">
@@ -773,6 +775,7 @@
                         type="text"
                         placeholder="Name"
                         class="form-control"
+                        name="Name"
                       />
                     </div>
                   </div>
@@ -782,6 +785,7 @@
                         type="text"
                         placeholder="Email"
                         class="form-control"
+                        name="Email"
                       />
                     </div>
                   </div>
@@ -793,6 +797,7 @@
                         type="text"
                         placeholder="Phone"
                         class="form-control"
+                        name="Phonenumber"
                       />
                     </div>
                   </div>
@@ -800,7 +805,7 @@
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="form-group">
-                      <input type="date" class="form-control" />
+                      <input type="date" class="form-control" name="Date"/>
                     </div>
                   </div>
                 </div>
@@ -809,6 +814,14 @@
                     <button type="submit" class="btn btn-primary">
                       Request an appointment
                     </button>
+                    <div class="">
+                    {% if Message %}
+                    <div class="alert alert-info" role="alert">
+                        {{Message}}
+                    </div>
+                    {% endif %}
+
+    </div>
                   </div>
                 </div>
               </form>

@@ -49,9 +49,10 @@ class universitylogin(View):
                     '''
             else:
                 error_message='Password is invalid!!!'
+                return render(request,'login/universitylogin.html',{'error': error_message})
         else:
             error_message='Email is invalid!!!'
-        return render(request,'login/universitylogin.html',{'error': error_message})
+            return render(request,'login/universitylogin.html',{'error': error_message})
 
 def logout(request):
     request.session.clear()
