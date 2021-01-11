@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from Portal.models.universityinfo import University
 from Portal.models.univdetail import Univdetail
 from django.views import View
+
 def Uniappli(request):
     return render(request,'University_portal/application_box.html')
 def Unihome(request):
@@ -12,7 +13,18 @@ def Unisupport(request):
 
 class Unisettings(View):
     def get(self,request):
-        return render(request,'University_portal/university_settings.html')
+        univdetail=Univdetail.get_univdetail_by_email(request.session['university_Email'])
+        value={'Institutemode': univdetail.Institutemode,'Institutetype': univdetail.Institutetype,'Year':univdetail.Year,'Rank':univdetail.Rank,'About':univdetail.About,'Campuses':univdetail.Campuses,
+        'Departments' :univdetail.Departments,'Education':univdetail.Education,'Feeug':univdetail.Feeug,'Feepg':univdetail.Feepg,'Intake': univdetail.Intake,'Awards':univdetail.Awards,
+        'Staff':univdetail.Staff,'Students':univdetail.Students,'Location':univdetail.Location,'Phonenumber':univdetail.Phonenumber,'Email':univdetail.Email,
+
+        'Applyfee':univdetail.Applyfee,'Currency':univdetail.Currency,'Amount':univdetail.Amount,'Applyform':univdetail.Applyform,'Duration':univdetail.Duration,
+        'Applypro1':univdetail.Applypro1,'Applypro2':univdetail.Applypro2,'Applypro3':univdetail.Applypro3,'Applypro4':univdetail.Applypro4,'Doc1':univdetail.Doc1,'Doc2':univdetail.Doc2,
+        'Doc3':univdetail.Doc3,'Doc4':univdetail.Doc4,'Doc5':univdetail.Doc5,'Doc6':univdetail.Doc6,'Doc7':univdetail.Doc7,'Doc8':univdetail.Doc8,'Doc9':univdetail.Doc9,'Term1':univdetail.Term1,
+        'Term2':univdetail.Term2,'Term3':univdetail.Term3,'Term4':univdetail.Term4}
+        data={'value':value}
+
+        return render(request,'University_portal/university_settings.html',data)
     def post(self,request):
         Institutemode= request.POST.get('Institutemode')
         Institutetype= request.POST.get('Institutetype')
@@ -82,7 +94,7 @@ class Unisettings(View):
         if(univdetail1):
             univdetail1.delete()
         univdetail.register()
-        
+
 
 
 

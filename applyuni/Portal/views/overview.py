@@ -19,7 +19,7 @@ class overview(View):
         request.session['Location']=univdetail.Location
         request.session['Phonenumber']=univdetail.Phonenumber
         request.session['Email']=univdetail.Email
-
+        print(request.session['Staff'])
 
         university=University.get_university_by_email(Email)
         Name=university.Universityname
@@ -34,9 +34,10 @@ class overview(View):
         Location=request.session['Location']
         Phonenumber=request.session['Phonenumber']
         Email=request.session['Email']
+
         value={}
-        value={'Name':Name,'About':About,'Campuses':Campuses,About:'About',Campuses:'Campuses',
-        Departments:'Departments',Education:'Education',Intake:'Intake',
-        Staff:'Staff',Students:'Students',Location:'Location',Phonenumber:'Phonenumber',Email:'Email'}
+        value={'Name':Name,'About':About,'Campuses':Campuses,
+        'Departments':Departments,'Education':Education,'Intake':Intake,
+        'Staff':Staff,'Students':Students,'Location':Location,'Phonenumber':Phonenumber,'Email':Email}
         data={'value':value}
         return render(request,'university_page/overview.html',data)
