@@ -6,7 +6,7 @@ class Student(models.Model):
     Firstname= models.CharField(max_length=500)
     Lastname= models.CharField(max_length=500)
     Dateofbirth=models.DateField(max_length=50)
-    Gender=models.CharField(choices=gender,max_length=50)
+    Gender=models.CharField(max_length=50)
     Email = models.EmailField()
     Phonenumber= models.CharField(max_length=50)
     Password = models.CharField(max_length=500)
@@ -16,17 +16,19 @@ class Student(models.Model):
         return self.Firstname
     def register(self):
         self.save()
-    @staticmethod
 
+    @staticmethod
     def get_student_by_email(Email):
         try:
-            print(Email)
+            #print(Email)
+            #print(Student.objects.all())
+            #print(Student.objects.get(Email=Email))
             return Student.objects.get(Email=Email)
         except:
             return False
 
-    def IsExists(self):
-        if Student.objects.filter(Email=self.Email) :
+    def IsExists(Email):
+        if Student.objects.filter(Email=Email) :
             return True
 
         return False

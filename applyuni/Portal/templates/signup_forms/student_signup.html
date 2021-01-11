@@ -35,17 +35,18 @@
                     <h2 class="title">Student Registration Form</h2>
                     <form action="/studentsignup" method="POST">
                       {% csrf_token %}
+
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Firstname</label>
-                                    <input class="input--style-4" type="text" name="Firstname">
+                                    <input class="input--style-4" type="text" name="Firstname" value="{{value.Firstname}}" required>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Lastname</label>
-                                    <input class="input--style-4" type="text" name="Lastname">
+                                    <input class="input--style-4" type="text" name="Lastname" value="{{value.Lastname}}" required>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +54,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Dateofbirth</label>
-                                    <input class="input--style-4" type="date" name="Dateofbirth">
+                                    <input class="input--style-4" type="date" name="Dateofbirth" value="{{value.Dateofbirth}}" required>
                                 </div>
                             </div>
                             <div class="col-2">
@@ -61,11 +62,11 @@
                                     <label class="label">Gender</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Male
-                                            <input type="radio" checked="checked" name="Gender">
+                                            <input type="radio" checked="checked" name="Gender" value="Male">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container">Female
-                                            <input type="radio" name="Gender">
+                                            <input type="radio" name="Gender" value="Female">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -76,13 +77,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Email</label>
-                                    <input class="input--style-4" type="email" name="Email">
+                                    <input class="input--style-4" type="email" name="Email" value="{{value.Email}}" required >
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Phonenumber</label>
-                                    <input class="input--style-4" type="text" name="Phonenumber">
+                                    <input class="input--style-4" type="text" name="Phonenumber" value="{{value.Phonenumber}}" required>
                                 </div>
                             </div>
                         </div>
@@ -90,20 +91,29 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Password</label>
-                                    <input class="input--style-4" type="password" name="Password">
+                                    <input class="input--style-4" type="password" name="Password" required >
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Confirmpassword</label>
-                                    <input class="input--style-4" type="password" name="Confirmpassword">
+                                    <input class="input--style-4" type="password" name="Confirmpassword" required >
                                 </div>
                             </div>
                         </div>
 
+
+
+                        {% if error %}
+                        <div class="alert alert-danger w-25% " style="text-align:center; margin-left:40%" role="alert" >
+                          {{error}}
+                        </div>
+                        {% endif %}
+
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
                         </div>
+
                     </form>
                 </div>
             </div>

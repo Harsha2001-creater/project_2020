@@ -150,15 +150,19 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
 os.path.join(BASE_DIR,'static')
 ]
+
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_URL='/media/'
+
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = 'home'
-SOCIAL_AUTH_FACEBOOK_KEY = '783783092487279'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = '99dc5e0c67a778627fc6f8655786e469'
+LOGIN_REDIRECT_URL = 'stddetail1'
+SOCIAL_AUTH_FACEBOOK_KEY = '3703743136348709'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '34e99f1a409af9b42470ff912ea1c7f2'
 #smtp
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
-EMAIL_HOST_USER='techclub.cse.sse@gmail.com',
+EMAIL_HOST_USER='techclub.cse.sse@gmail.com'
 EMAIL_HOST_PASSSWORD='techclubcse@saveetha'

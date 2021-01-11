@@ -636,30 +636,31 @@
                 </div>
                 <div class="col-lg-8 col-md-7">
                     <div class="contact-form">
-                        <form>
+                        <form action="/stdquery" method="POST">
+                          {% csrf_token %}
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input type="text" placeholder="Name" class="form-control">
+                                        <input type="text" placeholder="Name" name="Name"class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input type="text" placeholder="Email" class="form-control">
+                                        <input type="text" placeholder="Email" name="Email" class="form-control">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <input type="text" placeholder="Phone" class="form-control">
+                                        <input type="text" placeholder="Phone" name="Phonenumber" class="form-control">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <input type="date" class="form-control">
+                                        <input type="date" name="Date"class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -668,7 +669,15 @@
                                     <button type="submit" class="btn btn-primary">Request an appointment</button>
                                 </div>
                             </div>
-
+                            <div>
+                                                  <p>
+                                                              {% if Message %}
+                                                              <div class="alert alert-success w-25% " style="text-align:center; margin-left:40%" role="alert" >
+                                                                {{Message}}
+                                                              </div>
+                                                              {% endif %}
+                                                            </p>
+                                                          </div>
                         </form>
                     </div>
                 </div>
