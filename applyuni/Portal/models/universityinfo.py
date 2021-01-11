@@ -21,8 +21,8 @@ class University(models.Model):
         except:
             return False
 
-    def IsExists(self):
-        if University.objects.filter(Universitymail=self.Universitymail) :
+    def IsExists(Universitymail):
+        if University.objects.filter(Universitymail=Universitymail) :
             return True
 
         return False

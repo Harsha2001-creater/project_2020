@@ -45,7 +45,7 @@
                 name="Email"
                 id="email"
                 class="input"
-                required
+
               />
             </div>
           </div>
@@ -60,18 +60,18 @@
                 name="Password"
                 id="password"
                 class="input"
-                required
+
               />
             </div>
           </div>
           <a href="{% url 'password_reset'%}">Forgot Password?</a>
           <input type="submit" class="btn" value="Login" />
           <a href="{% url 'social:begin' 'facebook' %}">
-            <input type="submit" class="btn" value="Login with facebook" / ></a
+            <button type="button" class="btn" value="Login with facebook"  >Facebook </button></a
           >
           <a href="{% provider_login_url 'google' %}">
-            <input type="submit" class="btn" value="Login with Google"
-          /></a>
+            <button type="button" class="btn" value="Login with Google"
+          >Google</button></a>
         </form>
       </div>
     </div>

@@ -64,7 +64,8 @@ class Unisettings(View):
         'Term2':Term2,'Term3':Term3,'Term4':Term4}
 
 
-        univdetail=Univdetail(Institutemode= Institutemode,Institutetype= Institutetype,Year=Year,Rank=Rank,About=About,Campuses=Campuses,
+        univdetail=Univdetail(Institutemode= Institutemode,Institutetype= Institutetype,Year=Year,Rank=Rank,About=About,
+        Campuses=Campuses,
         Departments = Departments,Education=Education,Feeug=Feeug,Feepg=Feepg,Intake= Intake,Awards=Awards,
         Staff=Staff,Students=Students,Location=Location,Phonenumber=Phonenumber,Email=Email,
 
@@ -80,7 +81,12 @@ class Unisettings(View):
         print("monish")
         if(univdetail1):
             univdetail1.delete()
-
         univdetail.register()
+        
+
+
+
+
+
         data={'value':value}
         return render(request,'University_portal/university_settings.html',data)

@@ -47,7 +47,7 @@
               <i class="fas fa-user"></i>
             </div>
             <div class="div">
-              <h5>Gender</h5>
+              <h5>Lastname</h5>
               <input type="text" name="Lastname" class="input" />
             </div>
           </div>
@@ -111,15 +111,16 @@
             </div>
           </div>
           <input type="submit" class="btn" value="Register" />
-          <div class="">
-          {% if error %}
-          <div class="alert alert-warning" role="alert">
-              {{error}}
-          </div>
-          {% endif %}
+
+        </form>
+        <div class="">
+        {% if error %}
+        <div class="alert alert-warning" role="alert">
+            {{error}}
+        </div>
+        {% endif %}
 
 </div>
-        </form>
       </div>
     </div>
     <script type="text/javascript">
