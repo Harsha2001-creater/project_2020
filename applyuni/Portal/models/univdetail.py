@@ -22,7 +22,7 @@ class Univdetail(models.Model):
     Phonenumber=models.CharField(max_length=10)
     Email=models.CharField(max_length=10)
 
-    Applyfee=models.CharField(max_length=50)
+    Applyfee=models.CharField(max_length=50,null=True)
     Currency=models.CharField(max_length=50)
     Amount=models.CharField(max_length=50)
     Applyform=models.FileField(upload_to="")
@@ -46,17 +46,20 @@ class Univdetail(models.Model):
     Term4=models.CharField(max_length=500)
 
     def __str__(self):
-        return self.Firstname
+        return self.Email
     def register(self):
         self.save()
-        return true
+        return True
     @staticmethod
 
     def get_univdetail_by_email(Email):
             #print(Email)
             #print(Stddetail.objects.all())
             #print(Stddetail.objects.get(Email=Email))
+            print("nanda")
             try:
-                return Univdeatil.objects.get(Email=Email)
+                print("Nanda")
+                print(Univdetail.objects.get(Email=Email))
+                return Univdetail.objects.get(Email=Email)
             except:
                 False

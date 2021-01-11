@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.hashers import check_password
 from Portal.models.universityinfo import University
+from Portal.models.univdetail import Univdetail
+
 from django.views import View
 class universitylogin(View):
     return_url = None
@@ -12,9 +14,7 @@ class universitylogin(View):
     def post(self,request):
         Email=request.POST.get('Universitymail')
         Password=request.POST.get('Password')
-        university=University.get_university_by_Email(Email)
-        if(university):
-            univdetail=Univdeatil.get_univdetail_by_Email(Email)
+        university=University.get_university_by_email(Email)
         error_message= None
 
         if university:
@@ -22,7 +22,12 @@ class universitylogin(View):
             if flag:
                 request.session['university_Email']=university.Universitymail
                 request.session['name']=university.Universityname
+                if(university):
+                    univdetail=Univdetail.get_univdetail_by_email(university.Universitymail)
+                print(univdetail)
                 if(univdetail):
+                    print("kis")
+                    print(univdetail.Year)
                     value={'Institutemode': univdetail.Institutemode,'Institutetype': univdetail.Institutetype,'Year':univdetail.Year,'Rank':univdetail.Rank,'About':univdetail.About,'Campuses':univdetail.Campuses,
                     'Departments' :univdetail.Departments,'Education':univdetail.Education,'Feeug':univdetail.Feeug,'Feepg':univdetail.Feepg,'Intake': univdetail.Intake,'Awards':univdetail.Awards,
                     'Staff':univdetail.Staff,'Students':univdetail.Students,'Location':univdetail.Location,'Phonenumber':univdetail.Phonenumber,'Email':univdetail.Email,
@@ -32,9 +37,9 @@ class universitylogin(View):
                     'Doc3':univdetail.Doc3,'Doc4':univdetail.Doc4,'Doc5':univdetail.Doc5,'Doc6':univdetail.Doc6,'Doc7':univdetail.Doc7,'Doc8':univdetail.Doc8,'Doc9':univdetail.Doc9,'Term1':univdetail.Term1,
                     'Term2':univdetail.Term2,'Term3':univdetail.Term3,'Term4':univdetail.Term4}
                     data={'value':value}
-                    return render(request,'University_portal/university_home.html',data)
+                    return render(request,'University_portal/university_settings.html',data)
                 else:
-                    return render(request,'University_portal/university_home.html')
+                    return render(request,'University_portal/university_settings.html')
                 '''
                 if universitylogin.return_url():
                     return HttpResponseRedirect(return_url)

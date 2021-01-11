@@ -76,18 +76,22 @@
           <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
             href="#list-password" role="tab" aria-controls="settings">Password and Security</a>
         </div>
+        <form action="/unisettings" method="POST">
+        <div class="text-center mt-5">
+          <input type="submit" name="" value="Save and Continue" class="btn btn-primary">
+        </div>
       </div>
       <div class="col-8">
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
             <div class="container">
-              <form action="">
 
+                  {% csrf_token %}
 
                 <div class="mb-3 row">
                   <label for="type" class="col-sm-2 col-form-label">Institution Mode</label>
                   <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" name="Institutemode">
+                    <select class="form-select" aria-label="Default select example" name="Institutemode" value="{{value.Institutemode}}">
                       <option selected>Institution Mode</option>
                       <option value="1">Public</option>
                       <option value="2">Private</option>
@@ -98,7 +102,7 @@
                 <div class="mb-3 row">
                   <label for="type" class="col-sm-2 col-form-label">Insitution Type</label>
                   <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" name="Institutetype" >
+                    <select class="form-select" aria-label="Default select example" name="Institutetype" value="{{value.Institutetype}}">
                       <option selected>Instution Type</option>
                       <option value="1">College</option>
                       <option value="2">University</option>
@@ -113,7 +117,7 @@
                 <div class="mb-3 row">
                   <label for="type" class="col-sm-2 col-form-label">Year Established</label>
                   <div class="col-sm-10">
-                    <input type="numbers" class="form-control" name="Year" >
+                    <input type="numbers" class="form-control" name="Year" value="{{value.Year}}" >
                 </div>
                 </div>
 
@@ -122,7 +126,7 @@
                 <div class="mb-3 row">
                   <label for="type" class="col-sm-2 col-form-label">World Ranking</label>
                   <div class="col-sm-10">
-                    <input type="numbers" class="form-control" name="Rank"  >
+                    <input type="numbers" class="form-control" name="Rank" value="{{value.Rank}}" >
                 </div>
                 </div>
 
@@ -131,9 +135,9 @@
                 <div class="mb-3 row">
                   <label for="type" class="col-sm-2 col-form-label">About</label>
                   <div class="col-sm-10">
-                    <textarea type="text" class="form-control" name="About"  rows='10' cols="20" >
+                    <input type="text" class="form-control" name="About"  rows='10' cols="20" value="{{value.About}}">
 
-                    </textarea>
+                    </input>
                 </div>
                 </div>
 
@@ -142,7 +146,7 @@
                 <div class="mb-3 row">
                   <label for="type" class="col-sm-2 col-form-label">Number of campuses</label>
                   <div class="col-sm-10">
-                    <input type="numbers" class="form-control" name="Campuses"  >
+                    <input type="numbers" class="form-control" name="Campuses" value="{{value.Campuses}}" >
                 </div>
                 </div>
 
@@ -150,7 +154,7 @@
                 <div class="mb-3 row">
                   <label for="type" class="col-sm-2 col-form-label">Number of Departments</label>
                   <div class="col-sm-10">
-                    <input type="numbers" class="form-control" name="Departments"  >
+                    <input type="numbers" class="form-control" name="Departments" value="{{value.Departments}}" >
                 </div>
                 </div>
 
@@ -158,7 +162,7 @@
                 <div class="mb-3 row">
                   <label for="type" class="col-sm-2 col-form-label">Level of Education Offered</label>
                   <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" name="Education">
+                    <select class="form-select" aria-label="Default select example" name="Education" value="{{value.Education}}">
                       <option selected>Select Level of Education Offered</option>
                       <option value="1">Undergraduate</option>
                       <option value="2">Postgraduate</option>
@@ -171,7 +175,7 @@
                 <div class="mb-3 row">
                   <label for="type" class="col-sm-2 col-form-label">Fee Range</label>
                   <div class="col-sm-5">
-                    <select class="form-select" aria-label="Default select example" name="Feeug">
+                    <select class="form-select" aria-label="Default select example" name="Feeug" value="{{value.Feeug}}">
                       <option selected>Fee Range for UG</option>
                       <option value="1">0-2L</option>
                       <option value="2">2-4L</option>
@@ -179,7 +183,7 @@
                     </select>
                 </div>
                 <div class="col-sm-5">
-                  <select class="form-select" aria-label="Default select example" name="Feepg">
+                  <select class="form-select" aria-label="Default select example" name="Feepg" value="{{value.Feepg}}">
                     <option selected>Fee Range for UG</option>
                     <option value="1">0-2L</option>
                     <option value="2">2-4L</option>
@@ -192,7 +196,7 @@
                 <div class="mb-3 row">
                   <label for="type" class="col-sm-2 col-form-label"> List of Intake</label>
                   <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" name="Intake">
+                    <select class="form-select" aria-label="Default select example" name="Intake" value="{{value.Intake}}">
                       <option selected>Select Intake type</option>
                       <option value="1">Fall Sem</option>
                       <option value="2">Spring Sem</option>
@@ -207,7 +211,7 @@
                   <div class="col-sm-10">
                     <div data-role="rangeslider">
 
-                      <input type="text" class="form-control" name="Awards">
+                      <input type="text" class="form-control" name="Awards" value="{{value.Awards}}">
 
                     </div>
                 </div>
@@ -220,7 +224,7 @@
                   <label for="type" class="col-sm-2 col-form-label">Number of staffs</label>
                   <div class="col-sm-10">
 
-                      <input type="text" name="Staff"  class="form-control" >
+                      <input type="text" name="Staff"  class="form-control" value="{{value.Staff}}">
 
                 </div>
                 </div>
@@ -229,7 +233,7 @@
                   <label for="type" class="col-sm-2 col-form-label">Number of Students</label>
                   <div class="col-sm-10">
 
-                      <input type="text" name="Students" class="form-control" >
+                      <input type="text" name="Students" class="form-control" value="{{value.Students}}">
 
                 </div>
                 </div>
@@ -238,7 +242,7 @@
                   <label for="type" class="col-sm-2 col-form-label">Address</label>
                   <div class="col-sm-10">
 
-                      <input type="text" name="Location"  class="form-control" >
+                      <input type="text" name="Location"  class="form-control" value="{{value.Location}}">
 
                 </div>
                 </div>
@@ -246,14 +250,14 @@
                 <div class="mb-3 row">
                   <label for="type" class="col-sm-2 col-form-label">Phone</label>
                   <div class="col-sm-10">
-                    <input type="numbersd" name="Phonenumber"  class="form-control" >
+                    <input type="numbersd" name="Phonenumber"  class="form-control" value="{{value.Phonenumber}}">
                 </div>
                 </div>
 
                 <div class="mb-3 row">
                   <label for="type" class="col-sm-2 col-form-label">Email</label>
                   <div class="col-sm-10">
-                    <input type="email" name="Email"  class="form-control" >
+                    <input type="email" name="Email"  class="form-control" value="{{value.Email}}" >
                 </div>
                 </div>
 
@@ -264,34 +268,33 @@
 
 
 
-              </form>
+
             </div>
           </div>
           <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-            <form action="">
 
 
               <div class="mb-3 row">
                 <label for="type" class="col-sm-2 col-form-label">Application Fee</label>
                 <div class="col-sm-4">
-                  <select class="form-select" aria-label="Default select example" name="Applyfee">
+                  <select class="form-select" aria-label="Default select example" name="Applyfee" value="{{value.Applyfee}}">
                     <option selected>Select</option>
                     <option value="1">Applicable</option>
                     <option value="2">Not Applicable</option>
                   </select>
                 </div>
                 <div class="col-sm-3">
-                    <input type="numbers" class="form-control" name="Currency" placeholder="currency Type" >
+                    <input type="numbers" class="form-control" name="Currency" placeholder="currency Type" value="{{value.Currency}}">
                 </div>
                 <div class="col-sm-3">
-                    <input type="numbers" class="form-control" name="Amount"  placeholder="amount">
+                    <input type="numbers" class="form-control" name="Amount"  placeholder="amount" value="{{value.Amount}}">
                 </div>
 
               </div>
               <div class="mb-3 row">
                 <label for="type" class="col-sm-2 col-form-label">Application Form</label>
                 <div class="col-sm-10">
-                  <input type="file" class="form-control" name="Applyform">
+                  <input type="file" class="form-control" name="Applyform" value="{{value.Applyform}}">
                 </div>
 
               </div>
@@ -302,7 +305,7 @@
               <div class="mb-3 row">
                 <label for="type" class="col-sm-2 col-form-label">Duration</label>
                 <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" name="Duration">
+                    <select class="form-select" aria-label="Default select example" name="Duration" value="{{value.Duration}}">
                         <option selected>Days</option>
                         <option value="1">30 days</option>
                         <option value="2">45 days</option>
@@ -318,10 +321,10 @@
               <div class="mb-3 row">
                 <label for="type" class="col-sm-2 col-form-label">Application Procedure</label>
                 <div class="col-sm-10">
-                  <textarea type="text" class="form-control" name="Applypro1" placeholder="stage-1"></textarea><br>
-                  <textarea type="text" class="form-control" name="Applypro2" placeholder="stage-2"></textarea><br>
-                  <textarea type="text" class="form-control" name="Applypro3" placeholder="stage-3"></textarea><br>
-                  <textarea type="text" class="form-control" name="Applypro4" placeholder="stage-4"></textarea>
+                  <input type="text" class="form-control" name="Applypro1" value="{{value.Applypro1}}" placeholder="stage-1"></input><br>
+                  <input type="text" class="form-control" name="Applypro2" value="{{value.Applypro2}}" placeholder="stage-2"></input><br>
+                  <input type="text" class="form-control" name="Applypro3" value="{{value.Applypro3}}" placeholder="stage-3"></input><br>
+                  <input type="text" class="form-control" name="Applypro4" value="{{value.Applypro4}}" placeholder="stage-4"></input>
 
               </div>
               </div>
@@ -331,19 +334,19 @@
               <div class="mb-3 row">
                 <label for="type" class="col-sm-2 col-form-label">Documents Required</label>
                 <div class="col-sm-4">
-                    <select class="form-select" aria-label="Default select example" name="Doc1">
+                    <select class="form-select" aria-label="Default select example" name="Doc1" value="{{value.Doc1}">
                       <option selected>Personal Documents</option>
                       <option value="1">Doc-1</option>
                       <option value="2">Doc-2</option>
                       <option value="3">Doc-3</option>
                     </select><br>
-                    <select class="form-select" aria-label="Default select example" name="Doc2">
+                    <select class="form-select" aria-label="Default select example" name="Doc2" value="{{value.Doc2}">
                         <option selected>Personal Documents</option>
                         <option value="1">Doc-1</option>
                         <option value="2">Doc-2</option>
                         <option value="3">Doc-3</option>
                       </select><br>
-                      <select class="form-select" aria-label="Default select example" name="Doc3">
+                      <select class="form-select" aria-label="Default select example" name="Doc3" value="{{value.Doc3}">
                         <option selected>Personal Documents</option>
                         <option value="1">Doc-1</option>
                         <option value="2">Doc-2</option>
@@ -351,19 +354,19 @@
                       </select>
                   </div>
                   <div class="col-sm-3">
-                    <select class="form-select" aria-label="Default select example" name="Doc4">
+                    <select class="form-select" aria-label="Default select example" name="Doc4" value="{{value.Doc4}">
                         <option selected>Academic Documents</option>
                         <option value="1">Doc-1</option>
                         <option value="2">Doc-2</option>
                         <option value="3">Doc-3</option>
                       </select><br>
-                      <select class="form-select" aria-label="Default select example" name="Doc5">
+                      <select class="form-select" aria-label="Default select example" name="Doc5" value="{{value.Doc5}">
                         <option selected>Academic Documents</option>
                         <option value="1">Doc-1</option>
                         <option value="2">Doc-2</option>
                         <option value="3">Doc-3</option>
                       </select><br>
-                      <select class="form-select" aria-label="Default select example" name="Doc6">
+                      <select class="form-select" aria-label="Default select example" name="Doc6" value="{{value.Doc6}">
                         <option selected>Academic Documents</option>
                         <option value="1">Doc-1</option>
                         <option value="2">Doc-2</option>
@@ -371,19 +374,19 @@
                       </select>
                   </div>
                   <div class="col-sm-3">
-                    <select class="form-select" aria-label="Default select example" name="Doc7">
+                    <select class="form-select" aria-label="Default select example" name="Doc7" value="{{value.Doc7}">
                         <option selected>Professional Qualification</option>
                         <option value="1">Doc-1</option>
                         <option value="2">Doc-2</option>
                         <option value="3">Doc-3</option>
                       </select><br>
-                      <select class="form-select" aria-label="Default select example" name="Doc8">
+                      <select class="form-select" aria-label="Default select example" name="Doc8" value="{{value.Doc8}">
                         <option selected>Professional Qualification</option>
                         <option value="1">Doc-1</option>
                         <option value="2">Doc-2</option>
                         <option value="3">Doc-3</option>
                       </select><br>
-                      <select class="form-select" aria-label="Default select example" name="Doc9">
+                      <select class="form-select" aria-label="Default select example" name="Doc9" value="{{value.Doc9}">
                         <option selected>Professional Qualification</option>
                         <option value="1">Doc-1</option>
                         <option value="2">Doc-2</option>
@@ -398,10 +401,10 @@
               <div class="mb-3 row">
                 <label for="type" class="col-sm-2 col-form-label">Terms and Conditions</label>
                 <div class="col-sm-10">
-                  <textarea type="text" class="form-control" name="Term1" placeholder="term-1"></textarea><br>
-                  <textarea type="text" class="form-control" name="Term2" placeholder="Term-2"></textarea><br>
-                  <textarea type="text" class="form-control" name="Term3" placeholder="Term-3"></textarea><br>
-                  <textarea type="text" class="form-control" name="Term4" placeholder="Term-4"></textarea>
+                  <input type="text" class="form-control" name="Term1" value="{{value.Term1}}" placeholder="term-1"></input><br>
+                  <input type="text" class="form-control" name="Term2" value="{{value.Term2}}" placeholder="Term-2"></input><br>
+                  <input type="text" class="form-control" name="Term3" value="{{value.Term3}}" placeholder="Term-3"></input><br>
+                  <input type="text" class="form-control" name="Term4" value="{{value.Term4}}" placeholder="Term-4"></input>
 
               </div>
               </div>
