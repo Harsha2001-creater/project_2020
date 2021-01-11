@@ -1,64 +1,91 @@
-{%load static %}
-{% load socialaccount %}
-<!doctype html>
+{% load static %} {% load socialaccount %}
+<!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>student login</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static '/css/studentlogin.css' %}">
-</head>
-
-<body class="body">
-    <div id="login">
-        <h3 class="text-center pt-5 font-weight-bold heading" style="color: white;">APPLY UNI</h3>
-        <div>
-          <p>
-            {% if error %}
-            <div class="alert alert-danger w-25% " style="text-align:center; margin-left:40%" role="alert" >
-              {{error}}
+  <head>
+    <title>Student Login Form</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static '/css/loginandsignup.css' %}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <img class="wave" src="{% static 'images/wave.png' %}" />
+    <div class="container">
+      <div class="img">
+        <img src="{% static 'images/bg.svg' %}" />
+      </div>
+      <div class="login-content">
+        <form action="/studentlogin" method="POST">
+          {% csrf_token %}
+          <img src="{% static 'images/avatar.svg' %}" />
+          <h2 class="title">Welcome</h2>
+          <div class="input-div one">
+            <div class="i">
+              <i class="fas fa-user"></i>
             </div>
-            {% endif %}
-          </p>
-        </div>
-        </div>
-        <div style="margin-top: -30px;" class="container">
-            <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-5">
-                    <div  style="height:450px;" id="login-box" class="login-box">
-                        <form id="login-form" class="form" action="/studentlogin" method="post">
-                          {% csrf_token %}
-                            <h3 class="text-center text-info-nad head ">Student Login</h3>
-                            <div class="form-group">
-                                <label class="text-info-nad">Email:</label>
-                                <input type="text" name="Email" id="email" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="text-info-nad">Password:</label>
-                                <input type="password" name="Password" id="password" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" name="submit" class="btn btn-info btn-md btn-nade" value="Login">
-                            </div>
-                            <div class="social">
-                                <a href="{% url 'social:begin' 'facebook' %}" style=""><button type="button" class="btn btn-info"style="margin-bottom:5px;">facebook<i style="margin-left: 5px;" class="fa fa-facebook"></i></button></a>
-                                <a href="{% provider_login_url 'google' %}"><button type="button" class="btn btn-danger">Google<i style="margin-left: 5px;" class="fa fa-google"></i></button> </a>
-                            </div>
-
-                            <a href="{% url 'password_reset'%}">forgot password ?</a>
-
-                        </form>
-                    </div>
-                </div>
+            <div class="div">
+              <h5>Email</h5>
+              <input
+                type="text"
+                name="Email"
+                id="email"
+                class="input"
+                required
+              />
             </div>
-        </div>
+          </div>
+          <div class="input-div pass">
+            <div class="i">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="div">
+              <h5>Password</h5>
+              <input
+                type="text"
+                name="Password"
+                id="password"
+                class="input"
+                required
+              />
+            </div>
+          </div>
+          <a href="{% url 'password_reset'%}">Forgot Password?</a>
+          <input type="submit" class="btn" value="Login" />
+          <a href="{% url 'social:begin' 'facebook' %}">
+            <input type="submit" class="btn" value="Login with facebook" / ></a
+          >
+          <a href="{% provider_login_url 'google' %}">
+            <input type="submit" class="btn" value="Login with Google"
+          /></a>
+        </form>
+      </div>
     </div>
-</body>
+    <script type="text/javascript">
+      const inputs = document.querySelectorAll(".input");
 
+      function addcl() {
+        let parent = this.parentNode.parentNode;
+        parent.classList.add("focus");
+      }
+
+      function remcl() {
+        let parent = this.parentNode.parentNode;
+        if (this.value == "") {
+          parent.classList.remove("focus");
+        }
+      }
+
+      inputs.forEach((input) => {
+        input.addEventListener("focus", addcl);
+        input.addEventListener("blur", remcl);
+      });
+    </script>
+  </body>
 </html>

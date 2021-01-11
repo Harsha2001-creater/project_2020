@@ -1,134 +1,138 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Colorlib Templates">
-    <meta name="author" content="Colorlib">
-    <meta name="keywords" content="Colorlib Templates">
-
-    <!-- Title Page-->
-    <title>student registration form-Apply_uni</title>
-
-    <!-- Icons font CSS-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css" integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g==" crossorigin="anonymous" />
-    <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Vendor CSS-->
-
-
-    <!-- Main CSS-->
-    <link href="{% static 'css/student_signup.css' %}" rel="stylesheet" media="all">
-</head>
-
-<body>
-    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
-        <h2 class="heading">APPLY UNI</h2>
-        <div class="wrapper wrapper--w680">
-            <div class="card card-4">
-                <div class="card-body">
-                    <h2 class="title">Student Registration Form</h2>
-                    <form action="/studentsignup" method="POST">
-                      {% csrf_token %}
-
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Firstname</label>
-                                    <input class="input--style-4" type="text" name="Firstname" value="{{value.Firstname}}" required>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Lastname</label>
-                                    <input class="input--style-4" type="text" name="Lastname" value="{{value.Lastname}}" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Dateofbirth</label>
-                                    <input class="input--style-4" type="date" name="Dateofbirth" value="{{value.Dateofbirth}}" required>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Gender</label>
-                                    <div class="p-t-10">
-                                        <label class="radio-container m-r-45">Male
-                                            <input type="radio" checked="checked" name="Gender" value="Male">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="radio-container">Female
-                                            <input type="radio" name="Gender" value="Female">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Email</label>
-                                    <input class="input--style-4" type="email" name="Email" value="{{value.Email}}" required >
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Phonenumber</label>
-                                    <input class="input--style-4" type="text" name="Phonenumber" value="{{value.Phonenumber}}" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Password</label>
-                                    <input class="input--style-4" type="password" name="Password" required >
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Confirmpassword</label>
-                                    <input class="input--style-4" type="password" name="Confirmpassword" required >
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        {% if error %}
-                        <div class="alert alert-danger w-25% " style="text-align:center; margin-left:40%" role="alert" >
-                          {{error}}
-                        </div>
-                        {% endif %}
-
-                        <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
-                        </div>
-
-                    </form>
-                </div>
+<html>
+  <head>
+    <title>Student Signup</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static '/css/loginandsignup.css' %}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      input::-webkit-datetime-edit {
+        color: black;
+      }
+      input:focus::-webkit-datetime-edit {
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <img class="wave" src="{% static 'images/wave.png' %}" />
+    <div class="container">
+      <div class="img">
+        <img src="{% static 'images/bg.svg' %}" />
+      </div>
+      <div class="login-content">
+        <form action="/studentsignup" method="POST">
+          {% csrf_token %}
+          <h2>Welcome</h2>
+          <div class="input-div one">
+            <div class="i">
+              <i class="fas fa-user"></i>
             </div>
-        </div>
+            <div class="div">
+              <h5>Firstname</h5>
+              <input type="text" name="Firstname" class="input" />
+            </div>
+          </div>
+          <div class="input-div one">
+            <div class="i">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="div">
+              <h5>Gender</h5>
+              <input type="text" name="Lastname" class="input" />
+            </div>
+          </div>
+          <div class="input-div one">
+            <div class="i">
+              <i class="fas fa-calendar" aria-hidden="true"></i>
+            </div>
+            <div class="div">
+              <h5 style="top: -5px">Dob</h5>
+              <input
+                type="date"
+                name="Dateofbirth"
+                style="border: none"
+                class="input"
+              />
+            </div>
+          </div>
+          <div class="input-div one">
+            <div class="i">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="div">
+              <h5>Gender</h5>
+              <input type="text" class="input" name="Gender" />
+            </div>
+          </div>
+          <div class="input-div one">
+            <div class="i">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </div>
+            <div class="div">
+              <h5>Email</h5>
+              <input type="email" name="Email" class="input" />
+            </div>
+          </div>
+          <div class="input-div one">
+            <div class="i">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="div">
+              <h5>Phonenumber</h5>
+              <input type="text" name="Phonenumber" class="input" />
+            </div>
+          </div>
+          <div class="input-div one">
+            <div class="i">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="div">
+              <h5>Password</h5>
+              <input type="password" name="Password" class="input" />
+            </div>
+          </div>
+          <div class="input-div one">
+            <div class="i">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="div">
+              <h5>Confirm Password</h5>
+              <input type="password" name="Confirmpassword" class="input" />
+            </div>
+          </div>
+          <input type="submit" class="btn" value="Register" />
+        </form>
+      </div>
     </div>
+    <script type="text/javascript">
+      const inputs = document.querySelectorAll(".input");
 
-    <!-- Jquery JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <!-- Vendor JS-->
+      function addcl() {
+        let parent = this.parentNode.parentNode;
+        parent.classList.add("focus");
+      }
 
+      function remcl() {
+        let parent = this.parentNode.parentNode;
+        if (this.value == "") {
+          parent.classList.remove("focus");
+        }
+      }
 
-    <!-- Main JS-->
-
-
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-
+      inputs.forEach((input) => {
+        input.addEventListener("focus", addcl);
+        input.addEventListener("blur", remcl);
+      });
+    </script>
+  </body>
 </html>
-<!-- end document-->
