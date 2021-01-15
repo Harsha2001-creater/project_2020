@@ -254,6 +254,11 @@
         .how-it-works-item.line-right:before {
           content: none;
         }
+        .how-it-works-item {
+          box-shadow: 0 5px 15px rgb(0, 0, 0, 0.1);
+          border-radius: 10px;
+          margin-bottom: 30px;
+        }
       }
     </style>
   </head>
@@ -316,14 +321,14 @@
                 <div class="navbar-social d-none d-sm-flex align-items-center">
                   <ul>
                     <li>
-                      <a href="/signup-mediator"
+                      <a href="/studentsignup"
                         ><button type="button" class="btn btn-primary">
                           SIGN UP
                         </button></a
                       >
                     </li>
                     <li>
-                      <a href="/login-mediator"
+                      <a href="/studentlogin"
                         ><button type="button" class="btn btn-primary">
                           LOGIN
                         </button></a
@@ -765,7 +770,7 @@
           </div>
           <div class="col-lg-8 col-md-7">
             <div class="contact-form">
-              <form action="/stdquery" method=POST>
+              <form action="/stdquery" method="POST">
                 {% csrf_token %}
 
                 <div class="row">
@@ -805,7 +810,7 @@
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="form-group">
-                      <input type="date" class="form-control" name="Date"/>
+                      <input type="date" class="form-control" name="Date" />
                     </div>
                   </div>
                 </div>
@@ -815,12 +820,12 @@
                       Request an appointment
                     </button>
                     <div class="">
-                    {% if Message %}
-                    <div class="alert alert-info" role="alert">
+                      {% if Message %}
+                      <div class="alert alert-info" role="alert">
                         {{Message}}
+                      </div>
+                      {% endif %}
                     </div>
-                    {% endif %}
-    </div>
                   </div>
                 </div>
               </form>
@@ -833,7 +838,7 @@
     <!--====== CONTACT PART ENDS ======-->
 
     <!--====== FOOTER PART START ======-->
-<!--
+    <!--
     <footer id="footer" class="footer-area">
       <div class="footer-widget">
         <div class="container">
@@ -927,8 +932,7 @@
       </div>
 
 -->
-<footer>
-
+    <footer>
       <div class="footer-copyright">
         <div class="container">
           <div class="row">
@@ -938,13 +942,9 @@
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
-
     </footer>
-
 
     <!--====== FOOTER PART ENDS ======-->
 
@@ -953,7 +953,6 @@
     <a class="back-to-top" href="#"><i class="lni-chevron-up"></i></a>
 
     <!--====== BACK TO TOP PART ENDS ======-->
-
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
@@ -983,7 +982,6 @@
       crossorigin="anonymous"
     ></script>
 
-    
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"
       integrity="sha512-0QbL0ph8Tc8g5bLhfVzSqxe9GERORsKhIn1IrpxDAgUsbBGz/V7iSav2zzW325XGd1OMLdL4UiqRJj702IeqnQ=="
