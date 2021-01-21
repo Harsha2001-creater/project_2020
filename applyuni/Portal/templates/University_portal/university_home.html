@@ -12,88 +12,13 @@
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous"
     />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous"
-    />
-
+   
     <title>university_home-Apply Uni</title>
-    <style>
-      .navbar-nav li {
-        padding: 1rem;
-      }
-      .navbar-nav li a i {
-        margin-right: 0.5rem;
-      }
-      .navbar-nav li a {
-        text-align: center;
-      }
-    </style>
+    
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#"><h2>ApplyUni</h2></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="nav navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link text-white" aria-current="page" href="/unihome"
-                ><i class="fa fa-home"></i>Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/applications"
-                ><i class="fa fa-address-card" aria-hidden="true"></i
-                >Applications</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/overview"
-                ><i class="fa fa-address-card" aria-hidden="true"></i
-                >OverView</a
-              >
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle text-white"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Profile
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/support">support</a></li>
-                <li>
-                  <a class="dropdown-item" href="/unisettings">settings</a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li><a class="dropdown-item" href="#">logout</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
+    {% include "University_portal/universitynav.html" %}
     <!-- For large and medium Screens -->
     <section class="mt-5">
       <div class="container">
