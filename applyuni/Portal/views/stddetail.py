@@ -2,12 +2,14 @@ from django.shortcuts import render,redirect,HttpResponseRedirect
 from django.contrib.auth.hashers import check_password
 from django.http import HttpResponse
 from Portal.models.stddetail import Stddetail
+from django.core.files.storage import FileSystemStorage
 from Portal.models.studentinfo import Student
 from django.views import View
 
 class stddetail(View):
     def post(self,request):
         print("in post man in stddetail")
+
         Firstname= request.POST.get('Firstname')
         Lastname= request.POST.get('Lastname')
         Dateofbirth=request.POST.get('Dateofbirth')
@@ -27,38 +29,50 @@ class stddetail(View):
         Sscdate=request.POST.get('Sscdate')
         Sscmarks=request.POST.get('Sscmarks')
         Sscgrading=request.POST.get('Sscgrading')
-        SscDoc=request.FILES.get('SscDoc')
+        SscDoc=request.FILES['SscDoc']
+
+        fs=FileSystemStorage()
+        name=fs.save(SscDoc.name,SscDoc)
+        url=fs.url(name)
+        print(url)
         Intqual=request.POST.get('Intqual')
         Intname=request.POST.get('Intname')
         Intdate=request.POST.get('Intdate')
         Intmarks=request.POST.get('Intmarks')
         Intgrading=request.POST.get('Intgrading')
-        IntDoc=request.POST.get('IntDoc')
+        IntDoc=request.FILES['IntDoc']
+
+        name1=fs.save(IntDoc.name,IntDoc)
+        url1=fs.url(name1)
         Uniqual=request.POST.get('Uniqual')
         Uniname=request.POST.get('Uniname')
         Unicname=request.POST.get('Unicname')
         Unidate=request.POST.get('Unidate')
         Unimarks=request.POST.get('Unimarks')
         Unigrading=request.POST.get('Unigrading')
-        UniDoc=request.POST.get('UniDoc')
+        UniDoc=request.FILES['UniDoc']
+
+        name2=fs.save(UniDoc.name,UniDoc)
+        url2=fs.url(name2)
         Testeng=request.POST.get('Testeng')
         Yeareng=request.POST.get('Yeareng')
         Overallscoreeng=request.POST.get('Overallscoreeng')
-        Uploadeng=request.FILES.get('Uploadeng')
+
+
         Testeng1=request.POST.get('Testeng1')
         Yeareng1=request.POST.get('Yeareng1')
         Overallscoreeng1=request.POST.get('Overallscoreeng1')
-        Uploadeng1=request.FILES.get('Uploadeng1')
+
 
         Testad=request.POST.get('Testad')
         Yearad=request.POST.get('Yearad')
         Overallscoread=request.POST.get('Overallscoread')
-        Uploadad=request.FILES.get('Uploadad')
+
 
         Testad1=request.POST.get('Testad')
         Yearad1=request.POST.get('Yearad')
-        Overallscoread1=request.POST.get('Overallscoread')
-        Uploadad1=request.FILES.get('Uploadad')
+        Overallscoread1=request.POST.get('Overallscoread1')
+
 
         Applyingfor=request.POST.get('Applyingfor')
         Date=request.POST.get('Date')
@@ -68,39 +82,74 @@ class stddetail(View):
         pcour4=request.POST.get('pcour4')
         pcour5=request.POST.get('pcour5')
         pcour6=request.POST.get('pcour6')
-        stddetail=Stddetail(Firstname= Firstname,Lastname= Lastname,Dateofbirth=Dateofbirth,Gender=Gender,
-        Maritial=Maritial,Nationality=Nationality,Email = Email,Address=Address,City=City,State=State,
-        Country=Country,Phonenumber= Phonenumber,
-        Sscqual=Sscqual,Sscname=Sscname,Sscdate=Sscdate,Sscmarks=Sscmarks,Sscgrading=Sscgrading,SscDoc=SscDoc,
-        Intqual=Intqual,Intname=Intname,
-        Intdate=Intdate,
-        Intmarks=Intmarks,Intgrading=Intgrading,IntDoc=IntDoc,Uniqual=Uniqual,Uniname=Uniname,Unicname=Unicname
-        ,Unidate=Unidate,Unimarks=Unimarks,Unigrading=Unigrading,UniDoc=UniDoc,
-        Testeng=Testeng,Yeareng=Yeareng,Overallscoreeng=Overallscoreeng,Uploadeng=Uploadeng,
-        Testeng1=Testeng,Yeareng1=Yeareng,Overallscoreeng1=Overallscoreeng,Uploadeng1=Uploadeng,
+        try:
+            Uploadeng=request.FILES['Uploadeng']
+            name3=fs.save(Uploadeng.name,Uploadeng)
+            url3=fs.url(name3)
 
-        Testad=Testad,Yearad=Yearad,Overallscoread=Overallscoread,Uploadad=Uploadad,
-        Testad1=Testad,Yearad1=Yearad,Overallscoread1=Overallscoread,Uploadad1=Uploadad,
+            Uploadeng1=request.FILES['Uploadeng1']
+            name4=fs.save(Uploadeng1.name,Uploadeng1)
+            url4=fs.url(Uploadeng1)
 
-        Applyingfor=Applyingfor,Date=Date,pcoun1=pcoun1,pcoun2=pcoun2,pcoun3=pcoun3,pcour4=pcour4,pcour5=pcour5,pcour6=pcour6)
-        student=Student.get_student_by_email(Email)
-        stddetail1=Stddetail.get_stddetail_by_email(student.Email)
-        if(stddetail1):
-            stddetail1.delete()
+            Uploadad=request.FILES['Uploadad']
+            name5=fs.save(Uploadad.name,Uploadad)
+            url5=fs.url(name5)
 
-        stddetail.register()
+            Uploadad1=request.FILES['Uploadad1']
+            name6=fs.save(Uploadad1.name,Uploadad1)
+            url6=fs.url(name6)
+        except:
+            Uploadeng=None
+            Uploadeng1=None
+            Uploadad=None
+            Uploadad1=None
+            url3=None
+            url4=None
+            url5=None
+            url6=None
+        Email1=request.session['Email']
+        error_message=None
+        if(Email1!=Email):
+            error_message="ohh your email doesn't matched with login mail"
+            return render(request,'Admin_portal/stddetail.html',{'error':error_message})
 
-        value={'Firstname': Firstname,'Lastname': Lastname,'Dateofbirth':Dateofbirth,'Gender':Gender,
-        'Maritial':Maritial,'Nationality':Nationality,'Email' : Email,'Address':Address,'City':City,'State':State,
-        'Country':Country,'Phonenumber': Phonenumber,
-        'Sscqual':Sscqual,'Sscname':Sscname,'Sscdate':Sscdate,'Sscmarks':Sscmarks,'Sscgrading':Sscgrading,'SscDoc':SscDoc,
-        'Intqual':Intqual,'Intname':Intname,'Intdate':Intdate,'Intmarks':Intmarks,'Intgrading':Intgrading,
-        'IntDoc':IntDoc,'Uniqual':Uniqual,'Uniname':Uniname,'Unicname':Unicname,'Unidate':Unidate,'Unimarks': Unimarks,
-        'Unigrading':Unigrading,'UniDoc':UniDoc,
-        'Testeng': Testeng,'Yeareng':Yeareng,'Overallscoreeng': Overallscoreeng,'Uploadeng':Uploadeng,
-        'Testeng1': Testeng1,'Yeareng1':Yeareng1,'Overallscoreeng1': Overallscoreeng1,'Uploadeng1':Uploadeng1,
-        'Testad': Testad,'Yearad': Yearad,'Overallscoread':Overallscoread,'Uploadad':Uploadad,
-        'Applyingfor':Applyingfor,'Date':Date,'pcoun1':pcoun1,'pcoun2':pcoun2,'pcoun3':pcoun3,'pcour4':pcour4,'pcour5':pcour5,'pcour6':pcour6}
-        print(value['Firstname'])
-        data={'value':value}
-        return render(request,'Admin_portal/stddetail.html',data)
+        else:
+            stddetail=Stddetail(Firstname= Firstname,Lastname= Lastname,Dateofbirth=Dateofbirth,Gender=Gender,
+            Maritial=Maritial,Nationality=Nationality,Email = Email,Address=Address,City=City,State=State,
+            Country=Country,Phonenumber= Phonenumber,
+            Sscqual=Sscqual,Sscname=Sscname,Sscdate=Sscdate,Sscmarks=Sscmarks,Sscgrading=Sscgrading,SscDoc=SscDoc,
+            Intqual=Intqual,Intname=Intname,
+            Intdate=Intdate,
+            Intmarks=Intmarks,Intgrading=Intgrading,IntDoc=IntDoc,Uniqual=Uniqual,Uniname=Uniname,Unicname=Unicname
+            ,Unidate=Unidate,Unimarks=Unimarks,Unigrading=Unigrading,UniDoc=UniDoc,
+            Testeng=Testeng,Yeareng=Yeareng,Overallscoreeng=Overallscoreeng,Uploadeng=Uploadeng,
+            Testeng1=Testeng,Yeareng1=Yeareng,Overallscoreeng1=Overallscoreeng,Uploadeng1=Uploadeng,
+
+            Testad=Testad,Yearad=Yearad,Overallscoread=Overallscoread,Uploadad=Uploadad,
+            Testad1=Testad,Yearad1=Yearad,Overallscoread1=Overallscoread,Uploadad1=Uploadad,
+
+            Applyingfor=Applyingfor,Date=Date,pcoun1=pcoun1,pcoun2=pcoun2,pcoun3=pcoun3,pcour4=pcour4,pcour5=pcour5,pcour6=pcour6)
+            student=Student.get_student_by_email(Email)
+            stddetail1=Stddetail.get_stddetail_by_email(student.Email)
+            if(stddetail1):
+                stddetail1.delete()
+
+            stddetail.register()
+
+            value={'Firstname': Firstname,'Lastname': Lastname,'Dateofbirth':Dateofbirth,'Gender':Gender,
+            'Maritial':Maritial,'Nationality':Nationality,'Email' : Email,'Address':Address,'City':City,'State':State,
+            'Country':Country,'Phonenumber': Phonenumber,
+            'Sscqual':Sscqual,'Sscname':Sscname,'Sscdate':Sscdate,'Sscmarks':Sscmarks,'Sscgrading':Sscgrading,'SscDoc':url,
+            'Intqual':Intqual,'Intname':Intname,'Intdate':Intdate,'Intmarks':Intmarks,'Intgrading':Intgrading,
+            'IntDoc':url1,'Uniqual':Uniqual,'Uniname':Uniname,'Unicname':Unicname,'Unidate':Unidate,'Unimarks': Unimarks,
+            'Unigrading':Unigrading,'UniDoc':url2,
+            'Testeng': Testeng,'Yeareng':Yeareng,'Overallscoreeng': Overallscoreeng,'Uploadeng':url3,
+            'Testeng1': Testeng1,'Yeareng1':Yeareng1,'Overallscoreeng1': Overallscoreeng1,'Uploadeng1':url4,
+            'Testad': Testad,'Yearad': Yearad,'Overallscoread':Overallscoread,'Uploadad':url5,
+            'Testad1': Testad1,'Yearad1': Yearad1,'Overallscoread1':Overallscoread1,'Uploadad1':url6,
+            'Applyingfor':Applyingfor,'Date':Date,'pcoun1':pcoun1,'pcoun2':pcoun2,'pcoun3':pcoun3,'pcour4':pcour4,'pcour5':pcour5,'pcour6':pcour6}
+            print(value['Firstname'])
+            print(value['SscDoc'])
+            data={'value':value}
+
+            return redirect('home')

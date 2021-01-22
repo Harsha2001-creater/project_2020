@@ -26,6 +26,7 @@ class studentlogin(View):
             if flag:
                 request.session['student']=student.id
                 request.session['Firstname']=student.Firstname
+                request.session['Email']=student.Email
                 if(stddetail):
                     value={'Firstname': stddetail.Firstname,'Lastname': stddetail.Lastname,'Dateofbirth':stddetail.Dateofbirth,'Gender':stddetail.Gender,
                     'Maritial':stddetail.Maritial,'Nationality':stddetail.Nationality,'Email' : stddetail.Email,'Address':stddetail.Address,'City':stddetail.City,'State':stddetail.State,

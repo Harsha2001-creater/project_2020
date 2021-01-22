@@ -57,8 +57,14 @@
       </div>
   </nav>
       <div class="container mt-5">
-        <form action="/stddetail" method="POST" >
+        <form action="/stddetail" method="POST" enctype="multipart/form-data" >
           {% csrf_token %}
+          <div class="">
+          {% if error %}
+          <div class="alert alert-warning" role="alert">
+              {{error}}
+          </div>
+          {% endif %}
           <h1>Personal Details</h1>
           <div class="personal-details">
             <div class="mb-3 row">
@@ -179,25 +185,25 @@
                     <div class="mb-3 row">
                         <label for="Qualification" class="col-sm-3 col-form-label">Qualification</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="Qualification" name="Sscqual" value="{{value.Sscqual}}">
+                          <input type="text" class="form-control" id="Qualification" name="Sscqual" value="{{value.Sscqual}}" required>
                         </div>
                       </div>
                       <div class="mb-3 row">
                         <label for="school_name" class="col-sm-3 col-form-label">Name of the school</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="schoolname" name="Sscname" value="{{value.Sscname}}">
+                            <input type="text" class="form-control" id="schoolname" name="Sscname" value="{{value.Sscname}}" required>
                         </div>
                       </div>
                       <div class="mb-3 row">
                         <label for="completion_date" class="col-sm-3 col-form-label">Date of completion</label>
                         <div class="col-sm-9">
-                            <input type="date" class="form-control" id="schoolname" name="Sscdate" value="{{value.Sscdate}}">
+                            <input type="date" class="form-control" id="schoolname" name="Sscdate" value="{{value.Sscdate}}" required>
                         </div>
                       </div>
                       <div class="mb-3 row">
                         <label for="marks_obtained" class="col-sm-3 col-form-label">Marks Obtained</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="schoolname" name="Sscmarks" value="{{value.Sscmarks}}">
+                            <input type="text" class="form-control" id="schoolname" name="Sscmarks" value="{{value.Sscmarks}}" required>
                         </div>
                       </div>
                       <div class="mb-3 row">
@@ -206,7 +212,7 @@
                           <div>
 
 
-                          <input class="form-check-input" type="radio" name="Sscgrading" id="grading" value="{{value.Sscgrading}}" >
+                          <input class="form-check-input" type="radio" name="Sscgrading" id="grading" value="{{value.Sscgrading}}"  >
                           <label class="form-check-label" for="grading">
                             Marks
                           </label>
@@ -233,7 +239,8 @@
                       <div class="mb-3 row">
                         <label for="documents" class="col-sm-3 col-form-label">Upload documets</label>
                         <div class="col-sm-9">
-                            <input type="file" class="form-control" id="schoolname" name="SscDoc" value="{{value.SscDoc}}">>
+                            <input type="file" class="form-control" id="schoolname" name="SscDoc" value="{{value.SscDoc}}" required>
+                          <p> Upload file: <a href="media/{{value.SscDoc}}"> {{value.SscDoc}} </a></p>
                         </div>
                       </div>
                       <hr>
@@ -241,25 +248,26 @@
                       <div class="mb-3 row">
                         <label for="Qualification" class="col-sm-3 col-form-label">Qualification</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="Qualification" name="Intqual" value="{{value.Intqual}}">
+                          <input type="text" class="form-control" id="Qualification" name="Intqual" value="{{value.Intqual}}" required>
+
                         </div>
                       </div>
                       <div class="mb-3 row">
                         <label for="school_name" class="col-sm-3 col-form-label">Name of the school</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="schoolname" name="Intname" value="{{value.Intname}}">
+                            <input type="text" class="form-control" id="schoolname" name="Intname" value="{{value.Intname}}" required>
                         </div>
                       </div>
                       <div class="mb-3 row">
                         <label for="completion_date" class="col-sm-3 col-form-label">Date of completion</label>
                         <div class="col-sm-9">
-                            <input type="date" class="form-control" id="schoolname" name="Intdate" value="{{value.Intdate}}">
+                            <input type="date" class="form-control" id="schoolname" name="Intdate" value="{{value.Intdate}}" required>
                         </div>
                       </div>
                       <div class="mb-3 row">
                         <label for="marks_obtained" class="col-sm-3 col-form-label">Marks Obtained</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="schoolname" name="Intmarks" value="{{value.Intmarks}}">
+                            <input type="text" class="form-control" id="schoolname" name="Intmarks" value="{{value.Intmarks}}" required>
                         </div>
                       </div>
                       <div class="mb-3 row">
@@ -298,7 +306,9 @@
                       <div class="mb-3 row">
                         <label for="documents" class="col-sm-3 col-form-label">Upload documets</label>
                         <div class="col-sm-9">
-                            <input type="file" class="form-control" id="schoolname" name="IntDoc" value="{{value.IntDoc}}">
+
+                          <input type="file" class="form-control" id="schoolname" name="IntDoc" value="{{value.IntDoc}}" required>
+                            <p> Upload file: <a href="media/{{value.IntDoc}}"> {{value.IntDoc}} </a></p>
                         </div>
                       </div>
                       <hr>
@@ -325,6 +335,7 @@
                         <label for="completion_date" class="col-sm-3 col-form-label">Date of completion</label>
                         <div class="col-sm-9">
                             <input type="date" class="form-control" id="schoolname" name="Unidate" value="{{value.Unidate}}">
+
                         </div>
                       </div>
                       <div class="mb-3 row">
@@ -362,6 +373,7 @@
                         <label for="documents" class="col-sm-3 col-form-label">Upload documets</label>
                         <div class="col-sm-9">
                             <input type="file" class="form-control" id="schoolname" name="UniDoc" value="{{value.UniDoc}}">
+                              <p> Upload file: <a href="media/{{value.UniDoc}}"> {{value.UniDoc}} </a></p>
                         </div>
                       </div>
             </div>
@@ -413,6 +425,7 @@
                   <label for="document" class="col-sm-3 col-form-label">Upload Documents</label>
                   <div class="col-sm-9">
                       <input type="file" class="form-control" name="Uploadeng" id="document" value="{{value.Uploadeng}}">
+                        <p> Upload file: <a href="media/{{value.Uploadeng}}"> {{value.Uploadeng}} </a></p>
                   </div>
               </div>
               <div class="form-group row mb-3">
@@ -449,6 +462,8 @@
                 <label for="document" class="col-sm-3 col-form-label">Uplode Documents</label>
                 <div class="col-sm-9">
                     <input type="file" name="Uploadeng1" class="form-control" id="document" value="{{value.Uploadeng1}}">
+                    {% if %}
+                      <p> Upload file: <a href="media/{{value.Uploadeng1}}"> {{value.Uploadeng1}} </a></p>
                 </div>
             </div>
         </div>
@@ -491,6 +506,8 @@
           <label for="document" class="col-sm-3 col-form-label">Upload Documents</label>
           <div class="col-sm-9">
               <input type="file" name="Uploadad"  class="form-control" id="document" value="{{value.Uploadad}}">
+              <p> Upload file: <a href="media/{{value.Uploadad}}"> {{value.Uploadad1}} </a></p>
+
           </div>
       </div>
       <!-- new test-->
@@ -534,6 +551,8 @@
         <label for="document" class="col-sm-3 col-form-label">Upload Documents</label>
         <div class="col-sm-9">
             <input type="file" name="Uploadad1"  class="form-control" id="document" value="{{value.Uploadad1}}">
+            <p> Upload file: <a href="media/{{value.Uploadad1}}"> {{value.Uploadad1}} </a></p>
+
         </div>
     </div>
     <!--end test-->
@@ -542,7 +561,7 @@
           </div>
           <div class="container">
             <h1>Course Application</h1>
-            <form>
+
               <div class="mb-3 row">
                 <label for="applying_course+" class="col-sm-3 col-form-label">Applying for</label>
                 <div class="col-sm-9">
@@ -606,6 +625,7 @@
                   <input type="text" name="pcour6" class="form-control" id="course3" value="{{value.pcour6}}" >
                 </div>
                 <button class="btn btn-primary mt-5">Save and continue</button>
+
             </form>
 
           </div>
