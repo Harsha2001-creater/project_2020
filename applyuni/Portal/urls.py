@@ -19,6 +19,9 @@ from .views.unimediator import Unisupport
 from .views.unimediator import Unisettings
 from .views.unihome1 import unihome1
 from .views.overview import overview
+from .views.stdportal import stdhome
+from .views.stdportal import stdnav
+from .views.stdportal import stdsaved
 #from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns=[
@@ -49,6 +52,11 @@ path('unihome',Unihome,name='unihome'),
 path('support',Unisupport,name='Unisupport'),
 path('unisettings',Unisettings.as_view(),name='Unisettings'),
 path('unihome1',unihome1.as_view(),name='unihome1'),
-path('overview',overview.as_view(),name='overview')
+path('overview',overview.as_view(),name='overview'),
+
+#student Portal
+path('stdhome',stdhome,name='stdhome'),
+path('stdnav',stdnav,name='stdnav'),
+path('stdsaved',stdsaved,name='stdsaved'),
 ]
 #urlpatterns+=staticfiles_urlpatterns
