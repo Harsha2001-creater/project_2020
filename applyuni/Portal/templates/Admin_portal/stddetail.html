@@ -177,7 +177,7 @@
 <select class="form-select" aria-label="Default select example" name="Sscgrading" value="{{value.Sscgrading}}" required>
 
 <option value="Marks" selected> Marks</option>
-{% if value.Sscgrading == "Marks" %}
+{% if value.Sscgrading == "CGPA" %}
 <option value="CGPA" selected>CGPA</option>
 {% else %}
 <option value="CGPA" >CGPA</option>
@@ -237,7 +237,7 @@
                           <select class="form-select" aria-label="Default select example" name="Intgrading" value="{{value.Intgrading}}" required>
 
                           <option value="Marks" selected> Marks</option>
-                          {% if value.Intgrading == "Marks" %}
+                          {% if value.Intgrading == "CGPA" %}
                           <option value="CGPA" selected>CGPA</option>
                           {% else %}
                           <option value="CGPA" >CGPA</option>
@@ -303,7 +303,7 @@
                           <select class="form-select" aria-label="Default select example" name="Intgrading" value="{{value.Unigrading}}" required>
 
                           <option value="Marks" selected> Marks</option>
-                          {% if value.Unigrading == "Marks" %}
+                          {% if value.Unigrading == "CGPA" %}
                           <option value="CGPA" selected>CGPA</option>
                           {% else %}
                           <option value="CGPA" >CGPA</option>
@@ -314,7 +314,7 @@
                           <option value="Percentage" >Percentage</option>
                           {% endif %}
                           </select>
-
+</div>
                       <div class="mb-3 row">
                         <label for="documents" class="col-sm-3 col-form-label">Upload documets</label>
                         <div class="col-sm-9">
@@ -333,19 +333,16 @@
 
               <div class="form-group row mb-3">
                 <label for="maritial" class="col-sm-3 col-form-label">Test</label>
-                <div class="col-sm-9">
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Testeng" id="test1" value="{{value.Testeng}}">
-                    <label class="form-check-label" for="test1">
-                      IELTS
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Testeng" id="test1" value="{{value.Testeng}}">
-                    <label class="form-check-label" for="test1">
-                      TOFEL
-                    </label>
-                  </div>
+                <div class="col-sm-9">Testeng
+                  <select class="form-select" aria-label="Default select example" name="Testeng" value="{{value.Testeng}}" required>
+
+        <option value="IELTS" selected > ILETS </option>
+        {% if value.Testeng == "Married" %}
+        <option value="TOFEL" selected>TOFEL</option>
+        {% else %}
+        <option value="TOFEL" >TOFEL</option>
+        {% endif %}
+        </select>
                 </div>
             </div>
 
@@ -377,18 +374,15 @@
               <div class="form-group row mb-3">
                 <label for="maritial" class="col-sm-3 col-form-label">Test</label>
                 <div class="col-sm-9">
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Testeng1" id="test2" value="{{value.Testeng1}}" >
-                    <label class="form-check-label" for="test2">
-                      IELTS
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Testeng1" id="test2" value="{{value.Testeng1}}">
-                    <label class="form-check-label" for="test2">
-                     TOFEL
-                    </label>
-                  </div>
+                  <select class="form-select" aria-label="Default select example" name="Testeng1" value="{{value.Testeng1}}" required>
+
+        <option value="IELTS" selected > IELTS </option>
+        {% if value.Testeng1 == "TOFEL" %}
+        <option value="TOFEL" selected>TOFEL</option>
+        {% else %}
+        <option value="TOFEL" >TOFEL</option>
+        {% endif %}
+        </select>
                 </div>
             </div>
 
@@ -405,7 +399,7 @@
                 </div>
             </div>
             <div class="form-group row mb-3">
-                <label for="document" class="col-sm-3 col-form-label">Uplode Documents</label>
+                <label for="document" class="col-sm-3 col-form-label">Upload Documents</label>
                 <div class="col-sm-9">
                     <input type="file" name="Uploadeng1" class="form-control" id="document" value="{{value.Uploadeng1}}">
                       <p> Upload file: <a href="media/{{value.Uploadeng1}}"> {{value.Uploadeng1}} </a></p>
@@ -417,19 +411,16 @@
 
                       <div class="form-group row mb-3">
                         <label for="maritial" class="col-sm-3 col-form-label">Test</label>
-                        <div class="col-sm-9">
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="Testad" id="test3" value="{{value.Testad}}" >
-                            <label class="form-check-label" for="test3">
-                              GRE
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="Testad" id="test3" value="{{value.Testad}}">
-                            <label class="form-check-label" for="test3">
-                              GMAT
-                            </label>
-                          </div>
+                        <div class="col-sm-9">Testad
+                          <select class="form-select" aria-label="Default select example" name="Testad" value="{{value.Testad}}" required>
+
+                <option value="GRE" selected > GRE </option>
+                {% if value.Testad == "GEMAT" %}
+                <option value="GEMAT" selected>GEMAT</option>
+                {% else %}
+                <option value="GEMAT" >GEMAT</option>
+                {% endif %}
+                </select>
                         </div>
                     </div>
 
@@ -463,18 +454,15 @@
                       <div class="form-group row mb-3">
                         <label for="maritial" class="col-sm-3 col-form-label">Test</label>
                         <div class="col-sm-9">
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="Testad1" id="test4" value="{{value.Testad1}}">
-                            <label class="form-check-label" for="test4">
-                              GRE
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="Testad1" id="test4" value="{{value.Testad1}}">
-                            <label class="form-check-label" for="test4">
-                              GMAT
-                            </label>
-                          </div>
+                          <select class="form-select" aria-label="Default select example" name="Testad1" value="{{value.Testad1}}" >
+
+                <option value="GRE" selected > GRE </option>
+                {% if value.Testad1 == "GEMAT" %}
+                <option value="GEMAT" selected>GEMAT</option>
+                {% else %}
+                <option value="GEMAT" >GEMAT</option>
+                {% endif %}
+                </select>
                         </div>
                     </div>
 
@@ -510,18 +498,16 @@
               <div class="mb-3 row">
                 <label for="applying_course+" class="col-sm-3 col-form-label">Applying for</label>
                 <div class="col-sm-9">
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Applyingfor" id="test2" value="{{value.Applyingfor}}" >
-                    <label class="form-check-label" for="test2">
-                      Bachelors
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Applyingfor" id="test2" value="{{value.Applyingfor}}">
-                    <label class="form-check-label" for="test2">
-                     Masters
-                    </label>
-                  </div>
+                  <select class="form-select" aria-label="Default select example" name="Applyingfor" value="{{value.Applyingfor}}" required>
+
+                  <option value="Bachelors" selected> Bachelors</option>
+                  {% if value.Applyingfor == "Masters" %}
+                  <option value="Masters" selected>Masters</option>
+                  {% else %}
+                  <option value="Masters" >Masters</option>
+                  {% endif %}
+
+                  </select>
                 </div>
               </div>
               <div class="mb-3 row">
