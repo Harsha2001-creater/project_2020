@@ -1,130 +1,115 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="main.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Hello, world!</title>
-    <style>
-        .card-deck {
-            margin: 0 -15px;
-            justify-content: space-between;
-          }
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="main.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 
-          .card-deck .card {
-            margin: 0 0 1rem;
-          }
+  <title>Hello, world!</title>
+  <style>
+    .card {
+      border-radius: 15px;
 
-          @media (min-width: 576px) and (max-width: 767.98px) {
-            .card-deck .card {
-              -ms-flex: 0 0 48.7%;
-              flex: 0 0 48.7%;
-            }
-          }
+    }
+    .card-img {
+      background-size: cover;
+      height: 100%;
 
-          @media (min-width: 768px) and (max-width: 991.98px) {
-            .card-deck .card {
-              -ms-flex: 0 0 32%;
-              flex: 0 0 32%;
-            }
-          }
+    }
+  </style>
+</head>
 
-          @media (min-width: 992px) {
-            .card-deck .card {
-              -ms-flex: 0 0 24%;
-              flex: 0 0 24%;
-            }
-          }
-
-    </style>
-  </head>
-
-  <body>
-    {% include "student_portal/studentnav.html "%}
-    <section
-    class="universities"
-    id="universities"
-    style="padding-bottom: 2rem"
-  >
-    <h1 style="padding: 20px; font-family: 'Raleway'" class="text-center">
-      Saved <span style="color: blue">Universities</span>
+<body>
+  {% include "student_portal/studentnav.html "%}
+  <section class="universities" id="universities" style="padding-bottom: 2rem">
+    <h1 style="padding: 20px; font-family: 'Raleway';" class="container">
+      SAVED <span style="color: blue">Universities</span>
     </h1>
     <div class="container">
-      <div class="card-deck">
-        <div class="card">
-          <img
-            class="card-img-top"
-            src="https://images.shiksha.com/mediadata/images/1589360331phphW1Nso.jpeg"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Harvard University</h5>
-            <p class="card-text">
-              Harvard University is a private Ivy League research university
-              in Cambridge, Massachusetts.
-            </p>
+
+
+
+
+      <div class="card " style="max-height: 350px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img class="card-img p-5 rounded" 
+              src="https://www.elmhurst.edu/wp-content/uploads/2020/07/elmhurst-university-gates-v3-hero-image.jpg" alt="... ">
           </div>
-        </div>
-        <div class="card">
-          <img
-            class="card-img-top"
-            src="https://nypost.com/wp-content/uploads/sites/2/2020/03/stanford.jpg?quality=80&strip=all"
-            alt="Card image cap"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Stanford university</h5>
-            <p class="card-text">
-              Stanford University, officially Leland Stanford Junior
-              University, is a private research university located in
-              Stanford, California.
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <img
-            class="card-img-top"
-            src="https://images.shiksha.com/mediadata/images/1589360331phphW1Nso.jpeg"
-            alt="Card image cap"
-          />
-          <div class="card-body">
-            <h5 class="card-title">University of Oxford</h5>
-            <p class="card-text">
-              The University of Oxford is a collegiate research university in
-              Oxford, Oxfordshire, England. There is evidence of teaching as
-              early as 1096.
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <img
-            class="card-img-top"
-            src="https://www.berkeleyside.com/wp-content/uploads/2020/04/1920px-UCBerkeleyCampus-e1594245699299.jpg"
-            alt="Card image cap"
-          />
-          <div class="card-body">
-            <h5 class="card-title">University of California</h5>
-            <p class="card-text">
-              The University of California (UC) is a public research
-              university system in the U.S. state of California.
-            </p>
+          <div class=" col-md-8">
+            <div class="card-body mt-3">
+              <h3 class="card-title " style="text-align: center; text-shadow: 1px 1px 3px;">Card title</h3>
+              <div>
+                <p class="card-text" style="overflow-y: auto;max-height: 200px;font-weight: 500;font-family: 'Montserrat', sans-serif;">Lorem, ipsum dolor sit amet consectetur
+                  adipisicing elit. Vero, praesentium. Eos blanditiis possimus pariatur, ullam quia dignissimos quod
+                  commodi omnis aliquid animi sint id nisi accusantium. Dolorem dicta fugit debitis voluptatum saepe
+                  assumenda quasi itaque, magnam ut. Exercitationem magni sunt iste veniam repellat cum sapiente
+                  consectetur, minus eveniet vero fuga omnis culpa ab ullam delectus consequuntur at odit quas aperiam
+                  nemo! Alias at minima, cumque blanditiis cum assumenda maiores quae architecto magni eius ullam
+                  ratione totam fuga facere dolor tempore consequuntur id pariatur quos odit voluptates sunt dolorum
+                  similique aspernatur. Dolores, facere quas autem quis nam eos ullam aliquam laudantium quos dolorum
+                  similique? Laboriosam architecto voluptatibus officia nulla nemo labore quis libero, id ad totam ipsum
+                  quisquam consequuntur laborum atque facere corrupti nobis alias sequi? Sapiente, cum enim voluptatum
+                  nulla odit libero ab atque dolores quisquam totam cumque obcaecati, quae blanditiis a porro officiis.
+                  Animi ad optio nemo dolorem quas accusantium maxime rem quo alias ex officiis sapiente neque rerum
+                  eius minima, accusamus fugiat, magni eligendi voluptate aut quos aliquid commodi perspiciatis
+                  molestias. Consectetur necessitatibus autem eos officia quae dolorem est neque, dignissimos molestias.
+                  Placeat porro sequi, sapiente inventore dolorem quaerat expedita nobis odio laboriosam asperiores,
+                  impedit explicabo obcaecati officiis quam? Et eligendi, explicabo blanditiis vel debitis nam fugit,
+                  nemo vero minus doloremque maxime fuga. Suscipit impedit commodi dolorem totam est ullam voluptatum,
+                  ratione quam praesentium optio dolores officiis sapiente repellat error sequi sit ipsa eveniet,
+                  reiciendis similique nisi necessitatibus ipsam. Earum dolorem nulla unde molestias aliquid dolore
+                  architecto reiciendis saepe nesciunt nam amet illo libero soluta corrupti, harum delectus rem totam
+                  excepturi autem. Qui officiis nihil quibusdam tempora, amet explicabo reiciendis, ipsum veniam modi
+                  nulla harum voluptatum debitis rem dolorum eum sit ab, iusto laudantium beatae eaque deserunt sint
+                  molestias odit! Ab error esse, aperiam soluta voluptatum veritatis iusto magnam quos autem vel,
+                  consequatur incidunt eos quod ipsa qui eum voluptas maiores. Amet sapiente facilis voluptatum debitis
+                  nisi magnam minus laudantium, cumque ad labore, ratione, recusandae corrupti corporis enim unde.
+                  Voluptatem laudantium officia nobis obcaecati earum fugit necessitatibus dolore qui alias sapiente
+                  voluptate, doloribus maxime deleniti, officiis neque ipsam rem excepturi ex blanditiis nulla? Culpa
+                  hic rem deserunt ad odit, laborum et nobis quo. Illo accusantium earum mollitia, esse hic deserunt?
+                  Obcaecati modi dolorum laboriosam earum, mollitia nesciunt corrupti corporis blanditiis consequuntur,
+                  numquam a voluptatibus ab quod maxime vero quae eveniet perspiciatis repellat. Beatae aperiam eveniet
+                  porro laudantium quae, omnis facilis at voluptate, praesentium obcaecati, autem perspiciatis enim
+                  nobis pariatur incidunt quia iste. Nesciunt, dolorem quos dignissimos beatae id optio officiis aut,
+                  voluptatem dolores, molestiae recusandae maxime quod! Inventore tempora officia officiis. Deleniti
+                  molestiae facere expedita fugiat molestias dolores voluptates distinctio fuga optio itaque, totam quos
+                  est facilis eos praesentium, alias minus repellendus cumque iste beatae omnis. Vero pariatur debitis
+                  error perferendis, ad at! Possimus voluptatibus cupiditate unde dolore laboriosam labore, tempora
+                  illum cumque iure delectus nihil? Numquam ab enim commodi aut suscipit sequi aliquid quos, fugit
+                  doloremque ad autem praesentium minima quas velit! Aspernatur cupiditate tenetur provident quas.</p>
+              </div>
+              <div class="text-center mt-3">
+                <button type="button mt-2" class="btn btn-primary    " style="width: 25%;">Apply</button>
+
+              </div>
+
+
+            </div>
           </div>
         </div>
       </div>
+
     </div>
+
   </section>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-      crossorigin="anonymous"></script>
-      </body>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
