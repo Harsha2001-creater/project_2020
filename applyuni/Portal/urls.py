@@ -22,6 +22,7 @@ from .views.overview import overview
 from .views.stdportal import stdhome
 from .views.stdportal import stdnav
 from .views.stdportal import stdsaved
+from .views.payment import payment
 #from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns=[
@@ -58,5 +59,6 @@ path('overview',overview.as_view(),name='overview'),
 path('stdhome',stdhome,name='stdhome'),
 path('stdnav',stdnav,name='stdnav'),
 path('stdsaved',stdsaved,name='stdsaved'),
+path('payment',payment,name='payment')
 ]
 #urlpatterns+=staticfiles_urlpatterns
