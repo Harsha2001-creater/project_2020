@@ -27,13 +27,10 @@
           <img src="{% static 'images/avatar.svg' %}" />
           <h2 class="title">Welcome</h2>
           <div class="">
-          {% if error %}
-          <div class="alert alert-warning" role="alert">
-              {{error}}
+            {% if error %}
+            <div class="alert alert-warning" role="alert">{{error}}</div>
+            {% endif %}
           </div>
-          {% endif %}
-
-</div>
           <div class="input-div one">
             <div class="i">
               <i class="fas fa-user"></i>
@@ -67,11 +64,15 @@
           <a href="{% url 'emailvalid' %}">Forgot Password?</a>
           <input type="submit" class="btn" value="Login" />
           <a href="{% url 'social:begin' 'facebook' %}">
-            <button type="button" class="btn" value="Login with facebook"  >Facebook </button></a
+            <button type="button" class="btn" value="Login with facebook">
+              Facebook
+            </button></a
           >
           <a href="{% provider_login_url 'google' %}">
-            <button type="button" class="btn" value="Login with Google"
-          >Google</button></a>
+            <button type="button" class="btn" value="Login with Google">
+              Google
+            </button></a
+          >
         </form>
       </div>
     </div>
