@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.contrib.auth import views as auth_views
 from .views.studentlogin import studentlogin
+from .views.studentlogin import logout
 from .views.universitylogin import universitylogin
 from .views.mediator import home
 from .views.mediator import signup_mediator
@@ -22,12 +23,14 @@ from .views.overview import overview
 from .views.stdportal import stdhome
 from .views.stdportal import stdnav
 from .views.stdportal import stdsaved
-<<<<<<< HEAD
+from .views.stdportal import stdunivlist
+
+
 from .views.temp_pass import emailvalid
 from .views.temp_pass import tempvalidator
-=======
+
 from .views.payment import payment
->>>>>>> 5a586e704810aac33cbc504dc2f44b3c488a5424
+
 #from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns=[
@@ -61,11 +64,12 @@ path('overview',overview.as_view(),name='overview'),
 path('stdhome',stdhome,name='stdhome'),
 path('stdnav',stdnav,name='stdnav'),
 path('stdsaved',stdsaved,name='stdsaved'),
-<<<<<<< HEAD
+path('logout',logout,name='logout'),
+path('stdunivlist',stdunivlist,name='stdunivlist'),
 path('emailvalid',emailvalid.as_view(),name='emailvalid'),
 path('tempvalidator',tempvalidator.as_view(),name='tempvalidator'),
-=======
+
 path('payment',payment,name='payment')
->>>>>>> 5a586e704810aac33cbc504dc2f44b3c488a5424
+
 ]
 #urlpatterns+=staticfiles_urlpatterns

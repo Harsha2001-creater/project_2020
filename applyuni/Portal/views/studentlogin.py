@@ -26,7 +26,9 @@ class studentlogin(View):
                 request.session['student']=student.id
                 request.session['Firstname']=student.Firstname
                 request.session['Email']=student.Email
-                return render(request,'student_portal/studenthome.html')
+                value={'Name':request.session['Firstname']}
+                data={'value':value}
+                return render(request,'student_portal/studenthome.html',data)
 
                 '''
                 if studentlogin.return_url():
@@ -43,4 +45,5 @@ class studentlogin(View):
 def logout(request):
 
     request.session.clear()
+    #print(request.session['Email'])
     return redirect('studentloginpage')

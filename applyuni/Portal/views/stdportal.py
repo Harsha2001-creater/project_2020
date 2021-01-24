@@ -9,3 +9,5 @@ def stdnav(request):
     return render(request,'student_portal/studentnav.html')
 def stdsaved(request):
     return render(request,'student_portal/studentsaved.html')
+def stdunivlist(request):
+    return render(request,'student_portal/university_cards.html')
