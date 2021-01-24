@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>payment</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+    <style>
+        .w3-container {
+            font-size: 14px;
+        }
+
+        .center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+body{
+    height: 100vh;
+    
+    background: #43C6AC;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #F8FFAE, #43C6AC);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #F8FFAE, #43C6AC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+    </style>
+
+    <div class="center">
+        <h3 class="donate">
+            <div class="w3-card-4" style="width: 30rem">
+
+                <header class="w3-container w3-blue">
+                    <h1 style="text-align: center;">Application Payment</h1>
+                </header>
+
+                <div class="w3-container pay">
+                    <p></p>
+
+                    <!-- PAYPAL BUTTONS HERE -->
+                    <div id="paypal-button-container"></div>
+                     
+                    <!-- Include the PayPal JavaScript SDK -->
+                    <script
+                        src="https://www.paypal.com/sdk/js?client-id=AX_4fb9sg4VG4CCVetoi3jxlRxNGqr_-cQbzQcX91qQRXt9Rezc5hWnU6dqgPrg8xwRmTCLmt94RonkR&currency=USD"></script>
+
+                    <script>
+                        // Render the PayPal button into #paypal-button-container
+                        paypal.Buttons({
+
+                            // Set up the transaction
+                            createOrder: function (data, actions) {
+                                return actions.order.create({
+                                    purchase_units: [{
+                                        amount: {
+                                            value: '50'
+                                        }
+                                    }]
+                                });
+                            },
+
+                            // Finalize the transaction
+                            onApprove: function (data, actions) {
+                                return actions.order.capture().then(function (details) {
+                                    // Show a success message to the buyer
+                                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                                });
+                            }
+
+
+                        }).render('#paypal-button-container');
+                    </script>
+
+
+
+                </div>
+
+                <footer class="w3-container w3-blue">
+                    <h5 style="text-align: center;">@Apply Uni</h5>
+                </footer>
+
+            </div>
+        </h3>
+    </div>
+
+</body>
+
+</html>
