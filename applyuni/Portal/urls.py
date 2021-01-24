@@ -22,6 +22,8 @@ from .views.overview import overview
 from .views.stdportal import stdhome
 from .views.stdportal import stdnav
 from .views.stdportal import stdsaved
+from .views.temp_pass import emailvalid
+from .views.temp_pass import tempvalidator
 #from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns=[
@@ -34,10 +36,7 @@ path('stddetail1',stddetail1.home,name='stddetail1'),
 path('oauth/', include('social_django.urls', namespace='social')),
 path('studentlogin',studentlogin.as_view(),name='studentloginpage'),
 path('universitylogin',universitylogin.as_view(),name='universityloginpage'),
-path('password-reset', auth_views.PasswordResetView.as_view(template_name="login/password_reset.html"),name='password_reset'),
-path('password-reset/done', auth_views.PasswordResetDoneView.as_view(template_name="login/password_reset_done.html"),name='password_reset_done'),
-path('password-reset-confirm/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(template_name="login/password_reset_confirm.html"),name='password_reset_confirm'),
-path('password-reset-complete', auth_views.PasswordResetCompleteView.as_view(template_name="login/password_reset_complete.html"),name='password_reset_complete'),
+
 
 path('studentsignup',studentsignup.as_view(),name='studentsignup'),
 path('universitysignup',universitysignup.as_view(),name='universitysignup'),
@@ -58,5 +57,7 @@ path('overview',overview.as_view(),name='overview'),
 path('stdhome',stdhome,name='stdhome'),
 path('stdnav',stdnav,name='stdnav'),
 path('stdsaved',stdsaved,name='stdsaved'),
+path('emailvalid',emailvalid.as_view(),name='emailvalid'),
+path('tempvalidator',tempvalidator.as_view(),name='tempvalidator'),
 ]
 #urlpatterns+=staticfiles_urlpatterns

@@ -11,6 +11,7 @@ class Student(models.Model):
     Phonenumber= models.CharField(max_length=50)
     Password = models.CharField(max_length=500)
     Confirmpassword = models.CharField(max_length=500)
+    
 
     def __str__(self):
         return self.Firstname

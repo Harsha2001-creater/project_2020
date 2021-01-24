@@ -7,12 +7,14 @@ from django.contrib.auth.hashers import check_password
 from django.views import View
 # Create your views here.
 class studentlogin(View):
+    print("ento batuku")
     return_url = None
     def get(self,request):
         studentlogin.return_url = request.GET.get('return_url')
         return render(request,'login/studentlogin.html')
 
     def post(self,request):
+        print("vastunda")
         Email=request.POST.get('Email')
         Password=request.POST.get('Password')
         student=Student.get_student_by_email(Email)
