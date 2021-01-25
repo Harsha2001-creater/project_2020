@@ -24,7 +24,7 @@ from .views.stdportal import stdhome
 from .views.stdportal import stdnav
 from .views.stdportal import stdsaved
 from .views.stdportal import stdunivlist
-
+#from .views.stdportal import univsearch
 
 from .views.temp_pass import emailvalid
 from .views.temp_pass import tempvalidator
@@ -62,6 +62,7 @@ path('overview',overview.as_view(),name='overview'),
 
 #student Portal
 path('stdhome',stdhome,name='stdhome'),
+path('univsearch',stdunivlist,name='stdhome'),
 path('stdnav',stdnav,name='stdnav'),
 path('stdsaved',stdsaved,name='stdsaved'),
 path('logout',logout,name='logout'),

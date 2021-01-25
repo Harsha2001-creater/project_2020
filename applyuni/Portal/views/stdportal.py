@@ -12,7 +12,14 @@ def stdnav(request):
 def stdsaved(request):
     return render(request,'student_portal/studentsaved.html')
 def stdunivlist(request):
-    total_univs=University.objects.all()
+    print("coming")
+    search=request.POST.get('Search')
+    print(search)
+    if(search):
+        total_univs=University.objects.filter(Universityname__icontains=search)
+    else:
+        print("in else")
+        total_univs=University.objects.all()
     data={}
     data['total_univs']=total_univs
     return render(request,'student_portal/university_cards.html',data)
