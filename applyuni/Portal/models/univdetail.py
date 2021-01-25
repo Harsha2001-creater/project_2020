@@ -20,7 +20,7 @@ class Univdetail(models.Model):
     Students=models.CharField(max_length=50)
     Location=models.CharField(max_length=10,null=True)
     Phonenumber=models.CharField(max_length=10)
-    Email=models.CharField(max_length=10)
+    Email=models.CharField(max_length=50)
 
     Applyfee=models.CharField(max_length=50,null=True)
     Currency=models.CharField(max_length=50)

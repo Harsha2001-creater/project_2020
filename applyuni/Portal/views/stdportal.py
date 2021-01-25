@@ -12,6 +12,7 @@ def stdnav(request):
 def stdsaved(request):
     return render(request,'student_portal/studentsaved.html')
 def stdunivlist(request):
+    
     print("coming")
     search=request.POST.get('Search')
     print(search)
@@ -20,6 +21,7 @@ def stdunivlist(request):
     else:
         print("in else")
         total_univs=University.objects.all()
+        print("taking total univs done")
     data={}
     data['total_univs']=total_univs
     return render(request,'student_portal/university_cards.html',data)

@@ -5,9 +5,16 @@ from django.http import HttpResponse
 from django.views import View
 
 class overview(View):
-    def get(self,request):
-        Email=request.session['university_Email']
+    def get(self,request,pk=0):
+        try:
+            Email=request.session['university_Email']
+        except:
+            objdetail=University.objects.get(pk=pk)
+            print(objdetail.Universitymail)
+            Email=objdetail.Universitymail
+            
         univdetail=Univdetail.get_univdetail_by_email(Email)
+        print(univdetail)
         request.session['About']=univdetail.About
         request.session['Campuses']=univdetail.Campuses
         request.session['Departments']=univdetail.Departments
@@ -22,6 +29,7 @@ class overview(View):
         print(request.session['Staff'])
 
         university=University.get_university_by_email(Email)
+        print(university.Universityname)
         Name=university.Universityname
         About=request.session['About']
         Campuses=request.session['Campuses']

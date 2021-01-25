@@ -298,6 +298,8 @@
 
       <div class="cols">
         {% for univ in total_univs %}
+        
+
         <div class="coll" ontouchstart="this.classList.toggle('hover');">
           <div class="subbu">
             <div
@@ -312,11 +314,9 @@
             <div class="back">
               <div class="inner">
                 <p>Join With Us and Make Your Carrier Bright.</p>
-                <a
-                  ><button class="button bu" style="margin-top: 10px">
+                <a href="overview/{{univ.id}}"><button class="button bu" style="margin-top: 10px">
                     Apply Now
-                  </button></a
-                >
+                  </button></a>
                 <a
                   ><button class="button bu" style="margin-top: 10px">
                     Save

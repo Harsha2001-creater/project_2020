@@ -58,7 +58,9 @@ path('unihome',Unihome,name='unihome'),
 path('support',Unisupport,name='Unisupport'),
 path('unisettings',Unisettings.as_view(),name='Unisettings'),
 path('unihome1',unihome1.as_view(),name='unihome1'),
+path('overview/<int:pk>/',overview.as_view(),name='overview'),
 path('overview',overview.as_view(),name='overview'),
+
 
 #student Portal
 path('stdhome',stdhome,name='stdhome'),
