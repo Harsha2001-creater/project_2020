@@ -1,11 +1,3 @@
-try:
-    name3=fs.save(Uploadeng.name,Uploadeng)
-    url3=fs.url(name3)
-    name4=fs.save(Uploadeng1.name,Uploadeng1)
-    url4=fs.url(Uploadeng1)
-    name5=fs.save(Uploadad.name,Uploadad)
-    url5=fs.url(name5)
-    name6=fs.save(Uploadad1.name,Uploadad1)
-    url6=fs.url(name6)
-except:
-    pass
+Coursename=Coursename,Coursetype=Coursetype,Facultyname=Facultyname,Courseapproval=Courseapproval,
+        Approvalauthority=Approvalauthority,Tutionfee=Tutionfee,Amount1=Amount1,Sem1=Sem1,Sem2=Sem2,Sem3=Sem3,Sem4=Sem4,
+        Sem5=Sem5,Sem6=Sem6,Duration1=Duration1,Noofsems=Noofsems,Criteria1=Criteria1,Criteria2=Criteria2,Criteria3=Criteria3}
