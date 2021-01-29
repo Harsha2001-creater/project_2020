@@ -1,0 +1,132 @@
+
+<div class="container">
+<div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+    <div class="container  rounded " >
+        <div class="mb-3 row">
+            <form action="/universityportal" method="POST">
+                {% csrf_token %}
+          <label for="type" class="col-sm-2 col-form-label">Course Name </label>
+          <div class="col-sm-10">
+              <input type="text" class="form-control" name="coursename" value="{{value.Coursename}}">
+          </div>
+         
+         
+        </div>
+        <div class="mb-3 row">
+          <label for="type" class="col-sm-2 col-form-label">Course Type</label>
+          <div class="col-sm-10">
+              <select class="form-select" aria-label="Default select example" name="coursetype" value="{{value.Coursetype}}">
+                  <option selected>UG</option>
+                  <option value="1">PG</option>
+                  
+                </select>
+          </div>
+          
+        </div>
+    </div>
+      
+      
+      
+        <div class="mb-3 row">
+          <label for="type" class="col-sm-2 col-form-label">Faculty Name</label>
+          <div class="col-sm-10">
+              <select class="form-select" aria-label="Default select example" name="facultyname" value="{{value.Facultyname}}">
+                  <option selected>UG</option>
+                  <option value="1">PG</option>
+                  
+                </select>
+        </div>
+        </div>
+  
+       
+  
+        <div class="mb-3 row">
+          <label for="type" class="col-sm-2 col-form-label">Course Approval License number</label>
+          <div class="col-sm-10">
+              <input type="text" class="form-control" name="courseapproval" value="{{value.Courseapproval}}">
+        </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="type" class="col-sm-2 col-form-label">Approval Authority</label>
+          <div class="col-sm-10">
+              <input type="text" class="form-control" name="approval" value="{{value.Approvalauthority}}">
+        </div>
+        </div>
+  
+        <!--About-->
+  
+        <div class="mb-3 row">
+          <label for="type" class="col-sm-2 col-form-label">Tution Fee</label>
+          <div class="col-sm-5">
+              <select class="form-select" aria-label="Default select example" name="fee" value="{{value.Tutionfee}}">
+                <option selected>Currency</option>
+                <option value="1">INR</option>
+                <option value="2">Dollars</option>
+                
+              </select>
+              
+            </div>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" placeholder="amount" name="amount1" value="{{value.Amount1}}" >
+             
+            </div>
+            
+           
+        </div>
+  
+        <div class="mb-3 row">
+          <label for="type" class="col-sm-2 col-form-label">Course Content</label>
+          <div class="col-sm-5">
+              <label for="type" class=" col-form-label">Semester / term 1</label>
+              <input type="text" class="form-control" name="sem1" value="{{value.Sem1}}" ><br>
+              <input type="text" class="form-control" name="sem2" value="{{value.Sem2}}"  ><br>
+              <input type="text" class="form-control" name="sem3" value="{{value.Sem3}}" ><br>
+              
+            </div>
+            <div class="col-sm-5">
+              <label for="type" class=" col-form-label ">Semester / term 2</label>
+              <input type="text" class="form-control" name="sem4" value="{{value.Sem4}}"  ><br>
+              <input type="text" class="form-control" name="sem5" value="{{value.Sem5}}" ><br>
+              <input type="text" class="form-control" name="sem6" value="{{value.Sem6}}" ><br>
+             
+            </div>
+            
+           
+        </div>
+        <div class="mb-3 row">
+          <label for="type" class="col-sm-2 col-form-label">Duration</label>
+          <div class="col-sm-5">
+              <select class="form-select" aria-label="Default select example" name="duration1" value="{{value.Duration1}}">
+                <option selected>Total course Duration</option>
+                <option value="1">4</option>
+                <option value="2">5</option>
+                <option value="3">3</option>
+              </select>
+              
+            </div>
+            <div class="col-sm-5">
+              <select class="form-select" aria-label="Default select example" name="noofsems" value="{{value.Noofsems}}">
+                  <option selected>No.of Semesters</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+             
+            </div>   
+        </div>
+  
+  
+        <!--terms and conditons-->
+         
+        <div class="mb-3 row">
+          <label for="type" class="col-sm-2 col-form-label">Entry Requirments</label>
+          <div class="col-sm-10">
+            <textarea type="text" class="form-control" name="criteria1" value="{{value.Criteria1}}" placeholder="Criteria 1"></textarea><br>
+            <textarea type="text" class="form-control" name="criteria2" value="{{value.Criteria2}}"  placeholder="Criteria 2"></textarea><br>
+            <textarea type="text" class="form-control" name="criteria3" value="{{value.Criteria3}}"  placeholder="Criteria 3"></textarea><br>
+        </div>
+        </div>
+      <button type="submit" href="#"> Save and continue</button>  
+    </form>
+    </div>
+  </div>

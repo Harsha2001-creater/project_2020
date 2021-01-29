@@ -31,6 +31,8 @@ from .views.temp_pass import tempvalidator
 
 from .views.payment import payment
 
+from .views.universityportal import Universityportal
+
 #from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns=[
@@ -72,7 +74,8 @@ path('stdunivlist',stdunivlist,name='stdunivlist'),
 path('emailvalid',emailvalid.as_view(),name='emailvalid'),
 path('tempvalidator',tempvalidator.as_view(),name='tempvalidator'),
 
-path('payment',payment,name='payment')
+path('payment',payment,name='payment'),
+path('universityportal',Universityportal.as_view(),name='universityportal')
 
 ]
 #urlpatterns+=staticfiles_urlpatterns

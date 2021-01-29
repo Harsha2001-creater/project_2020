@@ -17,8 +17,6 @@ class Unisettings(View):
         univdetail=Univdetail.get_univdetail_by_email(request.session['university_Email'])
         print("Nanda Anumolu")
 
-
-        print(univdetail.Coursename)
         value={'Institutemode': univdetail.Institutemode,'Institutetype': univdetail.Institutetype,'Year':univdetail.Year,'Rank':univdetail.Rank,'About':univdetail.About,'Campuses':univdetail.Campuses,
         'Departments' :univdetail.Departments,'Education':univdetail.Education,'Feeug':univdetail.Feeug,'Feepg':univdetail.Feepg,'Intake': univdetail.Intake,'Awards':univdetail.Awards,
         'Staff':univdetail.Staff,'Students':univdetail.Students,'Location':univdetail.Location,'Phonenumber':univdetail.Phonenumber,'Email':univdetail.Email,
@@ -28,9 +26,7 @@ class Unisettings(View):
         'Doc3':univdetail.Doc3,'Doc4':univdetail.Doc4,'Doc5':univdetail.Doc5,'Doc6':univdetail.Doc6,'Doc7':univdetail.Doc7,'Doc8':univdetail.Doc8,'Doc9':univdetail.Doc9,'Term1':univdetail.Term1,
         'Term2':univdetail.Term2,'Term3':univdetail.Term3,'Term4':univdetail.Term4,
         
-        'Coursename':univdetail.Coursename,'Coursetype':univdetail.Coursetype,'Facultyname':univdetail.Facultyname,'Courseapproval':univdetail.Courseapproval,
-        'Approvalauthority':univdetail.Approvalauthority,'Tutionfee':univdetail.Tutionfee,'Amount1':univdetail.Amount1,'Sem1':univdetail.Sem1,'Sem2':univdetail.Sem2,'Sem3':univdetail.Sem3,'Sem4':univdetail.Sem4,
-        'Sem5':univdetail.Sem5,'Sem6':univdetail.Sem6,'Duration1':univdetail.Duration1,'Noofsems':univdetail.Noofsems,'Criteria1':univdetail.Criteria1,'Criteria2':univdetail.Criteria2,'Criteria3':univdetail.Criteria3}
+        }
         data={'value':value}
 
         return render(request,'University_portal/university_settings.html',data)
@@ -78,24 +74,7 @@ class Unisettings(View):
 
         #####course page
 
-        Coursename=request.POST.get('coursename')
-        Coursetype=request.POST.get('coursetype')
-        Facultyname=request.POST.get('facultyname')
-        Courseapproval=request.POST.get('courseapproval')
-        Approvalauthority=request.POST.get('approval')
-        Tutionfee=request.POST.get('fee')
-        Amount1=request.POST.get('amount1')
-        Sem1=request.POST.get('sem1')
-        Sem2=request.POST.get('sem2')
-        Sem3=request.POST.get('sem3')
-        Sem4=request.POST.get('sem4')
-        Sem5=request.POST.get('sem5')
-        Sem6=request.POST.get('sem6')
-        Duration1=request.POST.get('duration1')
-        Noofsems=request.POST.get('noofsems')
-        Criteria1=request.POST.get('criteria1')
-        Criteria2=request.POST.get('criteria2')
-        Criteria3=request.POST.get('criteria3')
+        
 
         ####end
         value={'Institutemode': Institutemode,'Institutetype': Institutetype,'Year':Year,'Rank':Rank,'About':About,'Campuses':Campuses,
@@ -105,11 +84,9 @@ class Unisettings(View):
         'Applyfee':Applyfee,'Currency':Currency,'Amount':Amount,'Applyform':Applyform,'Duration':Duration,
         'Applypro1':Applypro1,'Applypro2':Applypro2,'Applypro3':Applypro3,'Applypro4':Applypro4,'Doc1':Doc1,'Doc2':Doc2,
         'Doc3':Doc3,'Doc4':Doc4,'Doc5':Doc5,'Doc6':Doc6,'Doc7':Doc7,'Doc8':Doc8,'Doc9':Doc9,'Term1':Term1,
-        'Term2':Term2,'Term3':Term3,'Term4':Term4,
+        'Term2':Term2,'Term3':Term3,'Term4':Term4
         
-        'Coursename':Coursename,'Coursetype':Coursetype,'Facultyname':Facultyname,'Courseapproval':Courseapproval,
-        'Approvalauthority':Approvalauthority,'Tutionfee':Tutionfee,'Amount1':Amount1,'Sem1':Sem1,'Sem2':Sem2,'Sem3':Sem3,'Sem4':Sem4,
-        'Sem5':Sem5,'Sem6':Sem6,'Duration1':Duration1,'Noofsems':Noofsems,'Criteria1':Criteria1,'Criteria2':Criteria2,'Criteria3':Criteria3}
+        }
 
 
         univdetail=Univdetail(Institutemode= Institutemode,Institutetype= Institutetype,Year=Year,Rank=Rank,About=About,
@@ -120,11 +97,8 @@ class Unisettings(View):
         Applyfee=Applyfee,Currency=Currency,Amount=Amount,Applyform=Applyform,Duration=Duration,
         Applypro1=Applypro1,Applypro2=Applypro2,Applypro3=Applypro3,Applypro4=Applypro4,Doc1=Doc1,Doc2=Doc2,
         Doc3=Doc3,Doc4=Doc4,Doc5=Doc5,Doc6=Doc6,Doc7=Doc7,Doc8=Doc8,Doc9=Doc9,Term1=Term1,
-        Term2=Term2,Term3=Term3,Term4=Term4,
-        
-        Coursename=Coursename,Coursetype=Coursetype,Facultyname=Facultyname,Courseapproval=Courseapproval,
-        Approvalauthority=Approvalauthority,Tutionfee=Tutionfee,Amount1=Amount1,Sem1=Sem1,Sem2=Sem2,Sem3=Sem3,Sem4=Sem4,
-        Sem5=Sem5,Sem6=Sem6,Duration1=Duration1,Noofsems=Noofsems,Criteria1=Criteria1,Criteria2=Criteria2,Criteria3=Criteria3)
+        Term2=Term2,Term3=Term3,Term4=Term4
+        )
 
 
         university1=University.get_university_by_email(Email)
