@@ -55,6 +55,3 @@ class universitylogin(View):
             error_message='Email is invalid!!!'
             return render(request,'login/universitylogin.html',{'error': error_message})
 
-def logout(request):
-    request.session.clear()
-    return redirect('universityloginpage')

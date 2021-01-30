@@ -314,14 +314,19 @@
             <div class="back">
               <div class="inner">
                 <p>Join With Us and Make Your Carrier Bright.</p>
-                <a href="overview/{{univ.id}}"><button class="button bu" style="margin-top: 10px">
+                <a href="overview/{{univ.Universityname}}"><button class="button bu" style="margin-top: 10px">
                     Apply Now
                   </button></a>
-                <a
-                  ><button class="button bu" style="margin-top: 10px">
+
+                  <form action="/saved/{{univ.Universityname}}/" method="POST">
+                    {% csrf_token %}
+                  <a href="saved/{{univ.Universityname}}/"><button class="button bu" style="margin-top: 10px" >
                     Save
                   </button></a
                 >
+              
+          
+              </form>
               </div>
             </div>
           </div>

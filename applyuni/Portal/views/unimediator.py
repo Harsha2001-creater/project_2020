@@ -11,6 +11,9 @@ def Unihome(request):
     return render(request,'University_portal/university_home.html')
 def Unisupport(request):
     return render(request,'University_portal/support.html')
+def Unilogout(request):
+    request.session.clear()
+    return redirect('universityloginpage')
 
 class Unisettings(View):
     def get(self,request):

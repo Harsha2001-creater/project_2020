@@ -18,12 +18,15 @@ from .views.unimediator import Uniappli
 from .views.unimediator import Unihome
 from .views.unimediator import Unisupport
 from .views.unimediator import Unisettings
+from .views.unimediator import Unilogout
 from .views.unihome1 import unihome1
 from .views.overview import overview
 from .views.stdportal import stdhome
 from .views.stdportal import stdnav
 from .views.stdportal import stdsaved
+from .views.stdportal import saved
 from .views.stdportal import stdunivlist
+from .views.stdportal import delete
 #from .views.stdportal import univsearch
 
 from .views.temp_pass import emailvalid
@@ -58,9 +61,11 @@ path('stddetail',stddetail.as_view(),name='stddetail'),
 path('applications',Uniappli,name='uniappli'),
 path('unihome',Unihome,name='unihome'),
 path('support',Unisupport,name='Unisupport'),
+path('Unilogout',Unilogout,name='Unilogout'),
 path('unisettings',Unisettings.as_view(),name='Unisettings'),
 path('unihome1',unihome1.as_view(),name='unihome1'),
-path('overview/<int:pk>/',overview.as_view(),name='overview'),
+path('overview/<str:name>/',overview.as_view(),name='overview'),
+path('saved/<str:name>/',saved.as_view(),name='saved'),
 path('overview',overview.as_view(),name='overview'),
 
 
@@ -68,14 +73,16 @@ path('overview',overview.as_view(),name='overview'),
 path('stdhome',stdhome,name='stdhome'),
 path('univsearch',stdunivlist,name='stdhome'),
 path('stdnav',stdnav,name='stdnav'),
-path('stdsaved',stdsaved,name='stdsaved'),
+path('stdsaved',saved.as_view(),name='stdsaved'),
 path('logout',logout,name='logout'),
 path('stdunivlist',stdunivlist,name='stdunivlist'),
 path('emailvalid',emailvalid.as_view(),name='emailvalid'),
 path('tempvalidator',tempvalidator.as_view(),name='tempvalidator'),
 
 path('payment',payment,name='payment'),
-path('universityportal',Universityportal.as_view(),name='universityportal')
+path('universityportal',Universityportal.as_view(),name='universityportal'),
+
+path('delete/<str:name>',delete,name='delete'),
 
 ]
 #urlpatterns+=staticfiles_urlpatterns

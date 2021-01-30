@@ -28,7 +28,7 @@ class Student(models.Model):
         except:
             return False
 
-    def IsExists(Email):
+    def IsExists(Email): 
         if Student.objects.filter(Email=Email) :
             return True
 
