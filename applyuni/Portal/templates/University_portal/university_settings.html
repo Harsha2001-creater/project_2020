@@ -387,24 +387,19 @@
                 </tr>
               </thead>
               <tbody>
+                {% for course in univ_courses %}
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>{{ course.Coursename }}</td>
+                  <td>{{ course.Duration1 }}</td>
+                  <td>{{ course.Amount1 }}</td>
+                  <td>Jan</td>
+                  <td>Opened</td>
+          
                 </tr>
               </tbody>
+                {% endfor %}
+              
             </table>            
           </div>
           <!--end-->

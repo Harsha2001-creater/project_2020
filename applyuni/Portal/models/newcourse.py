@@ -25,3 +25,5 @@ class Newcourse(models.Model):
     def register(self):
         self.save()
         return True
+
+   

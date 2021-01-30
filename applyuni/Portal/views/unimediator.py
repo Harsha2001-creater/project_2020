@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect,HttpResponseRedirect
 from django.http import HttpResponse
 from Portal.models.universityinfo import University
 from Portal.models.univdetail import Univdetail
+from Portal.models.newcourse import Newcourse
 from django.views import View
 
 def Uniappli(request):
@@ -16,6 +17,7 @@ class Unisettings(View):
         
         univdetail=Univdetail.get_univdetail_by_email(request.session['university_Email'])
         print("Nanda Anumolu")
+        univ_courses=Newcourse.objects.filter(Universitymail=request.session['university_Email'])
 
         value={'Institutemode': univdetail.Institutemode,'Institutetype': univdetail.Institutetype,'Year':univdetail.Year,'Rank':univdetail.Rank,'About':univdetail.About,'Campuses':univdetail.Campuses,
         'Departments' :univdetail.Departments,'Education':univdetail.Education,'Feeug':univdetail.Feeug,'Feepg':univdetail.Feepg,'Intake': univdetail.Intake,'Awards':univdetail.Awards,
@@ -27,7 +29,7 @@ class Unisettings(View):
         'Term2':univdetail.Term2,'Term3':univdetail.Term3,'Term4':univdetail.Term4,
         
         }
-        data={'value':value}
+        data={'value':value,'univ_courses':univ_courses}
 
         return render(request,'University_portal/university_settings.html',data)
     def post(self,request):
@@ -112,8 +114,8 @@ class Unisettings(View):
 
 
 
+        univ_courses=Newcourse.objects.filter(Universitymail=request.session['university_Email'])
 
 
-
-        data={'value':value}
+        data={'value':value,'univ_courses':univ_courses}
         return render(request,'University_portal/university_settings.html',data)

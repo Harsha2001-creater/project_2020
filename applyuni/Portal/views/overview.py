@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,HttpResponseRedirect
 from Portal.models.universityinfo import University
 from Portal.models.univdetail import Univdetail
+from Portal.models.newcourse import Newcourse
 from django.http import HttpResponse
 from django.views import View
 
@@ -13,6 +14,7 @@ class overview(View):
             print(objdetail.Universitymail)
             Email=objdetail.Universitymail
             
+        univ_courses=Newcourse.objects.filter(Universitymail=Email)    
         univdetail=Univdetail.get_univdetail_by_email(Email)
         print(univdetail)
         request.session['About']=univdetail.About
@@ -47,5 +49,5 @@ class overview(View):
         value={'Name':Name,'About':About,'Campuses':Campuses,
         'Departments':Departments,'Education':Education,'Intake':Intake,
         'Staff':Staff,'Students':Students,'Location':Location,'Phonenumber':Phonenumber,'Email':Email}
-        data={'value':value}
+        data={'value':value,'univ_courses':univ_courses}
         return render(request,'university_page/overview.html',data)

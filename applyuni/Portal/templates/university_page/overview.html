@@ -176,36 +176,13 @@ https://templatemo.com/tm-516-known
                <div class="container">
 
                     <div class="details" style="display: flex;justify-content: space-around;flex-wrap: wrap;align-content: space-between;height: 400px;">
+                        {% for course in univ_courses %}
                          <div class="campuses box">
-                              <h3 class="text-center" style="margin-top: 40px;">CSE</h3>
+                              <h3 class="text-center" style="margin-top: 40px;">{{ course.Coursename }}</h3>
 
 
                          </div>
-                         <div class="box">
-                              <h3 class="text-center" style="margin-top: 40px;">CIVIL</h3>
-
-
-                         </div>
-                         <div class="box">
-                              <h3 class="text-center" style="margin-top: 40px;">MECH</h3>
-
-
-                         </div>
-                         <div class="box">
-                              <h3 class="text-center" style="margin-top: 40px;">EEE</h3>
-
-
-                         </div>
-                         <div class="box">
-                              <h3 class="text-center" style="margin-top: 40px;">ECE</h3>
-
-
-                         </div>
-                         <div class="box">
-                              <h3 class="text-center" style="margin-top: 40px;">AUTO MOBILE</h3>
-
-
-                         </div>
+                         {% endfor %}
                     </div>
                </div>
 
