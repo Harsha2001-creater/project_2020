@@ -19,6 +19,8 @@ from .views.unimediator import Unihome
 from .views.unimediator import Unisupport
 from .views.unimediator import Unisettings
 from .views.unimediator import Unilogout
+#from .views.unimediator import passwordsettings
+
 from .views.unihome1 import unihome1
 from .views.overview import overview
 from .views.stdportal import stdhome
@@ -63,6 +65,7 @@ path('unihome',Unihome,name='unihome'),
 path('support',Unisupport,name='Unisupport'),
 path('Unilogout',Unilogout,name='Unilogout'),
 path('unisettings',Unisettings.as_view(),name='Unisettings'),
+
 path('unihome1',unihome1.as_view(),name='unihome1'),
 path('overview/<str:name>/',overview.as_view(),name='overview'),
 path('saved/<str:name>/',saved.as_view(),name='saved'),

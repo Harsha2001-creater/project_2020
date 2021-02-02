@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from Portal.models.universityinfo import University
 from Portal.models.univdetail import Univdetail
 from Portal.models.newcourse import Newcourse
+from django.contrib.auth.hashers import make_password,check_password
 from django.views import View
 
 def Uniappli(request):
@@ -17,7 +18,7 @@ def Unilogout(request):
 
 class Unisettings(View):
     def get(self,request):
-        
+
         univdetail=Univdetail.get_univdetail_by_email(request.session['university_Email'])
         print("Nanda Anumolu")
         univ_courses=Newcourse.objects.filter(Universitymail=request.session['university_Email'])
@@ -30,7 +31,7 @@ class Unisettings(View):
         'Applypro1':univdetail.Applypro1,'Applypro2':univdetail.Applypro2,'Applypro3':univdetail.Applypro3,'Applypro4':univdetail.Applypro4,'Doc1':univdetail.Doc1,'Doc2':univdetail.Doc2,
         'Doc3':univdetail.Doc3,'Doc4':univdetail.Doc4,'Doc5':univdetail.Doc5,'Doc6':univdetail.Doc6,'Doc7':univdetail.Doc7,'Doc8':univdetail.Doc8,'Doc9':univdetail.Doc9,'Term1':univdetail.Term1,
         'Term2':univdetail.Term2,'Term3':univdetail.Term3,'Term4':univdetail.Term4,
-        
+
         }
         data={'value':value,'univ_courses':univ_courses}
 
@@ -39,6 +40,7 @@ class Unisettings(View):
         Institutemode= request.POST.get('Institutemode')
         Institutetype= request.POST.get('Institutetype')
         Year=request.POST.get('Year')
+        print(Year)
         Rank=request.POST.get('Rank')
         About=request.POST.get('About')
         Campuses=request.POST.get('Campuses')
@@ -79,7 +81,6 @@ class Unisettings(View):
 
         #####course page
 
-        
 
         ####end
         value={'Institutemode': Institutemode,'Institutetype': Institutetype,'Year':Year,'Rank':Rank,'About':About,'Campuses':Campuses,
@@ -90,7 +91,7 @@ class Unisettings(View):
         'Applypro1':Applypro1,'Applypro2':Applypro2,'Applypro3':Applypro3,'Applypro4':Applypro4,'Doc1':Doc1,'Doc2':Doc2,
         'Doc3':Doc3,'Doc4':Doc4,'Doc5':Doc5,'Doc6':Doc6,'Doc7':Doc7,'Doc8':Doc8,'Doc9':Doc9,'Term1':Term1,
         'Term2':Term2,'Term3':Term3,'Term4':Term4
-        
+
         }
 
 
@@ -121,4 +122,30 @@ class Unisettings(View):
 
 
         data={'value':value,'univ_courses':univ_courses}
-        return render(request,'University_portal/university_settings.html',data)
+
+        #password
+        university1=University.get_university_by_email(request.session['university_Email'])
+        print(university1.Univcontactnumber)
+        a=university1.Password
+        Password=request.POST.get('Password')
+        Confirmpassword=request.POST.get('Confirmpassword')
+        Confirmpassword1=request.POST.get('Confirmpassword')
+        error_message=None
+        flag=check_password(Password,a)
+
+        if(flag):
+            if(Confirmpassword == Confirmpassword1):
+
+                university1.Password=make_password(Confirmpassword)
+                university1.Confirmpassword=make_password(Confirmpassword1)
+                university1.register()
+                return render(request,'University_portal/university_settings.html',data)
+            else:
+
+                error_message='Password and current password doesnt match !!!'
+                data['error']=error_message
+                return render(request,'University_portal/university_settings.html',data)
+        else:
+            error_message='Current Password is invalid!!!'
+            data['error']=error_message
+            return render(request,'University_portal/university_settings.html',data)

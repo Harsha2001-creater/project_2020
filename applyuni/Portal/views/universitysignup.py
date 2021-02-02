@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponseRedirect
 from django.http import HttpResponse
+from django.contrib.auth.hashers import make_password
 from Portal.models.universityinfo import University
 from django.views import View
 from django.shortcuts import render,redirect
@@ -25,5 +26,7 @@ class universitysignup(View):
             return render(request,'signup_forms/university_signup.html',{'error':error_message})
 
         else:
+            universitysignup.Password=make_password(universitysignup.Password)
+            universitysignup.Confirmpassword=make_password(universitysignup.Confirmpassword)
             universitysignup.register()
         return redirect('home')

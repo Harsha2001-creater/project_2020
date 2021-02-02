@@ -18,7 +18,7 @@
 
 <body>
   {% include "University_portal/universitynav.html" %}
-    
+
   <div class="container mt-5">
 
 
@@ -31,32 +31,46 @@
             href="#list-profile" role="tab" aria-controls="profile">Application Form</a>
           <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list"
             href="#list-messages" role="tab" aria-controls="messages">Courses</a>
-          
+
           <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
             href="#list-password" role="tab" aria-controls="settings">Password and Security</a>
         </div>
-        
-        <form action="/unisettings" method="POST">
+
+
         <div class="text-center mt-5">
+          <form action="/unisettings" method="post">
+            {% csrf_token %}
           <input type="submit" name="" value="Save and Continue" class="btn btn-primary">
+
         </div>
         </div>
-         
+
       <div class="col-8">
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
             <div class="container">
 
-                  {% csrf_token %}
+
 
                 <div class="mb-3 row">
                   <label for="type" class="col-sm-2 col-form-label">Institution Mode</label>
                   <div class="col-sm-10">
                     <select class="form-select" aria-label="Default select example" name="Institutemode" value="{{value.Institutemode}}">
-                      <option selected>Institution Mode</option>
-                      <option value="1">Public</option>
-                      <option value="2">Private</option>
-                      <option value="3">Semi</option>
+
+
+                      <option value="Public" selected >Public</option>
+                      {% if value.Institutemode == "Private" %}
+                      <option value="Private" selected>Private</option>
+                      {% else %}
+                      <option value="Private">Private</option>
+                      {% endif %}
+                      {% if value.Institutemode == "Semi" %}
+                      <option value="Semi" selected >Semi</option>
+                      {% else %}
+                      <option value="Semi">Semi</option>
+                      {% endif %}
+
+
                     </select>
                   </div>
                 </div>
@@ -64,10 +78,18 @@
                   <label for="type" class="col-sm-2 col-form-label">Insitution Type</label>
                   <div class="col-sm-10">
                     <select class="form-select" aria-label="Default select example" name="Institutetype" value="{{value.Institutetype}}">
-                      <option selected>Instution Type</option>
-                      <option value="1">College</option>
-                      <option value="2">University</option>
-                      <option value="3">Academy</option>
+                      <option value="College" selected >College</option>
+                      {% if value.Institutetype == 'University' %}
+                      <option value="University" selected >University</option>
+                      {% else %}
+                      <option value="University" >University</option>
+                      {% endif %}
+                      {% if value.Institutetype == 'Academy' %}
+                      <option value="Academy" selected >Academy</option>
+                      {% else %}
+                      <option value="Academy" >Academy</option>
+                      {% endif %}
+
                     </select>
                   </div>
                 </div>
@@ -124,10 +146,18 @@
                   <label for="type" class="col-sm-2 col-form-label">Level of Education Offered</label>
                   <div class="col-sm-10">
                     <select class="form-select" aria-label="Default select example" name="Education" value="{{value.Education}}">
-                      <option selected>Select Level of Education Offered</option>
-                      <option value="1">Undergraduate</option>
-                      <option value="2">Postgraduate</option>
-                      <option value="3">Both UG and PG</option>
+
+                      <option value="Undergraduate" selected >Undergraduate</option>
+                      {% if value.Education == 'Postgraduate' %}
+                      <option value="Postgraduate" selected >Postgraduate</option>
+                      {% else %}
+                    <option value="Postgraduate">Postgraduate</option>
+                      {% endif %}
+                      {% if value.Education == 'Both UG and PG' %}
+                      <option value="Both UG and PG" selected >Both UG and PG</option>
+                      {% else %}
+                      <option value="Both UG and PG">Both UG and PG</option>
+                      {% endif %}
                     </select>
                 </div>
                 </div>
@@ -137,18 +167,32 @@
                   <label for="type" class="col-sm-2 col-form-label">Fee Range</label>
                   <div class="col-sm-5">
                     <select class="form-select" aria-label="Default select example" name="Feeug" value="{{value.Feeug}}">
-                      <option selected>Fee Range for UG</option>
-                      <option value="1">0-2L</option>
-                      <option value="2">2-4L</option>
-                      <option value="3">more</option>
+                      <option value="0-2L" selected >0-2L</option>
+                      {% if value.Feeug == '2-4L' %}
+                      <option value="2-4L" selected>2-4L</option>
+                      {% else %}
+                      <option value="2-4L">2-4L</option>
+                      {% endif %}
+                      {% if value.Feeug == 'more' %}
+                      <option value="more" selected >more</option>
+                      {% else %}
+                      <option value="more">more</option>
+                      {% endif %}
                     </select>
                 </div>
                 <div class="col-sm-5">
                   <select class="form-select" aria-label="Default select example" name="Feepg" value="{{value.Feepg}}">
-                    <option selected>Fee Range for UG</option>
-                    <option value="1">0-2L</option>
-                    <option value="2">2-4L</option>
-                    <option value="3">more</option>
+                    <option value="0-2L" selected >0-2L</option>
+                    {% if value.Feepg == '2-4L' %}
+                    <option value="2-4L" selected>2-4L</option>
+                    {% else %}
+                    <option value="2-4L">2-4L</option>
+                    {% endif %}
+                    {% if value.Feepg == 'more' %}
+                    <option value="more" selected >more</option>
+                    {% else %}
+                    <option value="more">more</option>
+                    {% endif %}
                   </select>
               </div>
                 </div>
@@ -158,10 +202,17 @@
                   <label for="type" class="col-sm-2 col-form-label"> List of Intake</label>
                   <div class="col-sm-10">
                     <select class="form-select" aria-label="Default select example" name="Intake" value="{{value.Intake}}">
-                      <option selected>Select Intake type</option>
-                      <option value="1">Fall Sem</option>
-                      <option value="2">Spring Sem</option>
-                      <option value="3">Both Fall Sem and Spring Sem</option>
+                      <option value="Fall Sem" selected >Fall Sem</option>
+                      {% if value.Intake == 'Spring Sem' %}
+                      <option value="Spring Sem" selected >Spring Sem</option>
+                      {% else %}
+                      <option value="Spring Sem">Spring Sem</option>
+                      {% endif %}
+                      {% if value.Intake == 'Both Fall Sem and Spring Sem' %}
+                      <option value="Both Fall Sem and Spring Sem" selected >Both Fall Sem and Spring Sem</option>
+                      {% else %}
+                      <option value="Both Fall Sem and Spring Sem">Both Fall Sem and Spring Sem</option>
+                      {% endif %}
 
                     </select>
                 </div>
@@ -240,9 +291,12 @@
                 <label for="type" class="col-sm-2 col-form-label">Application Fee</label>
                 <div class="col-sm-4">
                   <select class="form-select" aria-label="Default select example" name="Applyfee" value="{{value.Applyfee}}">
-                    <option selected>Select</option>
-                    <option value="1">Applicable</option>
-                    <option value="2">Not Applicable</option>
+                    <option value="Applicable" selected >Applicable</option>
+                    {% if value.Applyfee == 'Not Applicable' %}
+                    <option value="Not Applicable" selected >Not Applicable</option>
+                    {% else %}
+                    <option value="Not Applicable">Not Applicable</option>
+                    {% endif %}
                   </select>
                 </div>
                 <div class="col-sm-3">
@@ -268,12 +322,30 @@
                 <label for="type" class="col-sm-2 col-form-label">Duration</label>
                 <div class="col-sm-10">
                     <select class="form-select" aria-label="Default select example" name="Duration" value="{{value.Duration}}">
-                        <option selected>Days</option>
-                        <option value="1">30 days</option>
-                        <option value="2">45 days</option>
-                        <option value="3">60 days</option>
-                        <option value="4">90 days</option>
-                        <option value="5">More</option>
+                        <option value="30 days" selected >30 days</option>
+                        {% if value.Duration == '45 days' %}
+                        <option value="45 days" selected >45 days</option>
+                        {% else %}
+                        <option value="45 days" >45 days</option>
+                        {% endif %}
+
+                        {% if value.Duration == '60 days' %}
+                        <option value="60 days" selected >60 days</option>
+                        {% else %}
+                        <option value="60 days">60 days</option>
+                        {% endif %}
+
+                        {% if value.Duration == '90 days' %}
+                        <option value="90 days" selected >90 days</option>
+                        {% else %}
+                        <option value="90 days">90 days</option>
+                        {% endif %}
+
+                        {% if value.Duration == 'More' %}
+                        <option value="More" selected >More</option>
+                        {% else %}
+                        <option value="More">More</option>
+                        {% endif %}
                       </select>
               </div>
               </div>
@@ -373,7 +445,7 @@
           </div>
           <!--course edit-->
 
-          
+
           <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
             <table class="table table-striped">
               <thead>
@@ -395,54 +467,54 @@
                   <td>{{ course.Amount1 }}</td>
                   <td>Jan</td>
                   <td>Opened</td>
-          
+
                 </tr>
               </tbody>
                 {% endfor %}
-              
-            </table>            
+
+            </table>
           </div>
+
+
           <!--end-->
-         
+
           <div class="tab-pane fade" id="list-password" role="tabpanel" aria-labelledby="list-settings-list">
             <div class="row">
-              <div class="col-sm-6">
-                <div class="card mb-3">
-                  <div class="card-body">
-                    <h3 class="card-title">Conatct Details</h3>
-                    <p class="card-text">Primary Email Address</p>
-                    <input type="email" readonly class="form-control">
-                    <br>
-                    <p class="card-text">Phone Number</p>
-                    <input type="tel" class="form-control"> <br>
-                    <div style="text-align: center;">
-                      <a href="#" class="btn btn-primary">Manage</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
               <div class="col-sm-6">
                 <div class="card">
                   <div class="card-body">
                     <h3 class="card-title">Password & Security</h3>
-                    <p class="card-text">Current Password</p>
-                    <input type="password" class="form-control">
+                    <p class="card-text" >Current Password</p>
+                    <input type="password" class="form-control" name="Password">
                     <br>
-                    <p class="card-text">New Password</p>
-                    <input type="password" class="form-control"> <br>
-                    <div style="text-align: center;">
-                      <a href="#" class="btn btn-primary">Manage</a>
+                    <p class="card-text" name="Password" >New Password</p>
+                    <input type="password" class="form-control" name="Confirmpassword"> <br>
+                    <p class="card-text" name="Confirmpassword" >Confirm Password</p>
+                    <input type="password" class="form-control" name="Confirmpassword"> <br>
+                    <div class="text-center mt-5">
+                      <a class="btn btn-primary" href="/unisettings">Reset</a>
                     </div>
+                    <div class="">
+                    {% if error %}
+                    <div class="alert alert-warning" role="alert">
+                        {{error}}
+                    </div>
+                    {% endif %}
+
+          </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
+      </form>
     </div>
-      
-   
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
       crossorigin="anonymous"></script>

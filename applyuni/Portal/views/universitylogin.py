@@ -14,11 +14,12 @@ class universitylogin(View):
     def post(self,request):
         Email=request.POST.get('Universitymail')
         Password=request.POST.get('Password')
+        
         university=University.get_university_by_email(Email)
         error_message= None
 
         if university:
-            flag= (Password==university.Password)
+            flag= check_password(Password,university.Password)
             if flag:
                 request.session['university_Email']=university.Universitymail
                 request.session['name']=university.Universityname
@@ -26,7 +27,7 @@ class universitylogin(View):
                     univdetail=Univdetail.get_univdetail_by_email(university.Universitymail)
                 print(univdetail)
                 if(univdetail):
-                    print("kis")
+
                     print(univdetail.Year)
                     """
                     value={'Institutemode': univdetail.Institutemode,'Institutetype': univdetail.Institutetype,'Year':univdetail.Year,'Rank':univdetail.Rank,'About':univdetail.About,'Campuses':univdetail.Campuses,
@@ -54,4 +55,3 @@ class universitylogin(View):
         else:
             error_message='Email is invalid!!!'
             return render(request,'login/universitylogin.html',{'error': error_message})
-
