@@ -7,41 +7,148 @@
 
     <!-- Bootstrap CSS -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
 
     <title>Applications</title>
-    <style>
-      .has-search .form-control {
-        padding-left: 2.375rem;
-      }
-
-      .has-search .form-control-feedback {
-        position: absolute;
-        z-index: 2;
-        display: block;
-        width: 2.375rem;
-        height: 2.375rem;
-        line-height: 2.375rem;
-        text-align: center;
-        pointer-events: none;
-        color: #aaa;
-      }
-    </style>
+    <style></style>
   </head>
 
   <body>
-    {% include "University_portal/universitynav.html" %}
-    <div class="container m-5">
+    {% extends "University_portal/universitynav.html" %} {% block content %}
+    <section class="mt-3">
+      <ul class="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a
+            class="nav-link active"
+            id="pills-home-tab"
+            data-bs-toggle="pill"
+            href="#pills-home"
+            role="tab"
+            aria-controls="pills-home"
+            aria-selected="true"
+            >Applied</a
+          >
+        </li>
+        <li class="nav-item" role="presentation">
+          <a
+            class="nav-link"
+            id="pills-profile-tab"
+            data-bs-toggle="pill"
+            href="#pills-profile"
+            role="tab"
+            aria-controls="pills-profile"
+            aria-selected="false"
+            >New Applications</a
+          >
+        </li>
+        <li class="nav-item" role="presentation">
+          <a
+            class="nav-link"
+            id="pills-profile-tab"
+            data-bs-toggle="pill"
+            href="#pills-profile"
+            role="tab"
+            aria-controls="pills-profile"
+            aria-selected="false"
+            >In Progress</a
+          >
+        </li>
+        <li class="nav-item" role="presentation">
+          <a
+            class="nav-link"
+            id="pills-contact-tab"
+            data-bs-toggle="pill"
+            href="#pills-contact"
+            role="tab"
+            aria-controls="pills-contact"
+            aria-selected="false"
+            >Rejected</a
+          >
+        </li>
+      </ul>
+      <div class="tab-content mt-2" id="pills-tabContent ">
+        <div
+          class="tab-pane fade show active mt-3"
+          id="pills-home"
+          role="tabpanel"
+          aria-labelledby="pills-home-tab"
+        >
+          <table
+            class="table"
+            style="border: 0.5px solid black; border-radius: 10px"
+          >
+            <thead style="border-top: 0.5px solid black">
+              <tr>
+                <th scope="col">S.no</th>
+                <th scope="col">Name</th>
+                <th scope="col">Program</th>
+                <th scope="col">Nationality</th>
+                <th scope="col">Intake</th>
+                <th scope="col">Application Date</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-profile"
+          role="tabpanel"
+          aria-labelledby="pills-profile-tab"
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita,
+          veniam? Expedita impedit minima dolores sapiente aspernatur magni
+          iusto voluptatum, dolore sed nulla vitae ipsum eos eum, nihil aliquam
+          provident dolorum!
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-contact"
+          role="tabpanel"
+          aria-labelledby="pills-contact-tab"
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Exercitationem doloremque, voluptates, omnis natus repellendus sed
+          cumque illo quae optio in alias nesciunt saepe animi, rerum nemo qui
+          cum voluptatum tempore!
+        </div>
+      </div>
+    </section>
+    {% endblock %}
+    <!--
+    <div class="container m-5" >
       <div class="row mt-3 mb-3">
         <div class="col">
           <h2>Applications</h2>
@@ -239,13 +346,21 @@
         </div>
       </div>
     </div>
+    -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-      crossorigin="anonymous"
-    ></script>
+
+    <script>
+      $("ul.tabs li").click(function () {
+        var tab_id = $(this).attr("href");
+
+        $("ul.tabs li").removeClass("current");
+        $(".tab-content").removeClass("current");
+
+        $(this).addClass("current");
+        $("#" + tab_id).addClass("current");
+      });
+    </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
