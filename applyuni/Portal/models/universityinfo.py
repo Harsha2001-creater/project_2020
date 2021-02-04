@@ -7,6 +7,7 @@ class University(models.Model):
     Universitymail=models.EmailField()
     Password=models.CharField(max_length=500)
     Confirmpassword=models.CharField(max_length=500)
+    temp_passuni= models.CharField(max_length=500,null=True)
 
     def __str__(self):
         return self.Universityname

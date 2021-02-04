@@ -33,6 +33,8 @@ from .views.stdportal import delete
 
 from .views.temp_pass import emailvalid
 from .views.temp_pass import tempvalidator
+from .views.temp_passuni import emailvalid1
+from .views.temp_passuni import tempvalidator1
 
 from .views.payment import payment
 
@@ -81,6 +83,10 @@ path('logout',logout,name='logout'),
 path('stdunivlist',stdunivlist,name='stdunivlist'),
 path('emailvalid',emailvalid.as_view(),name='emailvalid'),
 path('tempvalidator',tempvalidator.as_view(),name='tempvalidator'),
+
+path('emailvalid1',emailvalid1.as_view(),name='emailvalid1'),
+path('tempvalidator1',tempvalidator1.as_view(),name='tempvalidator1'),
+
 
 path('payment',payment,name='payment'),
 path('universityportal',Universityportal.as_view(),name='universityportal'),
