@@ -129,7 +129,7 @@ class Unisettings(View):
         a=university1.Password
         Password=request.POST.get('Password')
         Confirmpassword=request.POST.get('Confirmpassword')
-        Confirmpassword1=request.POST.get('Confirmpassword')
+        Confirmpassword1=request.POST.get('Confirmpassword1')
         error_message=None
         flag=check_password(Password,a)
 

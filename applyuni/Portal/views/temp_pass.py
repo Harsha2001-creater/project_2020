@@ -50,7 +50,7 @@ class tempvalidator(View):
             print("nanda")
             student.Password=make_password(Password)
             student.Confirmpassword=make_password(Confirmpassword)
-            student.temp_pass=None
+            #student.temp_pass=None
             student.register()
             print(student.Password)
             return render(request,'login/studentlogin.html')
