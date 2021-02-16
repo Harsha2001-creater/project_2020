@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib.auth.hashers import check_password
 from Portal.models.universityinfo import University
@@ -42,7 +42,7 @@ class universitylogin(View):
                     return redirect('unihome')
                 else:
                     #return render(request,'University_portal/university_settings.html')
-                    return rediect('unihome')
+                    return redirect('unihome')
                 '''
                 if universitylogin.return_url():
                     return HttpResponseRedirect(return_url)
