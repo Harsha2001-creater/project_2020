@@ -42,7 +42,7 @@ class universitylogin(View):
                     return redirect('unihome')
                 else:
                     #return render(request,'University_portal/university_settings.html')
-                    return rediect('unihome')
+                    return redirect('unihome')
                 '''
                 if universitylogin.return_url():
                     return HttpResponseRedirect(return_url)
