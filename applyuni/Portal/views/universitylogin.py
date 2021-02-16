@@ -14,7 +14,7 @@ class universitylogin(View):
     def post(self,request):
         Email=request.POST.get('Universitymail')
         Password=request.POST.get('Password')
-        
+
         university=University.get_university_by_email(Email)
         error_message= None
 
@@ -39,9 +39,10 @@ class universitylogin(View):
                     'Doc3':univdetail.Doc3,'Doc4':univdetail.Doc4,'Doc5':univdetail.Doc5,'Doc6':univdetail.Doc6,'Doc7':univdetail.Doc7,'Doc8':univdetail.Doc8,'Doc9':univdetail.Doc9,'Term1':univdetail.Term1,
                     'Term2':univdetail.Term2,'Term3':univdetail.Term3,'Term4':univdetail.Term4}
                     data={'value':value}"""
-                    return redirect('Unisettings')
+                    return redirect('unihome')
                 else:
-                    return render(request,'University_portal/university_settings.html')
+                    #return render(request,'University_portal/university_settings.html')
+                    return redirect('unihome')
                 '''
                 if universitylogin.return_url():
                     return HttpResponseRedirect(return_url)

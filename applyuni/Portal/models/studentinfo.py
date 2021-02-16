@@ -11,7 +11,7 @@ class Student(models.Model):
     Phonenumber= models.CharField(max_length=50)
     Password = models.CharField(max_length=500)
     Confirmpassword = models.CharField(max_length=500)
-    
+    #temp_pass= models.CharField(max_length=500,null= True)
 
     def __str__(self):
         return self.Firstname
@@ -28,7 +28,7 @@ class Student(models.Model):
         except:
             return False
 
-    def IsExists(Email): 
+    def IsExists(Email):
         if Student.objects.filter(Email=Email) :
             return True
 

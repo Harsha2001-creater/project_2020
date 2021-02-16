@@ -36,4 +36,3 @@ class Universityportal(View):
         newcourse.register()
 
         return redirect('Unisettings')
-
