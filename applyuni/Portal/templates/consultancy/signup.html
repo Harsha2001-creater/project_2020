@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Animated Login Form</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static '/css/loginandsignup.css' %}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <img class="wave" src="{% static 'images/wave.png' %}" />
+    <div class="container">
+      <div class="img">
+        <img src="{% static 'images/bg.svg' %}" />
+      </div>
+      <div class="login-content">
+        <form action="/universitysignup" method="POST">
+          {% csrf_token %}
+          <h2 class="title">Welcome</h2>
+          <div class="input-div one">
+            <div class="i">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="div">
+              <h5>Name</h5>
+
+              <input type="text" name="Universityname" class="input" />
+            </div>
+          </div>
+          <div class="input-div pass">
+            <div class="i">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="div">
+              <h5>Phonenumber</h5>
+              <input type="text" name="Univcontactnumber" class="input" />
+            </div>
+          </div>
+          <div class="input-div pass">
+            <div class="i">
+              <i class="fas fa-envelope"></i>
+            </div>
+            
+            <div class="div">
+              <h5> Mail Id</h5>
+              <input type="email" name="Universitymail" class="input" />
+            </div>
+          </div>
+          <div class="input-div pass">
+            <div class="i">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="div">
+              <h5>Pasword</h5>
+              <input class="input" type="password" name="Password" />
+            </div>
+          </div>
+          <div class="input-div pass">
+            <div class="i">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="div">
+              <h5>Confirm Password</h5>
+              <input class="input" type="password" name="Confirmpassword" />
+            </div>
+          </div>
+
+          <input type="submit" class="btn" value="Register" />
+        </form>
+        <div class="">
+        {% if error %}
+        <div class="alert alert-warning" role="alert">
+            {{error}}
+        </div>
+        {% endif %}
+
+</div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      const inputs = document.querySelectorAll(".input");
+
+      function addcl() {
+        let parent = this.parentNode.parentNode;
+        parent.classList.add("focus");
+      }
+
+      function remcl() {
+        let parent = this.parentNode.parentNode;
+        if (this.value == "") {
+          parent.classList.remove("focus");
+        }
+      }
+
+      inputs.forEach((input) => {
+        input.addEventListener("focus", addcl);
+        input.addEventListener("blur", remcl);
+      });
+    </script>
+  </body>
+</html>

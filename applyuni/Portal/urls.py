@@ -40,6 +40,8 @@ from .views.payment import payment
 
 from .views.universityportal import Universityportal
 
+from .views.consultancy import Cons
+
 #from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns=[
@@ -93,5 +95,6 @@ path('universityportal',Universityportal.as_view(),name='universityportal'),
 
 path('delete/<str:name>',delete,name='delete'),
 
+path('consultancy_login',Cons,name='conlogin'),
 ]
 #urlpatterns+=staticfiles_urlpatterns
