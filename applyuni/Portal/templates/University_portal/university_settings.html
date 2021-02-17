@@ -12,15 +12,51 @@
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-
   <title>Password_security-apply Uni</title>
 </head>
+<style media="screen">
 
+article {
+  width: 300px;
+  text-align: center;
+  background-color: #68b04d;
+  border-radius: 10px;
+  margin: 50px auto 20px;
+  padding: 5px;
+  overflow: hidden;
+  box-shadow: 3px 3px 10px #ccc;
+  position: relative;
+  top:1px;
+}
+
+article h3 {
+  padding: 10px;
+  color: #fff;
+  width:100%;
+}
+article .count {
+  padding: 5px;
+    width:100%;
+}
+article #timer{
+  padding: 5px;
+  color: crimson;
+  background-color: aliceblue;
+  border-radius: 2px;
+  width:100%;
+}
+</style>
 <body>
   {% include "University_portal/universitynav.html" %}
 
   <div class="container mt-5">
+    <article class="clock" id="model3" >
+      <h3 style="width:100%" ></h3>
 
+      <div class="count">
+        <div id="timer"></div>
+      </div>
+    </article>
 
     <div class="row">
       <div class="col-4">
@@ -38,9 +74,7 @@
 
 
         <div class="text-center mt-5">
-          <form action="/unisettings" method="post">
-            {% csrf_token %}
-          <input type="submit" name="" value="Save and Continue" class="btn btn-primary">
+
 
         </div>
         </div>
@@ -48,11 +82,14 @@
       <div class="col-8">
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+
             <div class="container">
 
 
-
                 <div class="mb-3 row">
+                  <form action="/unisettings" method="post">
+                    {% csrf_token %}
+
                   <label for="type" class="col-sm-2 col-form-label">Institution Mode</label>
                   <div class="col-sm-10">
                     <select class="form-select" aria-label="Default select example" name="Institutemode" value="{{value.Institutemode}}">
@@ -272,7 +309,8 @@
                     <input type="email" name="Email"  class="form-control" value="{{value.Email}}" >
                 </div>
                 </div>
-
+<input type="submit" name="" value="Save and Continue" class="btn btn-primary">
+</form>
 
 
 
@@ -288,6 +326,8 @@
 
 
               <div class="mb-3 row">
+                <form action="/unisettings" method="post">
+                  {% csrf_token %}
                 <label for="type" class="col-sm-2 col-form-label">Application Fee</label>
                 <div class="col-sm-4">
                   <select class="form-select" aria-label="Default select example" name="Applyfee" value="{{value.Applyfee}}">
@@ -442,7 +482,10 @@
 
               </div>
               </div>
+              <input type="submit" name="" value="Save and Continue" class="btn btn-primary">
+              </form>
           </div>
+
           <!--course edit-->
 
 
@@ -479,6 +522,8 @@
           <!--end-->
 
           <div class="tab-pane fade" id="list-password" role="tabpanel" aria-labelledby="list-settings-list">
+            <form action="/unisettings" method="post">
+              {% csrf_token %}
             <div class="row">
 
               <div class="col-sm-6">
@@ -507,11 +552,13 @@
                 </div>
               </div>
             </div>
+            <input type="submit" name="" value="Save and Continue" class="btn btn-primary">
+            </form>
           </div>
 
         </div>
       </div>
-      </form>
+
     </div>
 
 
@@ -519,6 +566,51 @@
       integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
       crossorigin="anonymous"></script>
 
+  <script>
+  var h3 = document.getElementsByTagName("h3");
+h3[0].innerHTML = "Countdown To Fill Form";
+
+var sec         = 1800,
+  countDiv    = document.getElementById("timer"),
+  secpass,
+  countDown   = setInterval(function () {
+      'use strict';
+
+      secpass();
+  }, 1000);
+
+function secpass() {
+  'use strict';
+
+  var min     = Math.floor(sec / 60),
+      remSec  = sec % 60;
+
+  if (remSec < 10) {
+
+      remSec = '0' + remSec;
+
+  }
+  if (min < 10) {
+
+      min = '0' + min;
+
+  }
+  countDiv.innerHTML = min + ":" + remSec;
+
+  if (sec > 0) {
+
+      sec = sec - 1;
+
+  } else {
+
+      clearInterval(countDown);
+
+      countDiv.innerHTML = 'countdown done';
+
+  }
+}
+
+  </script>
 </body>
 
 </html>
