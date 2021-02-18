@@ -1,616 +1,304 @@
-<!doctype html>
+
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static '/css/settings.css' %}" />
+    
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <title>Password_security-apply Uni</title>
+  </head>
+  <style media="screen">
+    article {
+      width: 300px;
+      text-align: center;
+      background-color: #68b04d;
+      border-radius: 10px;
+      margin: 50px auto 20px;
+      padding: 5px;
+      overflow: hidden;
+      box-shadow: 3px 3px 10px #ccc;
+      position: relative;
+      top: 1px;
+    }
 
-  <title>Password_security-apply Uni</title>
-</head>
-<style media="screen">
-
-article {
-  width: 300px;
-  text-align: center;
-  background-color: #68b04d;
-  border-radius: 10px;
-  margin: 50px auto 20px;
-  padding: 5px;
-  overflow: hidden;
-  box-shadow: 3px 3px 10px #ccc;
+    article h3 {
+      padding: 10px;
+      color: #fff;
+      width: 100%;
+    }
+    article .count {
+      padding: 5px;
+      width: 100%;
+    }
+    article #timer {
+      padding: 5px;
+      color: crimson;
+      background-color: aliceblue;
+      border-radius: 2px;
+      width: 100%;
+    }
+    
+.form-group {
   position: relative;
-  top:1px;
+  margin-bottom: 1.5rem;
 }
 
-article h3 {
-  padding: 10px;
-  color: #fff;
-  width:100%;
+.form-control-placeholder {
+  position: absolute;
+  top: 0;
+  padding: 7px 0 0 13px;
+  transition: all 200ms;
+  opacity: 0.5;
 }
-article .count {
-  padding: 5px;
-    width:100%;
+
+.form-control:focus + .form-control-placeholder,
+.form-control:valid + .form-control-placeholder {
+  font-size: 75%;
+  transform: translate3d(0, -100%, 0);
+  margin-top: -10px;
+  opacity: 1;
 }
-article #timer{
-  padding: 5px;
-  color: crimson;
-  background-color: aliceblue;
-  border-radius: 2px;
-  width:100%;
-}
-</style>
-<body>
-  {% include "University_portal/universitynav.html" %}
-
-  <div class="container mt-5">
-    <article class="clock" id="model3" >
-      <h3 style="width:100%" ></h3>
-
-      <div class="count">
-        <div id="timer"></div>
-      </div>
-    </article>
-
-    <div class="row">
-      <div class="col-4">
-        <div class="list-group" id="list-tab" role="tablist">
-          <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
-            href="#list-home" role="tab" aria-controls="home">General</a>
-          <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
-            href="#list-profile" role="tab" aria-controls="profile">Application Form</a>
-          <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list"
-            href="#list-messages" role="tab" aria-controls="messages">Courses</a>
-
-          <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
-            href="#list-password" role="tab" aria-controls="settings">Password and Security</a>
-        </div>
-
-
-        <div class="text-center mt-5">
-
-
-        </div>
-        </div>
-
-      <div class="col-8">
-        <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-
-            <div class="container">
-
-
-                <div class="mb-3 row">
-                  <form action="/unisettings" method="post">
-                    {% csrf_token %}
-
-                  <label for="type" class="col-sm-2 col-form-label">Institution Mode</label>
-                  <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" name="Institutemode" value="{{value.Institutemode}}">
-
-
-                      <option value="Public" selected >Public</option>
-                      {% if value.Institutemode == "Private" %}
-                      <option value="Private" selected>Private</option>
-                      {% else %}
-                      <option value="Private">Private</option>
-                      {% endif %}
-                      {% if value.Institutemode == "Semi" %}
-                      <option value="Semi" selected >Semi</option>
-                      {% else %}
-                      <option value="Semi">Semi</option>
-                      {% endif %}
-
-
-                    </select>
-                  </div>
-                </div>
-                <div class="mb-3 row">
-                  <label for="type" class="col-sm-2 col-form-label">Insitution Type</label>
-                  <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" name="Institutetype" value="{{value.Institutetype}}">
-                      <option value="College" selected >College</option>
-                      {% if value.Institutetype == 'University' %}
-                      <option value="University" selected >University</option>
-                      {% else %}
-                      <option value="University" >University</option>
-                      {% endif %}
-                      {% if value.Institutetype == 'Academy' %}
-                      <option value="Academy" selected >Academy</option>
-                      {% else %}
-                      <option value="Academy" >Academy</option>
-                      {% endif %}
-
-                    </select>
-                  </div>
-                </div>
-
-
-
-
-                <div class="mb-3 row">
-                  <label for="type" class="col-sm-2 col-form-label">Year Established</label>
-                  <div class="col-sm-10">
-                    <input type="numbers" class="form-control" name="Year" value="{{value.Year}}" >
-                </div>
-                </div>
-
-                <!--World Ranking-->
-
-                <div class="mb-3 row">
-                  <label for="type" class="col-sm-2 col-form-label">World Ranking</label>
-                  <div class="col-sm-10">
-                    <input type="numbers" class="form-control" name="Rank" value="{{value.Rank}}" >
-                </div>
-                </div>
-
-                <!--About-->
-
-                <div class="mb-3 row">
-                  <label for="type" class="col-sm-2 col-form-label">About</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" name="About"  rows='10' cols="20" value="{{value.About}}">
-
-                    </input>
-                </div>
-                </div>
-
-                <!--no.of campus-->
-
-                <div class="mb-3 row">
-                  <label for="type" class="col-sm-2 col-form-label">Number of campuses</label>
-                  <div class="col-sm-10">
-                    <input type="numbers" class="form-control" name="Campuses" value="{{value.Campuses}}" >
-                </div>
-                </div>
-
-                <!--dept-->
-                <div class="mb-3 row">
-                  <label for="type" class="col-sm-2 col-form-label">Number of Departments</label>
-                  <div class="col-sm-10">
-                    <input type="numbers" class="form-control" name="Departments" value="{{value.Departments}}" >
-                </div>
-                </div>
-
-                <!--Education Offered-->
-                <div class="mb-3 row">
-                  <label for="type" class="col-sm-2 col-form-label">Level of Education Offered</label>
-                  <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" name="Education" value="{{value.Education}}">
-
-                      <option value="Undergraduate" selected >Undergraduate</option>
-                      {% if value.Education == 'Postgraduate' %}
-                      <option value="Postgraduate" selected >Postgraduate</option>
-                      {% else %}
-                    <option value="Postgraduate">Postgraduate</option>
-                      {% endif %}
-                      {% if value.Education == 'Both UG and PG' %}
-                      <option value="Both UG and PG" selected >Both UG and PG</option>
-                      {% else %}
-                      <option value="Both UG and PG">Both UG and PG</option>
-                      {% endif %}
-                    </select>
-                </div>
-                </div>
-                <!--Fee range-->
-
-                <div class="mb-3 row">
-                  <label for="type" class="col-sm-2 col-form-label">Fee Range</label>
-                  <div class="col-sm-5">
-                    <select class="form-select" aria-label="Default select example" name="Feeug" value="{{value.Feeug}}">
-                      <option value="0-2L" selected >0-2L</option>
-                      {% if value.Feeug == '2-4L' %}
-                      <option value="2-4L" selected>2-4L</option>
-                      {% else %}
-                      <option value="2-4L">2-4L</option>
-                      {% endif %}
-                      {% if value.Feeug == 'more' %}
-                      <option value="more" selected >more</option>
-                      {% else %}
-                      <option value="more">more</option>
-                      {% endif %}
-                    </select>
-                </div>
-                <div class="col-sm-5">
-                  <select class="form-select" aria-label="Default select example" name="Feepg" value="{{value.Feepg}}">
-                    <option value="0-2L" selected >0-2L</option>
-                    {% if value.Feepg == '2-4L' %}
-                    <option value="2-4L" selected>2-4L</option>
-                    {% else %}
-                    <option value="2-4L">2-4L</option>
-                    {% endif %}
-                    {% if value.Feepg == 'more' %}
-                    <option value="more" selected >more</option>
-                    {% else %}
-                    <option value="more">more</option>
-                    {% endif %}
-                  </select>
-              </div>
-                </div>
-
-                <!--Intakes-->
-                <div class="mb-3 row">
-                  <label for="type" class="col-sm-2 col-form-label"> List of Intake</label>
-                  <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" name="Intake" value="{{value.Intake}}">
-                      <option value="Fall Sem" selected >Fall Sem</option>
-                      {% if value.Intake == 'Spring Sem' %}
-                      <option value="Spring Sem" selected >Spring Sem</option>
-                      {% else %}
-                      <option value="Spring Sem">Spring Sem</option>
-                      {% endif %}
-                      {% if value.Intake == 'Both Fall Sem and Spring Sem' %}
-                      <option value="Both Fall Sem and Spring Sem" selected >Both Fall Sem and Spring Sem</option>
-                      {% else %}
-                      <option value="Both Fall Sem and Spring Sem">Both Fall Sem and Spring Sem</option>
-                      {% endif %}
-
-                    </select>
-                </div>
-                </div>
-                <!--Awarding body-->
-                <div class="mb-3 row">
-                  <label for="type" class="col-sm-2 col-form-label">Awards</label>
-                  <div class="col-sm-10">
-                    <div data-role="rangeslider">
-
-                      <input type="text" class="form-control" name="Awards" value="{{value.Awards}}">
-
-                    </div>
-                </div>
-                </div>
-
-
-
-                <!--no.of staffs-->
-                <div class="mb-3 row">
-                  <label for="type" class="col-sm-2 col-form-label">Number of staffs</label>
-                  <div class="col-sm-10">
-
-                      <input type="text" name="Staff"  class="form-control" value="{{value.Staff}}">
-
-                </div>
-                </div>
-                <!--no.of students-->
-                <div class="mb-3 row">
-                  <label for="type" class="col-sm-2 col-form-label">Number of Students</label>
-                  <div class="col-sm-10">
-
-                      <input type="text" name="Students" class="form-control" value="{{value.Students}}">
-
-                </div>
-                </div>
-                <!--Location-->
-                <div class="mb-3 row">
-                  <label for="type" class="col-sm-2 col-form-label">Address</label>
-                  <div class="col-sm-10">
-
-                      <input type="text" name="Location"  class="form-control" value="{{value.Location}}">
-
-                </div>
-                </div>
-                <!--COntact information-->
-                <div class="mb-3 row">
-                  <label for="type" class="col-sm-2 col-form-label">Phone</label>
-                  <div class="col-sm-10">
-                    <input type="numbersd" name="Phonenumber"  class="form-control" value="{{value.Phonenumber}}">
-                </div>
-                </div>
-
-                <div class="mb-3 row">
-                  <label for="type" class="col-sm-2 col-form-label">Email</label>
-                  <div class="col-sm-10">
-                    <input type="email" name="Email"  class="form-control" value="{{value.Email}}" >
-                </div>
-                </div>
-<input type="submit" name="" value="Save and Continue" class="btn btn-primary">
-</form>
-
-
-
-
-
-
-
-
+  </style>
+  <body>
+    {% include "University_portal/universitynav.html" %}
+   
+     {% block content %}
+     <div class="container overflow-hidden mt-5">
+      <!--multisteps-form-->
+      <div class="multisteps-form">
+        <!--progress bar-->
+        <div class="row">
+          <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
+            <div class="multisteps-form__progress">
+              <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">User Info</button>
+              <button class="multisteps-form__progress-btn" type="button" title="Address">Address</button>
+              <button class="multisteps-form__progress-btn" type="button" title="Order Info">Order Info</button>
+              <button class="multisteps-form__progress-btn" type="button" title="Comments">Comments        </button>
             </div>
           </div>
-
-          <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-
-
-              <div class="mb-3 row">
-                <form action="/unisettings" method="post">
-                  {% csrf_token %}
-                <label for="type" class="col-sm-2 col-form-label">Application Fee</label>
-                <div class="col-sm-4">
-                  <select class="form-select" aria-label="Default select example" name="Applyfee" value="{{value.Applyfee}}">
-                    <option value="Applicable" selected >Applicable</option>
-                    {% if value.Applyfee == 'Not Applicable' %}
-                    <option value="Not Applicable" selected >Not Applicable</option>
-                    {% else %}
-                    <option value="Not Applicable">Not Applicable</option>
-                    {% endif %}
-                  </select>
-                </div>
-                <div class="col-sm-3">
-                    <input type="numbers" class="form-control" name="Currency" placeholder="currency Type" value="{{value.Currency}}">
-                </div>
-                <div class="col-sm-3">
-                    <input type="numbers" class="form-control" name="Amount"  placeholder="amount" value="{{value.Amount}}">
-                </div>
-
-              </div>
-              <div class="mb-3 row">
-                <label for="type" class="col-sm-2 col-form-label">Application Form</label>
-                <div class="col-sm-10">
-                  <input type="file" class="form-control" name="Applyform" value="{{value.Applyform}}">
-                </div>
-
-              </div>
-
-
-
-
-              <div class="mb-3 row">
-                <label for="type" class="col-sm-2 col-form-label">Duration</label>
-                <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" name="Duration" value="{{value.Duration}}">
-                        <option value="30 days" selected >30 days</option>
-                        {% if value.Duration == '45 days' %}
-                        <option value="45 days" selected >45 days</option>
-                        {% else %}
-                        <option value="45 days" >45 days</option>
-                        {% endif %}
-
-                        {% if value.Duration == '60 days' %}
-                        <option value="60 days" selected >60 days</option>
-                        {% else %}
-                        <option value="60 days">60 days</option>
-                        {% endif %}
-
-                        {% if value.Duration == '90 days' %}
-                        <option value="90 days" selected >90 days</option>
-                        {% else %}
-                        <option value="90 days">90 days</option>
-                        {% endif %}
-
-                        {% if value.Duration == 'More' %}
-                        <option value="More" selected >More</option>
-                        {% else %}
-                        <option value="More">More</option>
-                        {% endif %}
+        </div>
+        <!--form panels-->
+        <div class="row">
+          <div class="col-12 col-lg-8 m-auto">
+            <form class="multisteps-form__form">
+              <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn">
+                <h3 class="multisteps-form__title">Genaral Information</h3>
+                <div class="multisteps-form__content">
+                  <div class="form-row mt-4">
+                    <div class="col-12 col-sm-6">
+                      <select class="multisteps-form__select form-control">
+                        <option selected="selected">University model</option>
+                        <option>Public </option>
+                        <option>Private </option>
+                        <option>Semi</option>
                       </select>
-              </div>
-              </div>
-
-              <!--World Ranking-->
-
-              <div class="mb-3 row">
-                <label for="type" class="col-sm-2 col-form-label">Application Procedure</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="Applypro1" value="{{value.Applypro1}}" placeholder="stage-1"></input><br>
-                  <input type="text" class="form-control" name="Applypro2" value="{{value.Applypro2}}" placeholder="stage-2"></input><br>
-                  <input type="text" class="form-control" name="Applypro3" value="{{value.Applypro3}}" placeholder="stage-3"></input><br>
-                  <input type="text" class="form-control" name="Applypro4" value="{{value.Applypro4}}" placeholder="stage-4"></input>
-
-              </div>
-              </div>
-
-              <!--About-->
-
-              <div class="mb-3 row">
-                <label for="type" class="col-sm-2 col-form-label">Documents Required</label>
-                <div class="col-sm-4">
-                    <select class="form-select" aria-label="Default select example" name="Doc1" value="{{value.Doc1}">
-                      <option selected>Personal Documents</option>
-                      <option value="1">Doc-1</option>
-                      <option value="2">Doc-2</option>
-                      <option value="3">Doc-3</option>
-                    </select><br>
-                    <select class="form-select" aria-label="Default select example" name="Doc2" value="{{value.Doc2}">
-                        <option selected>Personal Documents</option>
-                        <option value="1">Doc-1</option>
-                        <option value="2">Doc-2</option>
-                        <option value="3">Doc-3</option>
-                      </select><br>
-                      <select class="form-select" aria-label="Default select example" name="Doc3" value="{{value.Doc3}">
-                        <option selected>Personal Documents</option>
-                        <option value="1">Doc-1</option>
-                        <option value="2">Doc-2</option>
-                        <option value="3">Doc-3</option>
-                      </select>
-                  </div>
-                  <div class="col-sm-3">
-                    <select class="form-select" aria-label="Default select example" name="Doc4" value="{{value.Doc4}">
-                        <option selected>Academic Documents</option>
-                        <option value="1">Doc-1</option>
-                        <option value="2">Doc-2</option>
-                        <option value="3">Doc-3</option>
-                      </select><br>
-                      <select class="form-select" aria-label="Default select example" name="Doc5" value="{{value.Doc5}">
-                        <option selected>Academic Documents</option>
-                        <option value="1">Doc-1</option>
-                        <option value="2">Doc-2</option>
-                        <option value="3">Doc-3</option>
-                      </select><br>
-                      <select class="form-select" aria-label="Default select example" name="Doc6" value="{{value.Doc6}">
-                        <option selected>Academic Documents</option>
-                        <option value="1">Doc-1</option>
-                        <option value="2">Doc-2</option>
-                        <option value="3">Doc-3</option>
-                      </select>
-                  </div>
-                  <div class="col-sm-3">
-                    <select class="form-select" aria-label="Default select example" name="Doc7" value="{{value.Doc7}">
-                        <option selected>Professional Qualification</option>
-                        <option value="1">Doc-1</option>
-                        <option value="2">Doc-2</option>
-                        <option value="3">Doc-3</option>
-                      </select><br>
-                      <select class="form-select" aria-label="Default select example" name="Doc8" value="{{value.Doc8}">
-                        <option selected>Professional Qualification</option>
-                        <option value="1">Doc-1</option>
-                        <option value="2">Doc-2</option>
-                        <option value="3">Doc-3</option>
-                      </select><br>
-                      <select class="form-select" aria-label="Default select example" name="Doc9" value="{{value.Doc9}">
-                        <option selected>Professional Qualification</option>
-                        <option value="1">Doc-1</option>
-                        <option value="2">Doc-2</option>
-                        <option value="3">Doc-3</option>
-                      </select>
-                  </div>
-
-              </div>
-
-              <!--terms and conditons-->
-
-              <div class="mb-3 row">
-                <label for="type" class="col-sm-2 col-form-label">Terms and Conditions</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="Term1" value="{{value.Term1}}" placeholder="term-1"></input><br>
-                  <input type="text" class="form-control" name="Term2" value="{{value.Term2}}" placeholder="Term-2"></input><br>
-                  <input type="text" class="form-control" name="Term3" value="{{value.Term3}}" placeholder="Term-3"></input><br>
-                  <input type="text" class="form-control" name="Term4" value="{{value.Term4}}" placeholder="Term-4"></input>
-
-              </div>
-              </div>
-              <input type="submit" name="" value="Save and Continue" class="btn btn-primary">
-              </form>
-          </div>
-
-          <!--course edit-->
-
-
-          <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Program</th>
-                  <th scope="col">Duration</th>
-                  <th scope="col">Fee</th>
-                  <th scope="col">Opened Intakes</th>
-                  <th scope="col">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for course in univ_courses %}
-                <tr>
-                  <th scope="row">{{ forloop.counter }}</th>
-                  <td>{{ course.Coursename }}</td>
-                  <td>{{ course.Duration1 }}</td>
-                  <td>{{ course.Amount1 }}</td>
-                  <td>Jan</td>
-                  <td>Opened</td>
-
-                </tr>
-              </tbody>
-                {% endfor %}
-
-            </table>
-          </div>
-
-
-          <!--end-->
-
-          <div class="tab-pane fade" id="list-password" role="tabpanel" aria-labelledby="list-settings-list">
-            <form action="/unisettings" method="post">
-              {% csrf_token %}
-            <div class="row">
-
-              <div class="col-sm-6">
-                <div class="card">
-                  <div class="card-body">
-                    <h3 class="card-title">Password & Security</h3>
-                    <p class="card-text" >Current Password</p>
-                    <input type="password" class="form-control" name="Password">
-                    <br>
-                    <p class="card-text" name="Password" >New Password</p>
-                    <input type="password" class="form-control" name="Confirmpassword"> <br>
-                    <p class="card-text" name="Confirmpassword" >Confirm Password</p>
-                    <input type="password" class="form-control" name="Confirmpassword1"> <br>
-                    <div class="text-center mt-5">
-                      <!--<a class="btn btn-primary" href="/unisettings">Reset</a>-->
                     </div>
-                    <div class="">
-                    {% if error %}
-                    <div class="alert alert-warning" role="alert">
-                        {{error}}
+                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                      <select class="multisteps-form__select form-control">
+                        <option selected="selected">University Type</option>
+                        <option>Collage</option>
+                        <option>University </option>
+                        <option>Academy</option>
+                      </select>
                     </div>
-                    {% endif %}
-
-          </div>
+                  </div>
+                  <div class="form-row mt-4">
+                    <div class="col-12 col-sm-6">
+                      <input class="multisteps-form__input form-control" type="text" placeholder="Year Established"/>
+                    </div>
+                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                      <input class="multisteps-form__input form-control" type="email" placeholder="World Ranking"/>
+                    </div>
+                  </div>
+                  <div class="form-row mt-4">
+                   <div class="col-12 ">
+                    <textarea class="multisteps-form__textarea form-control" placeholder="Tell us about the university"></textarea>
+                   </div>                    
+                  </div>
+                  <div class="form-row mt-4">
+                    <div class="col-12 col-sm-6">
+                      <input class="multisteps-form__input form-control" type="text" placeholder="No.of Campuses"/>
+                    </div>
+                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                      <input class="multisteps-form__input form-control" type="email" placeholder="No.of Faculties "/>
+                    </div>
+                  </div>
+                  <div class="form-row mt-4">
+                    <div class="col-12 col-sm-6">
+                      <select class="multisteps-form__select form-control">
+                        <option selected="selected">Education Offered</option>
+                        <option>Under Graduate</option>
+                        <option>Post Graduate </option>
+                        
+                      </select>
+                    </div>
+                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                      <input class="multisteps-form__input form-control" type="email" placeholder="Awarding Body "/>
+                    </div>
+                  </div>
+                  <div class="form-row mt-4">
+                    <div class="col-12 col-sm-6">
+                      <input class="multisteps-form__input form-control" type="text" placeholder="No.of Staffs"/>
+                    </div>
+                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                      <input class="multisteps-form__input form-control" type="email" placeholder="No.of Students "/>
+                    </div>
+                  </div>
+                  <div class="form-row mt-4">
+                    <div class="col">
+                      <input class="multisteps-form__input form-control" type="text" placeholder="Address "/>
+                    </div>
+                  </div>
+                  <div class="form-row mt-4">
+                    <div class="col-12 col-sm-6">
+                      <input class="multisteps-form__input form-control" type="text" placeholder="Phone Number"/>
+                    </div>
+                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                      <input class="multisteps-form__input form-control" type="email" placeholder="Email"/>
+                    </div>
+                  </div>
+                  <div class="button-row d-flex mt-4">
+                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
                   </div>
                 </div>
               </div>
-            </div>
-            <input type="submit" name="" value="Save and Continue" class="btn btn-primary">
+              <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h3 class="multisteps-form__title">Your Address</h3>
+                <div class="multisteps-form__content">
+                  <div class="form-row mt-4">
+                    <div class="col">
+                      <input class="multisteps-form__input form-control" type="text" placeholder="Address 1"/>
+                    </div>
+                  </div>
+                  <div class="form-row mt-4">
+                    <div class="col">
+                      <input class="multisteps-form__input form-control" type="text" placeholder="Address 2"/>
+                    </div>
+                  </div>
+                  <div class="form-row mt-4">
+                    <div class="col-12 col-sm-6">
+                      <input class="multisteps-form__input form-control" type="text" placeholder="City"/>
+                    </div>
+                    <div class="col-6 col-sm-3 mt-4 mt-sm-0">
+                      <select class="multisteps-form__select form-control">
+                        <option selected="selected">State...</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="col-6 col-sm-3 mt-4 mt-sm-0">
+                      <input class="multisteps-form__input form-control" type="text" placeholder="Zip"/>
+                    </div>
+                  </div>
+                  <div class="button-row d-flex mt-4">
+                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                  </div>
+                </div>
+              </div>
+              <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h3 class="multisteps-form__title">Your Order Info</h3>
+                <div class="multisteps-form__content">
+                  <div class="row">
+                    <div class="col-12 col-md-6 mt-4">
+                      <div class="card shadow-sm">
+                        <div class="card-body">
+                          <h5 class="card-title">Item Title</h5>
+                          <p class="card-text">Small and nice item description</p><a class="btn btn-primary" href="#" title="Item Link">Item Link</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6 mt-4">
+                      <div class="card shadow-sm">
+                        <div class="card-body">
+                          <h5 class="card-title">Item Title</h5>
+                          <p class="card-text">Small and nice item description</p><a class="btn btn-primary" href="#" title="Item Link">Item Link</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="button-row d-flex mt-4 col-12">
+                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                      <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h3 class="multisteps-form__title">Additional Comments</h3>
+                <div class="multisteps-form__content">
+                  <div class="form-row mt-4">
+                    <textarea class="multisteps-form__textarea form-control" placeholder="Additional Comments and Requirements"></textarea>
+                  </div>
+                  <div class="button-row d-flex mt-4">
+                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                    <button class="btn btn-success ml-auto" type="button" title="Send">Send</button>
+                  </div>
+                </div>
+              </div>
             </form>
           </div>
-
         </div>
       </div>
-
     </div>
+  </div>
+</div>
+    
+    {% endblock %}
+    
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"
+    ></script>
 
-  <script>
-  var h3 = document.getElementsByTagName("h3");
-h3[0].innerHTML = "Countdown To Fill Form";
+    <script>
+      var h3 = document.getElementsByTagName("h3");
+      //h3[0].innerHTML = "Countdown To Fill Form";
 
-var sec         = 1800,
-  countDiv    = document.getElementById("timer"),
-  secpass,
-  countDown   = setInterval(function () {
-      'use strict';
+      var sec = 1800,
+        countDiv = document.getElementById("timer"),
+        secpass,
+        countDown = setInterval(function () {
+          "use strict";
 
-      secpass();
-  }, 1000);
+          secpass();
+        }, 1000);
 
-function secpass() {
-  'use strict';
+      function secpass() {
+        "use strict";
 
-  var min     = Math.floor(sec / 60),
-      remSec  = sec % 60;
+        var min = Math.floor(sec / 60),
+          remSec = sec % 60;
 
-  if (remSec < 10) {
+        if (remSec < 10) {
+          remSec = "0" + remSec;
+        }
+        if (min < 10) {
+          min = "0" + min;
+        }
+        countDiv.innerHTML = min + ":" + remSec;
 
-      remSec = '0' + remSec;
+        if (sec > 0) {
+          sec = sec - 1;
+        } else {
+          clearInterval(countDown);
 
-  }
-  if (min < 10) {
-
-      min = '0' + min;
-
-  }
-  countDiv.innerHTML = min + ":" + remSec;
-
-  if (sec > 0) {
-
-      sec = sec - 1;
-
-  } else {
-
-      clearInterval(countDown);
-
-      countDiv.innerHTML = 'countdown done';
-
-  }
-}
-
-  </script>
-</body>
-
+          countDiv.innerHTML = "countdown done";
+        }
+      }
+    </script>
+     <script src="{% static '/js/settings.js' %}"></script>
+  </body>
 </html>
