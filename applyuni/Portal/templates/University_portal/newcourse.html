@@ -34,6 +34,7 @@
             <select class="form-select" aria-label="Default select example" name="coursetype" value="{{value.Coursetype}}">
                 <option selected>UG</option>
                 <option value="1">PG</option>
+                <option value="1">Foundation</option>
 
               </select>
         </div>
@@ -90,16 +91,19 @@
         <label for="type" class="col-sm-2 col-form-label">Course Content</label>
         <div class="col-sm-5">
             <label for="type" class=" col-form-label">Semester / term 1</label>
-            <input type="text" class="form-control" name="sem1" value="{{value.Sem1}}" ><br>
-            <input type="text" class="form-control" name="sem2" value="{{value.Sem2}}"  ><br>
-            <input type="text" class="form-control" name="sem3" value="{{value.Sem3}}" ><br>
+            <input type="text" class="form-control" name="sem1" value="{{value.Sem1}}" >
+            <p onclick="more()">More</p>
+            <span id="responce">
+
+            </span>
 
           </div>
           <div class="col-sm-5">
-            <label for="type" class=" col-form-label ">Semester / term 2</label>
-            <input type="text" class="form-control" name="sem4" value="{{value.Sem4}}"  ><br>
-            <input type="text" class="form-control" name="sem5" value="{{value.Sem5}}" ><br>
-            <input type="text" class="form-control" name="sem6" value="{{value.Sem6}}" ><br>
+            <div id="main">
+                <input type="button" id="btAdd" value="Add Semester" class="bt" />
+                <input type="button" id="btRemove" value="Remove Semester" class="bt" />
+                
+            </div>
 
           </div>
 
@@ -144,263 +148,111 @@
 
   </form>
   </div>
-    <!--<div class="container">
-      <form action="">
-        <div class="mb-3 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-          <div class="col-sm-10">
-            <input
-              type="text"
-              readonly
-              class="form-control-plaintext"
-              id="staticEmail"
-              value="email@example.com"
-            />
-          </div>
-        </div>
-        <div class="mb-3 row">
-          <label for="inputPassword" class="col-sm-2 col-form-label"
-            >Password</label
-          >
-          <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword" />
-          </div>
-        </div>
-      </form>
-    </div>-->
-    <!--
-    <div
-      class="tab-pane fade"
-      id="list-messages"
-      role="tabpanel"
-      aria-labelledby="list-messages-list"
-    >
-      <div class="container rounded">
-        <form action="">
-          <div class="mb-3 row">
-            <label for="type" class="col-sm-2 col-form-label"
-              >Course Name
-            </label>
-            <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control"
-                name="coursename"
-                value="{{value.Coursename}}"
-              />
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="type" class="col-sm-2 col-form-label"
-              >Course Type</label
-            >
-            <div class="col-sm-10">
-              <select
-                class="form-select"
-                aria-label="Default select example"
-                name="coursetype"
-                value="{{value.Coursetype}}"
-              >
-                <option selected>UG</option>
-                <option value="1">PG</option>
-              </select>
-            </div>
-          </div>
 
-          <div class="mb-3 row">
-            <label for="type" class="col-sm-2 col-form-label"
-              >Faculty Name</label
-            >
-            <div class="col-sm-10">
-              <select
-                class="form-select"
-                aria-label="Default select example"
-                name="facultyname"
-                value="{{value.Facultyname}}"
-              >
-                <option selected>UG</option>
-                <option value="1">PG</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="mb-3 row">
-            <label for="type" class="col-sm-2 col-form-label"
-              >Course Approval License number</label
-            >
-            <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control"
-                name="courseapproval"
-                value="{{value.Courseapproval}}"
-              />
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="type" class="col-sm-2 col-form-label"
-              >Approval Authority</label
-            >
-            <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control"
-                name="approval"
-                value="{{value.Approvalauthority}}"
-              />
-            </div>
-          </div>
-
-
-
-          <div class="mb-3 row">
-            <label for="type" class="col-sm-2 col-form-label">Tution Fee</label>
-            <div class="col-sm-5">
-              <select
-                class="form-select"
-                aria-label="Default select example"
-                name="fee"
-                value="{{value.Tutionfee}}"
-              >
-                <option selected>Currency</option>
-                <option value="1">INR</option>
-                <option value="2">Dollars</option>
-              </select>
-            </div>
-            <div class="col-sm-5">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="amount"
-                name="amount1"
-                value="{{value.Amount1}}"
-              />
-            </div>
-          </div>
-
-          <div class="mb-3 row">
-            <label for="type" class="col-sm-2 col-form-label"
-              >Course Content</label
-            >
-            <div class="col-sm-5">
-              <label for="type" class="col-form-label">Semester / term 1</label>
-              <input
-                type="text"
-                class="form-control"
-                name="sem1"
-                value="{{value.Sem1}}"
-              /><br />
-              <input
-                type="text"
-                class="form-control"
-                name="sem2"
-                value="{{value.Sem2}}"
-              /><br />
-              <input
-                type="text"
-                class="form-control"
-                name="sem3"
-                value="{{value.Sem3}}"
-              /><br />
-            </div>
-            <div class="col-sm-5">
-              <label for="type" class="col-form-label">Semester / term 2</label>
-              <input
-                type="text"
-                class="form-control"
-                name="sem4"
-                value="{{value.Sem4}}"
-              /><br />
-              <input
-                type="text"
-                class="form-control"
-                name="sem5"
-                value="{{value.Sem5}}"
-              /><br />
-              <input
-                type="text"
-                class="form-control"
-                name="sem6"
-                value="{{value.Sem6}}"
-              /><br />
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="type" class="col-sm-2 col-form-label">Duration</label>
-            <div class="col-sm-5">
-              <select
-                class="form-select"
-                aria-label="Default select example"
-                name="duration1"
-                value="{{value.Duration1}}"
-              >
-                <option selected>Total course Duration</option>
-                <option value="1">4</option>
-                <option value="2">5</option>
-                <option value="3">3</option>
-              </select>
-            </div>
-            <div class="col-sm-5">
-              <select
-                class="form-select"
-                aria-label="Default select example"
-                name="noofsems"
-                value="{{value.Noofsems}}"
-              >
-                <option selected>No.of Semesters</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-            </div>
-          </div>
-
-
-
-          <div class="mb-3 row">
-            <label for="type" class="col-sm-2 col-form-label"
-              >Entry Requirments</label
-            >
-            <div class="col-sm-10">
-              <textarea
-                type="text"
-                class="form-control"
-                name="criteria1"
-                value="{{value.Criteria1}}"
-                placeholder="Criteria 1"
-              ></textarea
-              ><br />
-              <textarea
-                type="text"
-                class="form-control"
-                name="criteria2"
-                value="{{value.Criteria2}}"
-                placeholder="Criteria 2"
-              ></textarea
-              ><br />
-              <textarea
-                type="text"
-                class="form-control"
-                name="criteria3"
-                value="{{value.Criteria3}}"
-                placeholder="Criteria 3"
-              ></textarea
-              ><br />
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>-->
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
       crossorigin="anonymous"
     ></script>
+    <script>
+      function more(){
+       var div1=document.getElementById("responce");
+       div1.innerHTML="<input type='text' name='box' >";
+      }
+    </script>
+    <script>
+      $(document).ready(function() {
 
+var iCnt = 0;
+// CREATE A "DIV" ELEMENT AND DESIGN IT USING jQuery ".css()" CLASS.
+var container = $(document.createElement('div')).css({
+    padding: '5px', margin: '20px', width: '170px', border: '1px dashed',
+    borderTopColor: '#999', borderBottomColor: '#999',
+    borderLeftColor: '#999', borderRightColor: '#999'
+});
+
+$('#btAdd').click(function() {
+    if (iCnt <= 19) {
+
+        iCnt = iCnt + 1;
+
+        // ADD TEXTBOX.
+        $(container).append('<input type=text class="input" id=tb' + iCnt + ' ' +
+            'value="Text Element ' + iCnt + '" />');
+
+        // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
+        if (iCnt == 100000000000000000) {
+            var divSubmit = $(document.createElement('div'));
+            $(divSubmit).append('<input type=button class="bt"' + 
+                'onclick="GetTextValue()"' + 
+                    'id=btSubmit value=Submit />');
+        }
+
+        // ADD BOTH THE DIV ELEMENTS TO THE "main" CONTAINER.
+        $('#main').after(container, divSubmit);
+    }
+    // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
+    // (20 IS THE LIMIT WE HAVE SET)
+    else {      
+        $(container).append('<label>Reached the limit</label>'); 
+        $('#btAdd').attr('class', 'bt-disable'); 
+        $('#btAdd').attr('disabled', 'disabled');
+    }
+});
+
+// REMOVE ONE ELEMENT PER CLICK.
+$('#btRemove').click(function() {
+    if (iCnt != 0) { $('#tb' + iCnt).remove(); iCnt = iCnt - 1; }
+
+    if (iCnt == 0) { 
+        $(container)
+            .empty() 
+            .remove(); 
+
+        $('#btSubmit').remove(); 
+        $('#btAdd')
+            .removeAttr('disabled') 
+            .attr('class', 'bt');
+    }
+});
+
+// REMOVE ALL THE ELEMENTS IN THE CONTAINER.
+$('#btRemoveAll').click(function() {
+    $(container)
+        .empty()
+        .remove(); 
+
+    $('#btSubmit').remove(); 
+    iCnt = 0; 
+    
+    $('#btAdd')
+        .removeAttr('disabled') 
+        .attr('class', 'bt');
+});
+});
+
+// PICK THE VALUES FROM EACH TEXTBOX WHEN "SUBMIT" BUTTON IS CLICKED.
+var divValue, values = '';
+
+function GetTextValue() {
+$(divValue) 
+    .empty() 
+    .remove(); 
+
+values = '';
+
+$('.input').each(function() {
+    divValue = $(document.createElement('div')).css({
+        padding:'5px', width:'200px'
+    });
+    values += this.value + '<br />'
+});
+
+$(divValue).append('<p><b>Your selected values</b></p>' + values);
+$('body').append(divValue);
+}
+
+    </script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
