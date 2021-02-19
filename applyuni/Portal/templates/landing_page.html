@@ -258,30 +258,32 @@
           box-shadow: 0 5px 15px rgb(0, 0, 0, 0.1);
           border-radius: 10px;
           margin-bottom: 30px;
-
         }
       }
-     /* preloader */
-     
-     
+      /* preloader */
     </style>
   </head>
 
   <body>
-
     <!--Preloaders-->
-    
+
     <!--end preloaders-->
     <!--====== HEADER PART START ======-->
 
     <header class="header-area">
-      <div class="navgition navgition-transparent">
+      <div
+        class="navgition navgition-transparent"
+        style="background-color: #cfdac8"
+      >
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
               <nav class="navbar navbar-expand-lg">
                 <a class="navbar-brand" href="#">
-                  <h3 style="color: blue">ApplyUni</h3>
+                  <img
+                    src="{% static './images/logo.png' %}"
+                    style="height: 50px"
+                  />
                 </a>
 
                 <button
@@ -357,7 +359,7 @@
       <div
         id="home"
         class="header-hero bg_cover"
-        style="background-image: url({% static 'images/header-bg-1.jpg' %})"
+        style="background-image: black"
       >
         <div class="container">
           <div class="row justify-content-center">
